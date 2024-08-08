@@ -1,15 +1,16 @@
 <script lang="ts">
-import { defineComponent } from "vue";
-import { JsonForms, type JsonFormsChangeEvent } from "@jsonforms/vue";
-import { vanillaRenderers } from "@jsonforms/vue-vanilla";
 
+import 'primeicons/primeicons.css'
 
+import { defineComponent } from "vue"
+import { JsonForms, type JsonFormsChangeEvent } from "@jsonforms/vue"
+import { vanillaRenderers } from "@jsonforms/vue-vanilla"
 
 
 const renderers = [
     ...vanillaRenderers,
     // here you can add custom renderers
-];
+]
 
 const schema = {
     properties: {
@@ -121,63 +122,75 @@ export default defineComponent({
 </script>
 
 <template>
-    <img alt="Vue logo" src="./assets/logo.svg" width="75" height="75" />
-    <h1>JSON Forms Vue 3</h1>
+    <div class="flex flex-col h-screen">
+        <main class="container m-4 xl:mx-64">
 
-    <!-- jsonforms example -->
+            <img alt="Vue logo" src="./assets/logo.svg" width="75" height="75" />
+            <h1>JSON Forms Vue 3</h1>
 
-    <div>
-        <json-forms :data="data" :renderers="renderers" :schema="schema" :uischema="uischema" @change="onChange" />
+            <!-- jsonforms example -->
+
+            <div>
+                <json-forms :data="data" :renderers="renderers" :schema="schema" :uischema="uischema" @change="onChange" />
+            </div>
+
+            <!-- primevue example -->
+
+            <h2 class="py-6 text-2xl font-bold text-center">
+                Services
+            </h2>
+            
+            <Button icon="pi pi-home" aria-label="Save" class="mr-2" />
+            <Button label="Profile" icon="pi pi-user" class="mr-2"/>
+            <Button label="Save" icon="pi pi-check" iconPos="right" class="mr-2" />
+            <Button label="Search" icon="pi pi-search" iconPos="top" class="mr-2" />
+            <Button label="Update" icon="pi pi-refresh" iconPos="bottom" />
+
+            <InputGroup class="my-2">
+                <Button label="Save" icon="pi pi-check" severity="success"/>
+                <Button label="Delete" icon="pi pi-trash" severity="danger" />
+                <Button label="Cancel" icon="pi pi-times" />
+            </InputGroup>
+
+            <Button label="Primary" outlined class="mr-2" />
+            <Button label="Danger" severity="danger" outlined />
+
+            <div class="bg-surface-100 dark:bg-surface-900 flex items-center justify-center p-10">
+                <section class="bg-white dark:bg-gray-800 p-10 rounded-xl flex flex-col gap-8 max-w-3xl">
+                    <h1 class="text-4xl text-black dark:text-white font-bold text-center">Tailwind CSS + PrimeVue</h1>
+                    <Panel header="Default Preset">
+                        <p>First panel component uses the global pass through preset from Lara.</p>
+                    </Panel>
+
+                    <Panel
+                        header="Custom Header"
+                        :pt="{
+                            header: 'p-5 flex items-center justify-between border border-indigo-300 bg-indigo-500 text-indigo-50 rounded-tl-lg rounded-tr-lg dark:bg-indigo-900 dark:border-indigo-900/40 dark:text-white/80',
+                        }"
+                    >
+                        <p>Second panel overrides the header section with custom a custom style.</p>
+                    </Panel>
+
+                    <Panel
+                        header="Custom Design"
+                        :ptOptions="{ mergeSections: false }"
+                        :pt="{
+                            header: 'flex items-center justify-center p-5 bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 rounded-tl-2xl rounded-tr-2xl text-white',
+                            title: 'leading-none font-bold uppercase text-2xl',
+                            content:
+                                'bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 px-5 pb-8 pt-3 text-white text-center rounded-bl-2xl rounded-br-2xl text-xl',
+                        }"
+                    >
+                        <p>
+                            Third panel ignores the default preset with
+                            <b>mergeSections: false</b> and applies a custom style to all elements of the panel instead.
+                        </p>
+                    </Panel>
+                </section>
+            </div>
+        </main>
     </div>
 
-    <!-- primevue example -->
-
-    <h2 class="py-6 text-2xl font-bold text-center">
-        Services
-    </h2>
-
-    <Button label="Log in with ORCID id" class="md:block"/>
-
-    <div class="bg-surface-100 dark:bg-surface-900 flex items-center justify-center min-h-screen p-10">
-        <section class="bg-white dark:bg-gray-800 p-10 rounded-xl flex flex-col gap-8 max-w-3xl">
-            <h1 class="text-4xl text-black dark:text-white font-bold text-center">Tailwind CSS + PrimeVue</h1>
-            <Panel header="Default Preset">
-                <p>First panel component uses the global pass through preset from Lara.</p>
-            </Panel>
-
-            <Panel
-                header="Custom Header"
-                :pt="{
-                    header: 'p-5 flex items-center justify-between border border-indigo-300 bg-indigo-500 text-indigo-50 rounded-tl-lg rounded-tr-lg dark:bg-indigo-900 dark:border-indigo-900/40 dark:text-white/80',
-                }"
-            >
-                <p>Second panel overrides the header section with custom a custom style.</p>
-            </Panel>
-
-            <Panel
-                header="Custom Design"
-                :ptOptions="{ mergeSections: false }"
-                :pt="{
-                    header: 'flex items-center justify-center p-5 bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 rounded-tl-2xl rounded-tr-2xl text-white',
-                    title: 'leading-none font-bold uppercase text-2xl',
-                    content:
-                        'bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 px-5 pb-8 pt-3 text-white text-center rounded-bl-2xl rounded-br-2xl text-xl',
-                }"
-            >
-                <p>
-                    Third panel ignores the default preset with
-                    <b>mergeSections: false</b> and applies a custom style to all elements of the panel instead.
-                </p>
-            </Panel>
-        </section>
-    </div>
-    <Button
-        label="Search"
-        icon="pi pi-search"
-        pt:root="bg-teal-500 hover:bg-teal-700 active:bg-teal-900 cursor-pointer py-2 px-4 rounded-full border-0 flex gap-2"
-        pt:label="text-white font-bold text-lg"
-        pt:icon="text-white text-xl"
-    />
 </template>
 
 <style></style>

@@ -10,10 +10,13 @@ import { rendererProps, useJsonFormsControl, RendererProps } from "@jsonforms/vu
 import { default as ControlWrapper } from "./ControlWrapper.vue";
 import { useVanillaControl } from "../util";
 
+import InputText from "primevue/inputtext";
+
 const controlRenderer = defineComponent({
     name: "StringControlRenderer",
     components: {
         ControlWrapper,
+        InputText,
     },
     props: {
         ...rendererProps<ControlElement>(),

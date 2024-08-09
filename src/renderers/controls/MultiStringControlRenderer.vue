@@ -12,10 +12,13 @@ import { rendererProps, useJsonFormsControl, RendererProps } from "@jsonforms/vu
 import { default as ControlWrapper } from "./ControlWrapper.vue";
 import { useVanillaControl } from "../util";
 
+import Textarea from "primevue/textarea";
+
 const controlRenderer = defineComponent({
     name: "MultiStringControlRenderer",
     components: {
         ControlWrapper,
+        Textarea,
     },
     props: {
         ...rendererProps<ControlElement>(),

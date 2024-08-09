@@ -17,6 +17,7 @@ const controlRenderer = defineComponent({
     name: "IntegerControlRenderer",
     components: {
         ControlWrapper,
+        InputNumber,
     },
     props: {
         ...rendererProps<ControlElement>(),

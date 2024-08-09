@@ -102,10 +102,10 @@ const defaultData = {
 }
 
 const state = reactive({
-    renderers: Object.freeze(renderers),
+    renderers: Object.freeze(renderers),    // freeze the renderers for performance gains
     data: defaultData,
-    schema: schema,
-    uischema: uischema,
+    //schema: schema,       // apparently not required to be reactive
+    //uischema: uischema,   // apparently not required to be reactive
 })
 
 const onChange = (event) => {
@@ -123,7 +123,7 @@ const onChange = (event) => {
             <!-- jsonforms example -->
 
             <div>
-                <json-forms :data="state.data" :renderers="state.renderers" :schema="state.schema" :uischema="state.uischema" @change="onChange" />
+                <json-forms :data="state.data" :renderers="state.renderers" :schema="schema" :uischema="uischema" @change="onChange" />
             </div>
 
             <pre>{{ state.data }}</pre>

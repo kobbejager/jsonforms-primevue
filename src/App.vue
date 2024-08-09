@@ -1,9 +1,9 @@
-<script lang="ts">
+<script setup>
 
 import 'primeicons/primeicons.css'
 
-import { defineComponent } from "vue"
-import { JsonForms, type JsonFormsChangeEvent } from "@jsonforms/vue"
+import { reactive } from "vue"
+import { JsonForms } from "@jsonforms/vue"
 import { vanillaRenderers } from "@jsonforms/vue-vanilla"
 
 
@@ -44,7 +44,7 @@ const schema = {
             description: "Days until recurrence"
         },
     },
-};
+}
 
 const uischema = {
     type: "HorizontalLayout",
@@ -91,34 +91,26 @@ const uischema = {
             ],
         },
     ],
-};
+}
 
-export default defineComponent({
-    name: "App",
-    components: {
-        JsonForms,
-    },
-    data() {
-        return {
-            // freeze renderers for performance gains
-            renderers: Object.freeze(renderers),
-            data: {
-                name: "Send email to Adrian",
-                description: "Confirm if you have passed the subject\nHereby ...",
-                done: true,
-                recurrence: "Daily",
-                rating: 3,
-            },
-            schema,
-            uischema,
-        };
-    },
-    methods: {
-        onChange(event: JsonFormsChangeEvent) {
-            this.data = event.data;
-        },
-    }
-});
+const defaultData = {
+    name: "Send email to Adrian",
+    description: "Confirm if you have passed the subject\nHereby ...",
+    done: true,
+    recurrence: "Daily",
+    rating: 3,
+}
+
+const state = reactive({
+    renderers: Object.freeze(renderers),
+    data: defaultData,
+    schema: schema,
+    uischema: uischema,
+})
+
+const onChange = (event) => {
+    state.data = event.data
+}
 </script>
 
 <template>
@@ -131,8 +123,10 @@ export default defineComponent({
             <!-- jsonforms example -->
 
             <div>
-                <json-forms :data="data" :renderers="renderers" :schema="schema" :uischema="uischema" @change="onChange" />
+                <json-forms :data="state.data" :renderers="state.renderers" :schema="state.schema" :uischema="state.uischema" @change="onChange" />
             </div>
+
+            <pre>{{ state.data }}</pre>
 
             <!-- primevue example -->
 

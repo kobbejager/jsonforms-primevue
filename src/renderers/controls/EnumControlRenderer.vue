@@ -45,8 +45,8 @@ export const entry: JsonFormsRendererRegistryEntry = {
         :applied-options="appliedOptions"
     >
         <Select
-            v-model="control.data"
             :id="control.id + '-select'"
+            :model-value="control.data"
             :options="control.options"
             optionLabel="label"
             optionValue="value"
@@ -55,7 +55,7 @@ export const entry: JsonFormsRendererRegistryEntry = {
             :class="styles.control.select"
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"
-            @change="onChange"
+            @update:model-value="onChange"
             @focus="isFocused = true"
             @blur="isFocused = false"
         >

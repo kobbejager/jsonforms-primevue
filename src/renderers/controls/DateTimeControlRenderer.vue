@@ -54,15 +54,15 @@ export const entry: JsonFormsRendererRegistryEntry = {
     >
         <DatePicker
             :id="control.id + '-input'"
+            :model-value="dataTime"
             showTime 
             hourFormat="24" 
             fluid
             :class="styles.control.input"
-            v-model="dataTime"
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"
             :placeholder="appliedOptions.placeholder"
-            @change="onChange"
+            @update:model-value="onChange"
             @focus="isFocused = true"
             @blur="isFocused = false"
         />

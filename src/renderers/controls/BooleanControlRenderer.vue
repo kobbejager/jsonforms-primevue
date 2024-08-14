@@ -43,14 +43,14 @@ export const entry: JsonFormsRendererRegistryEntry = {
     >
         <Checkbox
             :id="control.id + '-input'"
+            :model-value="control.data"
             binary
             :indeterminate="control.data === undefined"
             :class="styles.control.input"
-            v-model="control.data"
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"
             :placeholder="appliedOptions.placeholder"
-            @change="onChange"
+            @update:model-value="onChange"
             @focus="isFocused = true"
             @blur="isFocused = false"
         />

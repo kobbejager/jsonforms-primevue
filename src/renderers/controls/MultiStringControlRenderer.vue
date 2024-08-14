@@ -48,15 +48,15 @@ export const entry: JsonFormsRendererRegistryEntry = {
   >
       <Textarea
           :id="control.id + '-input'"
+          :model-value="control.data"
           fluid
           autoResize
           rows="3"
           :class="styles.control.textarea"
-          v-model="control.data"
           :disabled="!control.enabled"
           :autofocus="appliedOptions.focus"
           :placeholder="appliedOptions.placeholder"
-          @change="onChange"
+          @update:model-value="onChange"
           @focus="isFocused = true"
           @blur="isFocused = false"
       />

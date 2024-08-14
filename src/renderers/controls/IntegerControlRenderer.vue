@@ -25,7 +25,7 @@ const controlRenderer = defineComponent({
     setup(props: RendererProps<ControlElement>) {
         return useVanillaControl(
             useJsonFormsControl(props), 
-            (target) => target.value === "" ? undefined : Number(target.value)
+            (target) => target.modelValue === "" ? undefined : Number(target.modelValue)
         );
     },
     methods: {
@@ -51,8 +51,8 @@ export const entry: JsonFormsRendererRegistryEntry = {
         :applied-options="appliedOptions"
     >
         <InputNumber
-            v-model="control.data"
             :id="control.id + '-input'"
+            :model-value="control.data"
             inputId="integeronly"
             showButtons
             fluid
@@ -61,7 +61,7 @@ export const entry: JsonFormsRendererRegistryEntry = {
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"
             :placeholder="appliedOptions.placeholder"
-            @change="onChange"
+            @update:model-value="onChange"
             @focus="isFocused = true"
             @blur="isFocused = false"
         />

@@ -51,15 +51,15 @@ export const entry: JsonFormsRendererRegistryEntry = {
     >
         <InputNumber
             :id="control.id + '-input'"
+            :model-value="control.data"
             showButtons
             fluid
             :step="step"
             :class="styles.control.input"
-            :value="control.data"
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"
             :placeholder="appliedOptions.placeholder"
-            @change="onChange"
+            @update:model-value="onChange"
             @focus="isFocused = true"
             @blur="isFocused = false"
         />

@@ -12,6 +12,8 @@ import { useVanillaControl } from "../util";
 
 import InputNumber from "primevue/inputnumber";
 
+const NUMBER_REGEX_TEST = /^[+-]?\d+([.]\d+)?([eE][+-]?\d+)?$/;
+
 const controlRenderer = defineComponent({
     name: "NumberControlRenderer",
     components: {
@@ -22,8 +24,12 @@ const controlRenderer = defineComponent({
         ...rendererProps<ControlElement>(),
     },
     setup(props: RendererProps<ControlElement>) {
-        return useVanillaControl(useJsonFormsControl(props), (target) =>
-            target.value === "" ? undefined : Number(target.value)
+        const adaptTarget = (value: any) => 
+            typeof value === 'number' ? value : value || undefined;
+
+        return useVanillaControl(
+            useJsonFormsControl(props), 
+            adaptTarget
         );
     },
     computed: {
@@ -52,6 +58,8 @@ export const entry: JsonFormsRendererRegistryEntry = {
         <InputNumber
             :id="control.id + '-input'"
             :model-value="control.data"
+            :useGrouping="false"
+            :minFractionDigits="1"
             showButtons
             fluid
             :step="step"

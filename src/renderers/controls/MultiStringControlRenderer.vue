@@ -24,9 +24,12 @@ const controlRenderer = defineComponent({
         ...rendererProps<ControlElement>(),
     },
     setup(props: RendererProps<ControlElement>) {
+        const adaptTarget = (value: any) => 
+            value === "" ? undefined : value.toString();
+
         return useVanillaControl(
             useJsonFormsControl(props),
-            (target) => target.value || undefined
+            adaptTarget
         );
     },
 });

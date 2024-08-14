@@ -16,7 +16,7 @@ export const useVanillaControl = <
   I extends { control: any; handleChange: any }
 >(
   input: I,
-  adaptTarget: (target: any) => any = (v) => v.modelValue
+  adaptTarget
 ) => {
   const appliedOptions = computed(() =>
     merge(
@@ -28,7 +28,7 @@ export const useVanillaControl = <
 
   const isFocused = ref(false);
   const onChange = (target: any) => {
-    input.handleChange(input.control.value.path, target);
+    input.handleChange(input.control.value.path, adaptTarget(target));
   };
 
   const controlWrapper = computed(() => {

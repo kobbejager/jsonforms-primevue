@@ -23,9 +23,12 @@ const controlRenderer = defineComponent({
         ...rendererProps<ControlElement>(),
     },
     setup(props: RendererProps<ControlElement>) {
+        const adaptTarget = (value: any) => 
+            typeof value === 'number' ? value : value || undefined;
+
         return useVanillaControl(
-            useJsonFormsControl(props), 
-            (target) => target.modelValue === "" ? undefined : Number(target.modelValue)
+            useJsonFormsControl(props),
+            adaptTarget
         );
     },
     methods: {
@@ -54,6 +57,7 @@ export const entry: JsonFormsRendererRegistryEntry = {
             :id="control.id + '-input'"
             :model-value="control.data"
             inputId="integeronly"
+            :useGrouping="false"
             showButtons
             fluid
             :step="1"

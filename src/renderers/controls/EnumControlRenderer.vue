@@ -55,6 +55,7 @@ export const entry: JsonFormsRendererRegistryEntry = {
             :class="styles.control.select"
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"
+            :invalid="control.errors.length > 0"
             @update:model-value="onChange"
             @focus="isFocused = true"
             @blur="isFocused = false"

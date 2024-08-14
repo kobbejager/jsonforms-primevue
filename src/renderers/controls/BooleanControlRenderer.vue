@@ -22,7 +22,13 @@ const controlRenderer = defineComponent({
         ...rendererProps<ControlElement>(),
     },
     setup(props: RendererProps<ControlElement>) {
-        return useVanillaControl(useJsonFormsControl(props), (target) => target.checked);
+        const adaptTarget = (value: any) => 
+            value || false
+
+        return useVanillaControl(
+            useJsonFormsControl(props), 
+            adaptTarget
+        );
     },
 });
 

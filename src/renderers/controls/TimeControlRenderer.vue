@@ -35,20 +35,22 @@ const controlRenderer = defineComponent({
         // set initial value
         onMounted(() => {
             // split value into hours, minutes and seconds
-            let parts = control.control.value.data.split(":");
-            // transform to numbers
-            parts = parts.map(Number);
-            // if none of the parts are NaN, proceed
-            if (!parts.some(isNaN)) {
-                let value = new Date();
-                value.setHours(Number(parts[0]));
-                if (parts.length > 1) {
-                    value.setMinutes(Number(parts[1]));
+            if (control.control.value.data) {
+                let parts = control.control.value.data.split(":");
+                // transform to numbers
+                parts = parts.map(Number);
+                // if none of the parts are NaN, proceed
+                if (!parts.some(isNaN)) {
+                    let value = new Date();
+                    value.setHours(Number(parts[0]));
+                    if (parts.length > 1) {
+                        value.setMinutes(Number(parts[1]));
+                    }
+                    if (parts.length > 2) {
+                        value.setSeconds(Number(parts[2]));
+                    }
+                    jsDate.value = new Date(value);
                 }
-                if (parts.length > 2) {
-                    value.setSeconds(Number(parts[2]));
-                }
-                jsDate.value = new Date(value);
             }
         });
 

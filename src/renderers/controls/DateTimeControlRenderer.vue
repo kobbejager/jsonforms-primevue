@@ -75,6 +75,8 @@ export const entry: JsonFormsRendererRegistryEntry = {
             showIcon
             iconDisplay="input"
             fluid
+            dateFormat="dd/mm/yy"
+            :showSeconds="true"
             :class="styles.control.input"
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"

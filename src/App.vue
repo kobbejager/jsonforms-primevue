@@ -121,6 +121,25 @@ const schema = {
             enum: ["Option 1", "Option 2", "Option 3"],
             default: "Option 1"
         },
+        oneof_enum: {
+            title: 'Enum field with a oneOf construct',
+            description: 'An enum field with a oneOf construct',
+            type: 'string',
+            oneOf: [
+                {
+                    const: 'foo',
+                    title: 'Foo'
+                },
+                {
+                    const: 'bar',
+                    title: 'Bar'
+                },
+                {
+                    const: 'foobar',
+                    title: 'FooBar'
+                }
+            ]
+            }
     },
 }
 
@@ -222,13 +241,20 @@ const uischema = {
                 { 
                     type: "Control", 
                     scope: "#/properties/enum_field_with_default"
+                },
+                { 
+                    type: "Control", 
+                    scope: "#/properties/oneof_enum"
                 }
-            ],
+            ]
         }
     ],
 }
 
-const defaultData = {}
+const defaultData = {
+    string_field: "55",
+    boolean_field_with_default: true,
+}
 
 const state = reactive({
     renderers: Object.freeze(renderers),    // freeze the renderers for performance gains

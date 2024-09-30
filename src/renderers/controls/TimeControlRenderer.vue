@@ -5,7 +5,7 @@ import {
     rankWith,
     isTimeControl,
 } from "@jsonforms/core";
-import { defineComponent } from "vue";
+import { defineComponent, ref, onMounted } from "vue";
 import { rendererProps, useJsonFormsControl, RendererProps } from "@jsonforms/vue";
 import { default as ControlWrapper } from "./ControlWrapper.vue";
 import { useVanillaControl } from "../util";
@@ -22,10 +22,40 @@ const controlRenderer = defineComponent({
         ...rendererProps<ControlElement>(),
     },
     setup(props: RendererProps<ControlElement>) {
-        return useVanillaControl(
+        const jsDate = ref();
+        const adaptTarget = (value: any) => 
+            value instanceof Date 
+                ? ("0" + value.getHours()).slice(-2) + ":" + ("0" + value.getMinutes()).slice(-2) + ":"+ ("0" + value.getSeconds()).slice(-2) 
+                : undefined;
+        const control = useVanillaControl(
             useJsonFormsControl(props),
-            (target) => target.value || undefined
+            adaptTarget
         );
+
+        // set initial value
+        onMounted(() => {
+            // split value into hours, minutes and seconds
+            let parts = control.control.value.data.split(":");
+            // transform to numbers
+            parts = parts.map(Number);
+            // if none of the parts are NaN, proceed
+            if (!parts.some(isNaN)) {
+                let value = new Date();
+                value.setHours(Number(parts[0]));
+                if (parts.length > 1) {
+                    value.setMinutes(Number(parts[1]));
+                }
+                if (parts.length > 2) {
+                    value.setSeconds(Number(parts[2]));
+                }
+                jsDate.value = new Date(value);
+            }
+        });
+
+        return {
+            ...control,
+            jsDate,
+        };
     },
 });
 
@@ -46,11 +76,12 @@ export const entry: JsonFormsRendererRegistryEntry = {
     >
         <DatePicker
             :id="control.id + '-input'"
-            :model-value="control.data"
+            v-model="jsDate"
             timeOnly
             showIcon
             fluid
             iconDisplay="input"
+            :showSeconds="true"
             :class="styles.control.input"
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"
@@ -59,6 +90,10 @@ export const entry: JsonFormsRendererRegistryEntry = {
             @update:model-value="onChange"
             @focus="isFocused = true"
             @blur="isFocused = false"
-        />
+        >
+            <template #inputicon="slotProps">
+                <i class="pi pi-clock" @click="slotProps.clickCallback" />
+            </template>
+        </DatePicker>
     </control-wrapper>
 </template>

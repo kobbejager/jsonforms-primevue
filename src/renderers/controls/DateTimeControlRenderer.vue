@@ -5,7 +5,7 @@ import {
     rankWith,
     isDateTimeControl,
 } from "@jsonforms/core";
-import { defineComponent } from "vue";
+import { defineComponent, ref, onMounted } from "vue";
 import { rendererProps, useJsonFormsControl, RendererProps } from "@jsonforms/vue";
 import { default as ControlWrapper } from "./ControlWrapper.vue";
 import { useVanillaControl } from "../util";
@@ -26,15 +26,30 @@ const controlRenderer = defineComponent({
         ...rendererProps<ControlElement>(),
     },
     setup(props: RendererProps<ControlElement>) {
-        return useVanillaControl(useJsonFormsControl(props), (target) =>
-            toISOString(target.value)
+        const jsDate = ref();
+        const adaptTarget = (value: any) => 
+            value instanceof Date 
+                ? value.toISOString()
+                : undefined;
+            // value.toSIOString returns a UTC date with timezone info
+        const control = useVanillaControl(
+            useJsonFormsControl(props),
+            adaptTarget
         );
-    },
-    computed: {
-        dataTime(): string {
-            return (this.control.data ?? "").substr(0, 16);
-        },
-    },
+
+        // set initial value
+        onMounted(() => {
+            const value = control.control.value.data;
+            if (value !== undefined && value !== null) {
+                jsDate.value = new Date(value);
+            }
+        });
+
+        return {
+            ...control,
+            jsDate,
+        };
+    }
 });
 
 export default controlRenderer;
@@ -54,9 +69,11 @@ export const entry: JsonFormsRendererRegistryEntry = {
     >
         <DatePicker
             :id="control.id + '-input'"
-            :model-value="dataTime"
+            v-model="jsDate"
             showTime 
-            hourFormat="24" 
+            hourFormat="24"
+            showIcon
+            iconDisplay="input"
             fluid
             :class="styles.control.input"
             :disabled="!control.enabled"
@@ -66,6 +83,10 @@ export const entry: JsonFormsRendererRegistryEntry = {
             @update:model-value="onChange"
             @focus="isFocused = true"
             @blur="isFocused = false"
-        />
+        >
+            <template #inputicon="slotProps">
+                <i class="pi pi-calendar-clock" @click="slotProps.clickCallback" />
+            </template>
+        </DatePicker>
     </control-wrapper>
 </template>

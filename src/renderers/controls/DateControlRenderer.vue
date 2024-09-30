@@ -5,7 +5,7 @@ import {
     rankWith,
     isDateControl,
 } from "@jsonforms/core";
-import { defineComponent } from "vue";
+import { defineComponent, ref, onMounted } from "vue";
 import { rendererProps, useJsonFormsControl, RendererProps } from "@jsonforms/vue";
 import { default as ControlWrapper } from "./ControlWrapper.vue";
 import { useVanillaControl } from "../util";
@@ -23,10 +23,28 @@ const controlRenderer = defineComponent({
         ...rendererProps<ControlElement>(),
     },
     setup(props: RendererProps<ControlElement>) {
-        return useVanillaControl(
-            useJsonFormsControl(props), 
-            (target) => target.value || undefined
+        const jsDate = ref();
+        const adaptTarget = (value: any) => 
+            value instanceof Date 
+                ? value.getFullYear() + "-" + ("0" + value.getMonth()).slice(-2) + "-" + ("0" + value.getDate()).slice(-2) 
+                : undefined;
+        const control = useVanillaControl(
+            useJsonFormsControl(props),
+            adaptTarget
         );
+
+        // set initial value
+        onMounted(() => {
+            const value = control.control.value.data;
+            if (value !== undefined && value !== null) {
+                jsDate.value = new Date(value);
+            }
+        });
+
+        return {
+            ...control,
+            jsDate,
+        };
     },
 });
 
@@ -47,10 +65,11 @@ export const entry: JsonFormsRendererRegistryEntry = {
     >
         <DatePicker
             :id="control.id + '-input'"
-            :model-value="control.data"
+            v-model="jsDate"
             showIcon
             iconDisplay="input"
             fluid
+            dateFormat="dd/mm/yy"
             :class="styles.control.input"
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"

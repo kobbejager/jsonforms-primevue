@@ -8,7 +8,7 @@ import {
 import { defineComponent } from "vue";
 import { rendererProps, useJsonFormsControl, RendererProps } from "@jsonforms/vue";
 import { default as ControlWrapper } from "./ControlWrapper.vue";
-import { useVanillaControl } from "../util";
+import { usePrimeVueControl } from "../util";
 
 import InputNumber from "primevue/inputnumber";
 
@@ -27,7 +27,7 @@ const controlRenderer = defineComponent({
         const adaptTarget = (value: any) => 
             typeof value === 'number' ? value : value || undefined;
 
-        return useVanillaControl(
+        return usePrimeVueControl(
             useJsonFormsControl(props), 
             adaptTarget
         );

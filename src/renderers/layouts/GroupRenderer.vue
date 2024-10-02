@@ -36,7 +36,7 @@ import {
   useJsonFormsLayout,
   RendererProps,
 } from '@jsonforms/vue';
-import { useVanillaLayout } from '../util';
+import { usePrimeVueLayout } from '../util';
 
 const layoutRenderer = defineComponent({
   name: 'GroupRenderer',
@@ -47,7 +47,7 @@ const layoutRenderer = defineComponent({
     ...rendererProps<Layout>(),
   },
   setup(props: RendererProps<Layout>) {
-    return useVanillaLayout(useJsonFormsLayout(props));
+    return usePrimeVueLayout(useJsonFormsLayout(props));
   },
 });
 

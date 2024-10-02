@@ -86,7 +86,7 @@ import {
 } from '@jsonforms/vue';
 import isEmpty from 'lodash/isEmpty';
 import { defineComponent, nextTick, ref } from 'vue';
-import { useVanillaControl } from '../util';
+import { usePrimeVueControl } from '../util';
 import { ControlWrapper } from '../controls';
 import CombinatorProperties from './components/CombinatorProperties.vue';
 
@@ -112,7 +112,7 @@ const controlRenderer = defineComponent({
     const confirm = ref<HTMLElement>();
 
     return {
-      ...useVanillaControl(input),
+      ...usePrimeVueControl(input),
       selectedIndex,
       selectIndex,
       newSelectedIndex,

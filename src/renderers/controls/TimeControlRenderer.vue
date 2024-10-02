@@ -8,7 +8,7 @@ import {
 import { defineComponent, ref, onMounted } from "vue";
 import { rendererProps, useJsonFormsControl, RendererProps } from "@jsonforms/vue";
 import { default as ControlWrapper } from "./ControlWrapper.vue";
-import { useVanillaControl } from "../util";
+import { usePrimeVueControl } from "../util";
 
 import DatePicker from "primevue/datepicker";
 
@@ -27,7 +27,7 @@ const controlRenderer = defineComponent({
             value instanceof Date 
                 ? ("0" + value.getHours()).slice(-2) + ":" + ("0" + value.getMinutes()).slice(-2) + ":"+ ("0" + value.getSeconds()).slice(-2) 
                 : undefined;
-        const control = useVanillaControl(
+        const control = usePrimeVueControl(
             useJsonFormsControl(props),
             adaptTarget
         );

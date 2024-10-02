@@ -10,7 +10,7 @@ import {
 import { defineComponent } from "vue";
 import { rendererProps, useJsonFormsControl, RendererProps } from "@jsonforms/vue";
 import { default as ControlWrapper } from "./ControlWrapper.vue";
-import { useVanillaControl } from "../util";
+import { usePrimeVueControl } from "../util";
 
 import Textarea from "primevue/textarea";
 
@@ -27,7 +27,7 @@ const controlRenderer = defineComponent({
         const adaptTarget = (value: any) => 
             value === "" ? undefined : value.toString();
 
-        return useVanillaControl(
+        return usePrimeVueControl(
             useJsonFormsControl(props),
             adaptTarget
         );

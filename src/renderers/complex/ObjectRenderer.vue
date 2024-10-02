@@ -30,7 +30,7 @@ import {
   RendererProps,
   useJsonFormsControlWithDetail,
 } from '@jsonforms/vue';
-import { useVanillaControl } from '../util';
+import { usePrimeVueControl } from '../util';
 import { isEmpty } from 'lodash';
 
 const controlRenderer = defineComponent({
@@ -42,7 +42,7 @@ const controlRenderer = defineComponent({
     ...rendererProps<ControlElement>(),
   },
   setup(props: RendererProps<ControlElement>) {
-    const control = useVanillaControl(useJsonFormsControlWithDetail(props));
+    const control = usePrimeVueControl(useJsonFormsControlWithDetail(props));
     return {
       ...control,
       input: control,

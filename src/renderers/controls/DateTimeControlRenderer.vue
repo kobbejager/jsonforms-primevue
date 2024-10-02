@@ -8,7 +8,7 @@ import {
 import { defineComponent, ref, onMounted } from "vue";
 import { rendererProps, useJsonFormsControl, RendererProps } from "@jsonforms/vue";
 import { default as ControlWrapper } from "./ControlWrapper.vue";
-import { useVanillaControl } from "../util";
+import { usePrimeVueControl } from "../util";
 
 import DatePicker from "primevue/datepicker";
 
@@ -32,7 +32,7 @@ const controlRenderer = defineComponent({
                 ? value.toISOString()
                 : undefined;
             // value.toSIOString returns a UTC date with timezone info
-        const control = useVanillaControl(
+        const control = usePrimeVueControl(
             useJsonFormsControl(props),
             adaptTarget
         );

@@ -17,7 +17,7 @@ import {
   RendererProps,
   useJsonFormsLabel,
 } from '@jsonforms/vue';
-import { useVanillaLabel } from '../util';
+import { usePrimeVueLabel } from '../util';
 
 const labelRenderer = defineComponent({
   name: 'LabelRenderer',
@@ -25,7 +25,7 @@ const labelRenderer = defineComponent({
     ...rendererProps<LabelElement>(),
   },
   setup(props: RendererProps<LabelElement>) {
-    return useVanillaLabel(useJsonFormsLabel(props));
+    return usePrimeVueLabel(useJsonFormsLabel(props));
   },
 });
 

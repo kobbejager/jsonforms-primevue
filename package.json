@@ -11,7 +11,6 @@
   "dependencies": {
     "@jsonforms/core": "^3.3.0",
     "@jsonforms/vue": "^3.3.0",
-    "@jsonforms/vue-vanilla": "^3.3.0",
     "@primevue/themes": "^4.0.4",
     "lodash": "^4.17.21",
     "primeicons": "^7.0.0",

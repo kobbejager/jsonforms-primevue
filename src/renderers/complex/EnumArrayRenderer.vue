@@ -34,7 +34,7 @@ import {
   schemaSubPathMatches,
   JsonSchema,
 } from '@jsonforms/core';
-import { useVanillaArrayControl } from '../util';
+import { usePrimeVueArrayControl } from '../util';
 
 const controlRenderer = defineComponent({
   name: 'EnumArrayRenderer',
@@ -44,7 +44,7 @@ const controlRenderer = defineComponent({
   setup(props: RendererProps<ControlElement>) {
     const control = useJsonFormsMultiEnumControl(props);
 
-    return useVanillaArrayControl(control);
+    return usePrimeVueArrayControl(control);
   },
   methods: {
     dataHasEnum(value: any): boolean {

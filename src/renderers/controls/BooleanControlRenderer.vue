@@ -8,7 +8,7 @@ import {
 import { defineComponent } from "vue";
 import { rendererProps, useJsonFormsControl, RendererProps } from "@jsonforms/vue";
 import { default as ControlWrapper } from "./ControlWrapper.vue";
-import { useVanillaControl } from "../util";
+import { usePrimeVueControl } from "../util";
 
 import Checkbox from "primevue/checkbox";
 
@@ -25,7 +25,7 @@ const controlRenderer = defineComponent({
         const adaptTarget = (value: any) => 
             value || false
 
-        return useVanillaControl(
+        return usePrimeVueControl(
             useJsonFormsControl(props), 
             adaptTarget
         );

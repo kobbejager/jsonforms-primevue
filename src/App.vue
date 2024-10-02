@@ -254,6 +254,7 @@ const uischema = {
 const defaultData = {
     string_field: "55",
     boolean_field_with_default: true,
+    enum_field_with_default: "Option 1",
 }
 
 const state = reactive({

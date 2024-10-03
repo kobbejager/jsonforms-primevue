@@ -5,7 +5,9 @@ import {
     rankWith,
     isStringControl,
     isMultiLineControl,
+    schemaMatches,
     and,
+    or,
 } from "@jsonforms/core";
 import { defineComponent } from "vue";
 import { rendererProps, useJsonFormsControl, RendererProps } from "@jsonforms/vue";
@@ -36,9 +38,18 @@ const controlRenderer = defineComponent({
 
 export default controlRenderer;
 
+const isTextAreaControl = and(
+    isStringControl, 
+    schemaMatches(
+        (schema) => (schema.format == 'textarea')
+    )
+);
+
+const isBetterMultiLineControl = or(isMultiLineControl, isTextAreaControl);
+
 export const entry: JsonFormsRendererRegistryEntry = {
     renderer: controlRenderer,
-    tester: rankWith(2, and(isStringControl, isMultiLineControl)),
+    tester: rankWith(2, and(isStringControl, isBetterMultiLineControl)),
 };
 </script>
 

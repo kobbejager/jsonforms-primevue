@@ -59,9 +59,9 @@ export interface Styles {
     noData?: string;
     item?: string;
     itemToolbar?: string;
+    itemToolbarExpanded?: string;
     itemLabel?: string;
     itemContent?: string;
-    itemExpanded?: string;
     itemMoveUp?: string;
     itemMoveDown?: string;
     itemDelete?: string;

@@ -113,22 +113,12 @@ export const usePrimeVueArrayControl = <I extends { control: any }>(
     const childLabelForIndex = (index: number) => {
         const childLabelProp =
             input.control.value.uischema.options?.childLabelProp ??
-            getFirstPrimitiveProp(input.control.value.schema);
-        if (!childLabelProp) {
-            return `${index}`;
+            input.control.value.schema.title ??
+            'Item';
+        if (childLabelProp) {
+            return `${childLabelProp} ${index + 1}`;
         }
-        const labelValue = Resolve.data(
-            input.control.value.data,
-            composePaths(`${index}`, childLabelProp)
-        );
-        if (
-            labelValue === undefined ||
-            labelValue === null ||
-            Number.isNaN(labelValue)
-        ) {
-            return '';
-        }
-        return `${labelValue}`;
+        return "Item";
     };
     return {
         ...input,

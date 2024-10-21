@@ -1,0 +1,38 @@
+{
+    "type": "object",
+    "required": [],
+    "properties": {
+        "enum_field": {
+            "title": "Enum field",
+            "description": "An enum field",
+            "type": "string",
+            "enum": ["Option 1", "Option 2", "Option 3"]
+        },
+        "enum_field_with_default": {
+            "title": "Enum field with default value",
+            "description": "An enum field with a default value",
+            "type": "string",
+            "enum": ["Option 1", "Option 2", "Option 3"],
+            "default": "Option 1"
+        },
+        "oneof_enum": {
+            "title": "Enum field with a oneOf construct",
+            "description": "An enum field with a oneOf construct",
+            "type": "string",
+            "oneOf": [
+                {
+                    "const": "foo",
+                    "title": "Foo"
+                },
+                {
+                    "const": "bar",
+                    "title": "Bar"
+                },
+                {
+                    "const": "foobar",
+                    "title": "FooBar"
+                }
+            ]
+        }
+    }
+}

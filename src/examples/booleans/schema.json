@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "required": [],
+    "properties": {
+        "boolean_field": {
+            "title": "Boolean field",
+            "description": "A boolean field, rendered as a checkbox",
+            "type": "boolean"
+        },
+        "boolean_field_with_default": {
+            "title": "Boolean field with default value",
+            "description": "A boolean field, rendered as a checkbox, with a default value",
+            "type": "boolean",
+            "default": true
+        }
+    }
+}

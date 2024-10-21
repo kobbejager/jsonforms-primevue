@@ -1,0 +1,24 @@
+{
+    "type": "object",
+    "required": [],
+    "properties": {
+        "date_field": {
+            "title": "Date field",
+            "description": "A date field",
+            "type": "string",
+            "format": "date"
+        },
+        "time_field": {
+            "title": "Time field",
+            "description": "A time field",
+            "type": "string",
+            "format": "time"
+        },
+        "date_time_field": {
+            "title": "Date-time field",
+            "description": "A date time field",
+            "type": "string",
+            "format": "date-time"
+        }
+    }
+}

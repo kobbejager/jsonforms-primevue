@@ -1,0 +1,48 @@
+{
+    "type": "object",
+    "required": ["string_field"],
+    "properties": {
+        "string_field": {
+            "title": "String field",
+            "description": "A required text field between 1 and 10 characters",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 10
+        },
+        "string_field_with_default": {
+            "title": "String field with default value",
+            "description": "An optional text field with a default value",
+            "type": "string",
+            "default": "Default value"
+        },
+        "string_field_with_examples": {
+            "title": "String field with examples",
+            "description": "An optional text field with examples defined in the schema",
+            "type": "string",
+            "examples": ["Example 1", "Example 2", "Example 3"]
+        },
+        "string_field_with_suggestions": {
+            "title": "String field with suggestions",
+            "description": "An optional text field with examples defined in the schema",
+            "type": "string"
+        },
+        "textarea_field1": {
+            "title": "Textarea field 1",
+            "description": "An optional text field defined as textarea in the schema",
+            "type": "string",
+            "format": "textarea"
+        },
+        "textarea_field2": {
+            "title": "Textarea field 2",
+            "description": "An optional text field defined as textarea in the uischema",
+            "type": "string"
+        },
+        "textarea_field_with_default": {
+            "title": "Textarea field with default value",
+            "description": "An optional text field with a default value  in the schema",
+            "type": "string",
+            "format": "textarea",
+            "default": "Default value"
+        }
+    }
+}

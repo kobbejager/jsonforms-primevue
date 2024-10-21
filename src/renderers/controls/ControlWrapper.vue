@@ -82,8 +82,11 @@ export default defineComponent({
         <div :class="styles.control.wrapper">
             <slot></slot>
         </div>
-        <div :class="styles.control.error">
-            {{ errors }}
+        <div 
+            v-if="errors"
+            :class="styles.control.error"
+        >
+            <i class="pi pi-exclamation-triangle" style="font-size: 0.75rem"></i> {{ errors }}
         </div>
     </div>
 </template>

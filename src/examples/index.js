@@ -3,26 +3,31 @@ import { example as numbers } from './numbers';
 import { example as booleans } from './booleans';
 import { example as dates } from './dates';
 import { example as enums } from './enums';
+import { example as arrays } from './arrays';
 
 export const examples = [
     { 
-        label: 'Examples with strings',
+        label: 'Strings',
         example: strings,
     },
     { 
-        label: 'Examples with numbers',
+        label: 'Numbers',
         example: numbers,
     },
     { 
-        label: 'Examples with booleans',
+        label: 'Booleans',
         example: booleans,
     },
     { 
-        label: 'Examples with dates',
+        label: 'Dates',
         example: dates,
     },
     { 
-        label: 'Examples with enums',
+        label: 'Enums',
         example: enums,
+    },
+    { 
+        label: 'Arrays',
+        example: arrays,
     },
 ]

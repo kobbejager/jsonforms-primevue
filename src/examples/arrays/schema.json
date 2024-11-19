@@ -1,0 +1,62 @@
+{
+    "type": "object",
+    "required": [],
+    "properties": {
+        "array_of_strings": {
+            "title": "Array of strings",
+            "description": "An array of primitive strings",
+            "type": "array",
+            "items": {
+                "type": "string",
+                "title": "String"
+            }
+        },
+        "array_with_minimum_items": {
+            "title": "Array with minimum items",
+            "description": "An array with a minimum number of items",
+            "type": "array",
+            "minItems": 2,
+            "items": {
+                "type": "string",
+                "title": "String"
+            }
+        },
+        "array_with_unique_items": {
+            "title": "Array with unique items",
+            "description": "An array with unique items",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "title": "String"
+            }
+        },
+        "array_with_complex_items": {
+            "title": "Array with complex items",
+            "description": "An array with complex items",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "string_field": {
+                        "title": "String field",
+                        "description": "A required text field between 1 and 10 characters",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 10
+                    },
+                    "number_field": {
+                        "title": "Number field",
+                        "description": "A number field",
+                        "type": "number"
+                    },
+                    "boolean_field": {
+                        "title": "Boolean field",
+                        "description": "A boolean field, rendered as a checkbox",
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -20,8 +20,6 @@ import { usePrimeVueArrayControl } from '../util';
 import ArrayListElement from './ArrayListElement.vue';
 
 import Button from 'primevue/button';
-import Fieldset from 'primevue/fieldset';
-import Chip from 'primevue/chip';
 
 
 const controlRenderer = defineComponent({
@@ -30,8 +28,6 @@ const controlRenderer = defineComponent({
         ArrayListElement,
         DispatchRenderer,
         Button,
-        Fieldset,
-        Chip,
     },
     props: {
         ...rendererProps<ControlElement>(),
@@ -146,20 +142,12 @@ export const entry: JsonFormsRendererRegistryEntry = {
                 />
             </array-list-element>
         </div>
-        <Fieldset>
+        <div>
             <div :class="styles.arrayList.legend">
                 <div :class="styles.arrayList.noData">
                     <span v-if="noData || control.data.length === 0">
-                        {{ control.translations.noDataMessage }}
-                    </span>
-                    <span v-else>
-                        <div class="flex gap-2">
-                            <Chip
-                                v-for="(item, index) in dataSummary"
-                                :key="index"
-                                :label="item"
-                            />
-                        </div>
+                        No data
+                        <!-- {{ control.translations.noDataMessage }} -->
                     </span>
                 </div>
                 <Button 
@@ -171,7 +159,7 @@ export const entry: JsonFormsRendererRegistryEntry = {
                     @click="addButtonClick" 
                 />
             </div>
-        </Fieldset>
+        </div>
         <div 
             v-if="control.errors"
             :class="styles.control.error"

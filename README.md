@@ -1,33 +1,24 @@
 # jsonforms-primevue
 
-This template should help get you started developing with Vue 3 in Vite.
+This repository implements a [PrimeVue](https://primevue.org/) renderer set for [JSON Forms](https://jsonforms.io/).
 
-## Recommended IDE Setup
+__This is work in progress and not ready for production use!__
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Most primitive controls have been implemented (ported from the Vanilla Vue renderer set). Layouts and more complex controls are still missing, as well as advanced configuration options.
 
-## Type Support for `.vue` Imports in TS
+At the moment, jsonforms-primevue renderers and the example app are in one and the same package. This will need to be split up in the future (help wanted!), before the renderer set can be published to npm. For now, one can copy the `src/renderers` folder into an existing project and use it as a local renderer set.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## License and contributions
 
-## Customize configuration
+See the LICENSE file for details.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+The code was originally based on the on the [vanilla rendereres of JSON forms](https://github.com/eclipsesource/jsonforms/tree/master/packages/vanilla-renderers), which is licensed under the MIT license and copyrighted by EclipseSource Munich. Even though the renderers have been heavily modified and ported to PrimeVue, some parts of the code are still based on the vanilla renderers.
 
-## Project Setup
+For this reason, the MIT licensed code in this repository is copyrighted partially by Kobbejager, and partially by EclipseSource Munich.
 
-```sh
-yarn
-```
+## Demo app
 
-### Compile and Hot-Reload for Development
-
-```sh
-yarn dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-yarn build
-```
+- Clone this repository using git, or download and extract the zip file.
+- Install dependencies using `yarn` or `npm install`
+- Run the demo app in development mode using `yarn dev` or `npm run dev`
+- Open the browser at [http://localhost:5173](http://localhost:5173)

@@ -28,7 +28,6 @@ export const usePrimeVueControl = <
 
     const isFocused = ref(false);
     const onChange = (target: any) => {
-        console.log(target)
         input.handleChange(input.control.value.path, adaptTarget(target));
     };
 

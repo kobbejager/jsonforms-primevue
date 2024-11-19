@@ -19,8 +19,10 @@
 
     const items = ref(examples);
     const selected = ref(examples[0])
+    const key = ref(0)
 
     const selectItem = (item) => {
+        key.value++
         selected.value = item
     };
 
@@ -36,8 +38,9 @@
                 :items="items" 
                 @selectedItem="selectItem"
             />
-            <ExampleForm 
-                :input="selected.input"
+            <ExampleForm
+                :key="key"
+                :example="selected.example"
             />
         </div>
     </main>

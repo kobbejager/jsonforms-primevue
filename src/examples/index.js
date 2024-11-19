@@ -1,28 +1,28 @@
-import { input as strings } from './strings';
-import { input as numbers } from './numbers';
-import { input as booleans } from './booleans';
-import { input as dates } from './dates';
-import { input as enums } from './enums';
+import { example as strings } from './strings';
+import { example as numbers } from './numbers';
+import { example as booleans } from './booleans';
+import { example as dates } from './dates';
+import { example as enums } from './enums';
 
 export const examples = [
     { 
         label: 'Examples with strings',
-        input: strings,
+        example: strings,
     },
     { 
         label: 'Examples with numbers',
-        input: numbers,
+        example: numbers,
     },
     { 
         label: 'Examples with booleans',
-        input: booleans,
+        example: booleans,
     },
     { 
         label: 'Examples with dates',
-        input: dates,
+        example: dates,
     },
     { 
         label: 'Examples with enums',
-        input: enums,
+        example: enums,
     },
 ]

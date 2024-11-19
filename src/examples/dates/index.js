@@ -1,6 +1,6 @@
 import schema from './schema.json';
 
-export const input = {
+export const example = {
     schema: schema,
     uiSchema: undefined,
     i18nSchema: undefined,

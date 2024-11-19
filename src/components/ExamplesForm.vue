@@ -4,16 +4,16 @@
     imports
 */
 
-    import { ref, reactive } from "vue"
+    import { reactive } from "vue"
     import { JsonForms } from "@jsonforms/vue"
     import { primeVueRenderers } from "@/renderers"
-import { input } from "@/examples/strings";
 
 /* 
     props
 */
 
-    const props = defineProps(['input'])
+    const props = defineProps(['example', 'key'])
+    // note: key is used to force remount the component (and jsonforms/ajv)
 
 /*
     jsonforms parts
@@ -25,7 +25,7 @@ import { input } from "@/examples/strings";
 
     const state = reactive({
         renderers: Object.freeze(renderers),    // freeze the renderers for performance gains
-        data: input.data || {},
+        data: props.example.data || {},
     })
 
     const onChange = (event) => {
@@ -37,25 +37,22 @@ import { input } from "@/examples/strings";
 <template>
 
     <div class="w-full h-screen">
+        <div>
+            <JsonForms 
+                :data="state.data" 
+                :renderers="state.renderers" 
+                :schema="props.example.schema" 
+                :uischema="props.example.uiSchema" 
+                @change="onChange" 
+            />
+        </div>
 
-            <div>
-                <JsonForms 
-                    :data="state.data" 
-                    :renderers="state.renderers" 
-                    :schema="props.input.schema" 
-                    :uischema="props.input.uiSchema" 
-                    @change="onChange" 
-                />
-            </div>
+        <h2 class="py-6 text-2xl font-bold text-center">
+            Form data
+        </h2>
 
-            <h2 class="py-6 text-2xl font-bold text-center">
-                Form data
-            </h2>
-
-            <pre>{{ props.input.schema }}</pre>
-            <pre>{{ state.data }}</pre>
-
-
+        <pre>{{ props.example.schema }}</pre>
+        <pre>{{ state.data }}</pre>
     </div>
 
 </template>

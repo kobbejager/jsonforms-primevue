@@ -1,6 +1,6 @@
 # jsonforms-primevue
 
-This repository implements a [PrimeVue](https://primevue.org/) renderer set for [JSON Forms](https://jsonforms.io/).
+This repository implements a [PrimeVue](https://primevue.org/) (version ^4.2) renderer set for [JSON Forms](https://jsonforms.io/) (version ^3.4).
 
 __This is work in progress and not ready for production use!__
 

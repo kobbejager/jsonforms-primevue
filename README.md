@@ -6,7 +6,43 @@ __This is work in progress and not ready for production use!__
 
 Most primitive controls have been implemented (ported from the Vanilla Vue renderer set). Layouts and more complex controls are still missing, as well as advanced configuration options.
 
-At the moment, jsonforms-primevue renderers and the example app are in one and the same package. This will need to be split up in the future (help wanted!), before the renderer set can be published to npm. For now, one can copy the `src/renderers` folder into an existing project and use it as a local renderer set.
+At the moment, jsonforms-primevue renderers and the example app are in one and the same package. This will need to be split up in the future (help wanted!), before the renderer set can be published to npm. For now, you can install the renderer set directly from GitHub using a release tag and import it in your app as shown below.
+
+## Install from GitHub tags
+
+1) Add the dependency using a tag (recommended)
+
+```bash
+yarn add github:ORG/REPO#v0.1.0
+# or with semver selector to auto-allow compatible updates
+yarn add github:ORG/REPO#semver:^0.1.0
+```
+
+2) Ensure peer dependencies are installed in your app
+
+```bash
+yarn add vue@^3.5 primevue@^4.2 primeicons@^7 @primevue/themes@^4.2 @jsonforms/core@^3.4 @jsonforms/vue@^3.4
+```
+
+3) Import required CSS in your app entry (e.g. main.ts/main.js)
+
+```ts
+import '@primevue/themes/aura/theme.css'
+import 'primeicons/primeicons.css'
+```
+
+4) Use the renderers
+
+```ts
+import { primeVueRenderers } from 'jsonforms-primevue'
+```
+
+### Updating to a newer tag
+
+- If you used a fixed tag: update `package.json` from `#v0.1.0` to the new tag (e.g. `#v0.1.1`) and run `yarn install`.
+- If you used the semver selector (`#semver:^0.1.0`): run `yarn up jsonforms-primevue` to pull the latest compatible tag.
+
+Note: release tags must include the built `dist/` artifacts. If you build locally from Git, ensure your environment can run the package’s build step.
 
 ## License and contributions
 

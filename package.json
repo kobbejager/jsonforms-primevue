@@ -1,28 +1,48 @@
 {
   "name": "jsonforms-primevue",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0",
   "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "peerDependencies": {
+    "@jsonforms/core": "^3.4.0",
+    "@jsonforms/vue": "^3.4.0",
+    "@primevue/themes": "^4.2.0",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.2.0",
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
     "@jsonforms/core": "^3.4.1",
     "@jsonforms/vue": "^3.4.1",
     "@primevue/themes": "^4.2.2",
-    "lodash": "^4.17.21",
+    "@vitejs/plugin-vue": "^5.2.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
     "primeicons": "^7.0.0",
     "primevue": "^4.2.2",
     "tailwindcss": "^3.4.15",
     "tailwindcss-primeui": "^0.3.4",
+    "vite": "^5.4.11",
     "vue": "^3.5.13"
   },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^5.2.0",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.49",
-    "vite": "^5.4.11"
-  }
+  "packageManager": "yarn@4.9.4"
 }

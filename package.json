@@ -23,16 +23,16 @@
     "lodash": "^4.17.21"
   },
   "peerDependencies": {
-    "@jsonforms/core": "^3.4.0",
-    "@jsonforms/vue": "^3.4.0",
+    "@jsonforms/core": "^3.6.0",
+    "@jsonforms/vue": "^3.6.0",
     "@primevue/themes": "^4.3.8",
     "primeicons": "^7.0.0",
     "primevue": "^4.3.8",
     "vue": "^3.5.21"
   },
   "devDependencies": {
-    "@jsonforms/core": "^3.4.1",
-    "@jsonforms/vue": "^3.4.1",
+    "@jsonforms/core": "^3.6.0",
+    "@jsonforms/vue": "^3.6.0",
     "@primevue/themes": "^4.3.8",
     "@vitejs/plugin-vue": "^6.0.1",
     "autoprefixer": "^10.4.20",

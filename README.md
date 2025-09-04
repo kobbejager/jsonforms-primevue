@@ -1,6 +1,6 @@
 # jsonforms-primevue
 
-This repository implements a [PrimeVue](https://primevue.org/) (version ^4.2) renderer set for [JSON Forms](https://jsonforms.io/) (version ^3.4).
+This repository implements a [PrimeVue](https://primevue.org/) (version ^4.3) renderer set for [JSON Forms](https://jsonforms.io/) (version ^3.6).
 
 __This is work in progress and not ready for production use!__
 
@@ -21,13 +21,17 @@ yarn add github:ORG/REPO#semver:^0.1.0
 2) Ensure peer dependencies are installed in your app
 
 ```bash
-yarn add vue@^3.5 primevue@^4.2 primeicons@^7 @primevue/themes@^4.2 @jsonforms/core@^3.4 @jsonforms/vue@^3.4
+yarn add vue@^3.5 primevue@^4.3 primeicons@^7 @jsonforms/core@^3.6 @jsonforms/vue@^3.6
 ```
 
-3) Import required CSS in your app entry (e.g. main.ts/main.js)
+3) Install and import a PrimeVue theme (CSS) in your app entry
+
+```bash
+yarn add @primeuix/themes
+```
 
 ```ts
-import '@primevue/themes/aura/theme.css'
+import '@primeuix/themes/aura/theme.css'
 import 'primeicons/primeicons.css'
 ```
 

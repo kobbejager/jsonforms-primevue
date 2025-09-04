@@ -1,5 +1,5 @@
 export { default as LabelRenderer } from './LabelRenderer';
 
-import { entry as labelRendererEntry } from './LabelRenderer.vue';
+import { entry as labelRendererEntry } from './LabelRenderer';
 
 export const labelRenderers = [labelRendererEntry];

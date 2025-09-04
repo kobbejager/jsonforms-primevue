@@ -1,2 +1,8 @@
-export { default } from './IntegerControlRenderer.vue';
-export { entry } from './IntegerControlRenderer.vue';
+import type { JsonFormsRendererRegistryEntry } from '@jsonforms/core';
+import Component, { entry as sfcEntry } from './IntegerControlRenderer.vue';
+
+export default Component;
+export const entry: JsonFormsRendererRegistryEntry = {
+  ...sfcEntry,
+  renderer: Component,
+};

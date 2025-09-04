@@ -1,2 +1,8 @@
-export { default } from './DateTimeControlRenderer.vue';
-export { entry } from './DateTimeControlRenderer.vue';
+import type { JsonFormsRendererRegistryEntry } from '@jsonforms/core';
+import Component, { entry as sfcEntry } from './DateTimeControlRenderer.vue';
+
+export default Component;
+export const entry: JsonFormsRendererRegistryEntry = {
+  ...sfcEntry,
+  renderer: Component,
+};

@@ -1,2 +1,8 @@
-export { default } from './CategorizationStepperRenderer.vue';
-export { entry } from './CategorizationStepperRenderer.vue';
+import type { JsonFormsRendererRegistryEntry } from '@jsonforms/core';
+import Component, { entry as sfcEntry } from './CategorizationStepperRenderer.vue';
+
+export default Component;
+export const entry: JsonFormsRendererRegistryEntry = {
+  ...sfcEntry,
+  renderer: Component,
+};

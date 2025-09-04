@@ -1,2 +1,8 @@
-export { default } from './MultiStringControlRenderer.vue';
-export { entry } from './MultiStringControlRenderer.vue';
+import type { JsonFormsRendererRegistryEntry } from '@jsonforms/core';
+import Component, { entry as sfcEntry } from './MultiStringControlRenderer.vue';
+
+export default Component;
+export const entry: JsonFormsRendererRegistryEntry = {
+  ...sfcEntry,
+  renderer: Component,
+};

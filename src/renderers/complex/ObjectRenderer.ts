@@ -1,5 +1,9 @@
-import Component from './ObjectRenderer.vue';
+import type { JsonFormsRendererRegistryEntry } from '@jsonforms/core';
+import Component, { entry as sfcEntry } from './ObjectRenderer.vue';
 
 export default Component;
-export { entry } from './ObjectRenderer.vue';
+export const entry: JsonFormsRendererRegistryEntry = {
+  ...sfcEntry,
+  renderer: Component,
+};
 

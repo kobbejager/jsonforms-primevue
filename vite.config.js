@@ -20,9 +20,13 @@ export default defineConfig({
         },
         rollupOptions: {
             external: [
+                // Keep Vue external
                 "vue",
-                "primevue",
+                // Externalize PrimeVue and its subpath imports like primevue/inputtext
+                /^(?:primevue)(?:\/.*)?$/,
+                // Icons
                 "primeicons",
+                // JSONForms
                 "@jsonforms/core",
                 "@jsonforms/vue",
             ],

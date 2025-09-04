@@ -15,7 +15,7 @@
   "files": [
     "dist"
   ],
-  "sideEffects": false,
+  "sideEffects": ["**/*.vue"],
   "scripts": {
     "dev": "vite",
     "build": "vite build",

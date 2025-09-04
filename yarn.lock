@@ -5,13 +5,6 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
-"@alloc/quick-lru@npm:^5.2.0":
-  version: 5.2.0
-  resolution: "@alloc/quick-lru@npm:5.2.0"
-  checksum: 10c0/7b878c48b9d25277d0e1a9b8b2f2312a314af806b4129dc902f2bc29ab09b58236e53964689feec187b28c80d2203aff03829754773a707a8a5987f1b7682d92
-  languageName: node
-  linkType: hard
-
 "@babel/helper-string-parser@npm:^7.27.1":
   version: 7.27.1
   resolution: "@babel/helper-string-parser@npm:7.27.1"
@@ -444,16 +437,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@primevue/themes@npm:^4.3.8":
-  version: 4.3.8
-  resolution: "@primevue/themes@npm:4.3.8"
-  dependencies:
-    "@primeuix/styled": "npm:^0.7.2"
-    "@primeuix/themes": "npm:^1.2.3"
-  checksum: 10c0/545af574e939ba8506aec699870541a3ed473845f0e758f5dedcf1575e67340ce8e73555b0eb57c8e74ba2d9505f8538a7e5f41c54be8280033ecc028597fc9d
-  languageName: node
-  linkType: hard
-
 "@rolldown/pluginutils@npm:1.0.0-beta.29":
   version: 1.0.0-beta.29
   resolution: "@rolldown/pluginutils@npm:1.0.0-beta.29"
@@ -761,16 +744,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/postcss@npm:^4.1.12":
+"@tailwindcss/vite@npm:^4.1.12":
   version: 4.1.12
-  resolution: "@tailwindcss/postcss@npm:4.1.12"
+  resolution: "@tailwindcss/vite@npm:4.1.12"
   dependencies:
-    "@alloc/quick-lru": "npm:^5.2.0"
     "@tailwindcss/node": "npm:4.1.12"
     "@tailwindcss/oxide": "npm:4.1.12"
-    postcss: "npm:^8.4.41"
     tailwindcss: "npm:4.1.12"
-  checksum: 10c0/25f6229bca22bb20513bb75896ff7d195052380a72cb534691860daeca5d5e3a9b80dc66ceb74998f7614293bf0a62c10d85d4ba5d39b6d820faafec9ab1d134
+  peerDependencies:
+    vite: ^5.2.0 || ^6 || ^7
+  checksum: 10c0/f9a7df532f6ca2a9a1e288c0d87702787419e8ec01f7d5f6c8ff826d79b8adda73871a2e2704c0fab485eaa394d8dc59ff8ad73fcd00c18ab48fcf5f32c382e9
   languageName: node
   linkType: hard
 
@@ -1432,21 +1415,19 @@ __metadata:
   dependencies:
     "@jsonforms/core": "npm:^3.6.0"
     "@jsonforms/vue": "npm:^3.6.0"
-    "@primevue/themes": "npm:^4.3.8"
-    "@tailwindcss/postcss": "npm:^4.1.12"
+    "@primeuix/themes": "npm:^1.2.3"
+    "@tailwindcss/vite": "npm:^4.1.12"
     "@vitejs/plugin-vue": "npm:^6.0.1"
     lodash: "npm:^4.17.21"
-    postcss: "npm:^8.4.49"
     primeicons: "npm:^7.0.0"
     primevue: "npm:^4.3.8"
     tailwindcss: "npm:^4.1.12"
-    tailwindcss-primeui: "npm:^0.3.4"
+    tailwindcss-primeui: "npm:^0.6.1"
     vite: "npm:^7.1.4"
     vue: "npm:^3.5.21"
   peerDependencies:
     "@jsonforms/core": ^3.6.0
     "@jsonforms/vue": ^3.6.0
-    "@primevue/themes": ^4.3.8
     primeicons: ^7.0.0
     primevue: ^4.3.8
     vue: ^3.5.21
@@ -1715,15 +1696,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.3.7":
-  version: 3.3.7
-  resolution: "nanoid@npm:3.3.7"
-  bin:
-    nanoid: bin/nanoid.cjs
-  checksum: 10c0/e3fb661aa083454f40500473bb69eedb85dc160e763150b9a2c567c7e9ff560ce028a9f833123b618a6ea742e311138b591910e795614a629029e86e180660f3
-  languageName: node
-  linkType: hard
-
 "negotiator@npm:^1.0.0":
   version: 1.0.0
   resolution: "negotiator@npm:1.0.0"
@@ -1807,7 +1779,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.41, postcss@npm:^8.5.6":
+"postcss@npm:^8.5.6":
   version: 8.5.6
   resolution: "postcss@npm:8.5.6"
   dependencies:
@@ -1815,17 +1787,6 @@ __metadata:
     picocolors: "npm:^1.1.1"
     source-map-js: "npm:^1.2.1"
   checksum: 10c0/5127cc7c91ed7a133a1b7318012d8bfa112da9ef092dddf369ae699a1f10ebbd89b1b9f25f3228795b84585c72aabd5ced5fc11f2ba467eedf7b081a66fad024
-  languageName: node
-  linkType: hard
-
-"postcss@npm:^8.4.49":
-  version: 8.4.49
-  resolution: "postcss@npm:8.4.49"
-  dependencies:
-    nanoid: "npm:^3.3.7"
-    picocolors: "npm:^1.1.1"
-    source-map-js: "npm:^1.2.1"
-  checksum: 10c0/f1b3f17aaf36d136f59ec373459f18129908235e65dbdc3aee5eef8eba0756106f52de5ec4682e29a2eab53eb25170e7e871b3e4b52a8f1de3d344a514306be3
   languageName: node
   linkType: hard
 
@@ -2081,12 +2042,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss-primeui@npm:^0.3.4":
-  version: 0.3.4
-  resolution: "tailwindcss-primeui@npm:0.3.4"
+"tailwindcss-primeui@npm:^0.6.1":
+  version: 0.6.1
+  resolution: "tailwindcss-primeui@npm:0.6.1"
   peerDependencies:
     tailwindcss: ">=3.1.0"
-  checksum: 10c0/c45d8d3b46cd858ec2b4f1428a9602182921ac24f3dfe5d9521bf19bd5487d5c7e5d95cb8f5d7edd31812ed3459d5d9299e176e7c61f59e40dd1fac9eab4e326
+  checksum: 10c0/a7a576660d4b42dd31d8851c69a1c67199bf79b74bb0ac7e7ff3c8f721e8f05b41278d9af47550a78b234426e9df68cea802ddd5d28a97b00af28b2979226f74
   languageName: node
   linkType: hard
 

@@ -3,8 +3,8 @@ import './style.css'
 import { createApp } from "vue";
 
 import PrimeVue from "primevue/config";
-import { definePreset } from '@primevue/themes';
-import Aura from '@primevue/themes/aura';
+import { definePreset } from '@primeuix/themes';
+import Aura from '@primeuix/themes/aura';
 
 import App from './App.vue';
 

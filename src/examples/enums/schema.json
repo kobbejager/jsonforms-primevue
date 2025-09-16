@@ -15,6 +15,13 @@
             "enum": ["Option 1", "Option 2", "Option 3"],
             "default": "Option 1"
         },
+        "enum_field_readonly": {
+            "title": "Enum field in readonly mode (defined in the UI Schema)",
+            "description": "An enum field with a default value in readonly mode (defined in the UI Schema)",
+            "type": "string",
+            "enum": ["Option 1", "Option 2", "Option 3"],
+            "default": "Option 1"
+        },
         "oneof_enum": {
             "title": "Enum field with a oneOf construct",
             "description": "An enum field with a oneOf construct",
@@ -33,6 +40,45 @@
                     "title": "FooBar"
                 }
             ]
+        },
+        "enum_numbers": {
+            "title": "Enum of numbers",
+            "description": "Numeric enum values",
+            "type": "number",
+            "enum": [0, 1, 2, 3]
+        },
+        "enum_booleans": {
+            "title": "Enum of booleans",
+            "description": "Boolean enum via oneOf with titles",
+            "type": "boolean",
+            "oneOf": [
+                { "const": true, "title": "True" },
+                { "const": false, "title": "False" }
+            ]
+        },
+        "enum_mixed_string_numbers": {
+            "title": "Enum mixed string & number",
+            "description": "Mixed types in enum",
+            "type": ["string", "number"],
+            "enum": ["one", 2, "three", 4]
+        },
+        "enum_radio": {
+            "title": "Enum as radios",
+            "description": "Render as radio buttons",
+            "type": "string",
+            "enum": ["Alpha", "Beta", "Gamma"]
+        },
+        "enum_radio_horizontal": {
+            "title": "Enum as radios (horizontal)",
+            "description": "Radio buttons laid out horizontally",
+            "type": "string",
+            "enum": ["One", "Two", "Three", "Four"]
+        },
+        "enum_selectbutton": {
+            "title": "Enum as selectbutton",
+            "description": "Render as SelectButton",
+            "type": "string",
+            "enum": ["Red", "Green", "Blue"]
         }
     }
 }

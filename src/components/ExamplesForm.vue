@@ -4,7 +4,7 @@
     imports
 */
 
-    import { reactive, ref, watch, computed } from "vue"
+    import { reactive, ref, watch, computed, onMounted } from "vue"
     import { JsonForms } from "@jsonforms/vue"
     import { primeVueRenderers } from "@/renderers"
     import { generateDefaultUISchema, createAjv } from '@jsonforms/core'
@@ -19,6 +19,8 @@
     import Tab from 'primevue/tab';
     import TabPanels from 'primevue/tabpanels';
     import TabPanel from 'primevue/tabpanel';
+    import SelectButton from 'primevue/selectbutton';
+    import ToggleButton from 'primevue/togglebutton';
 
 /* 
     props
@@ -38,11 +40,74 @@
     const state = reactive({
         renderers: Object.freeze(renderers),    // freeze the renderers for performance gains
         data: props.example.data || {},
+        errors: [],
     })
 
     const onChange = (event) => {
         state.data = event.data
+        state.errors = event.errors || []
     }
+
+    // validation mode switcher
+    const loadStoredMode = () => {
+        try {
+            const v = sessionStorage.getItem('jsonforms.validationMode')
+            if (v === 'NoValidation' || v === 'ValidateAndHide' || v === 'ValidateAndShow' || v === 'ValidateOnTouched') {
+                return v
+            }
+        } catch {}
+        return 'ValidateAndHide'
+    }
+    const validationMode = ref(loadStoredMode())
+    const loadStoredReadonly = () => {
+        try {
+            const v = sessionStorage.getItem('jsonforms.readonly')
+            return v === 'true'
+        } catch {}
+        return false
+    }
+    const readonly = ref(loadStoredReadonly())
+    const loadStoredAutoDefaults = () => {
+        try {
+            const v = sessionStorage.getItem('jsonforms.autoDefaults')
+            return v === 'true'
+        } catch {}
+        return false
+    }
+    const autoDefaults = ref(loadStoredAutoDefaults())
+    const validationOptions = [
+        { label: 'Off', value: 'NoValidation' },
+        { label: 'Hide errors', value: 'ValidateAndHide' },
+        { label: 'Show touched', value: 'ValidateOnTouched' },
+        { label: 'Show all', value: 'ValidateAndShow' },
+    ]
+    const jsonFormsConfig = computed(() => ({
+        validationMode: validationMode.value === 'ValidateOnTouched' ? 'ValidateAndHide' : validationMode.value,
+        showAllErrors: validationMode.value === 'ValidateAndShow',
+        showErrorsOnTouched: validationMode.value === 'ValidateOnTouched',
+    }))
+    watch(validationMode, (v) => {
+        try { sessionStorage.setItem('jsonforms.validationMode', v) } catch {}
+    })
+    watch(readonly, (v) => {
+        try { sessionStorage.setItem('jsonforms.readonly', String(v)) } catch {}
+    })
+    watch(autoDefaults, (v) => {
+        try { sessionStorage.setItem('jsonforms.autoDefaults', String(v)) } catch {}
+        if (v) {
+            // ensure defaults are applied immediately when turning auto on
+            applyDefaults()
+        }
+    })
+    const hasErrors = computed(() => Array.isArray(state.errors) && state.errors.length > 0)
+    const statusIconClass = computed(() => {
+        if (validationMode.value === 'NoValidation') return 'pi pi-question text-gray-500'
+        return hasErrors.value ? 'pi pi-times text-red-600' : 'pi pi-check text-green-600'
+    })
+    const statusTitle = computed(() => {
+        if (validationMode.value === 'NoValidation') return 'Validation off'
+        return hasErrors.value ? 'Invalid' : 'Valid'
+    })
 
     const defaultsAjv = createAjv({ useDefaults: true })
 
@@ -56,6 +121,12 @@
             state.data = newData
         } catch (e) {}
     }
+
+    onMounted(() => {
+        if (autoDefaults.value) {
+            applyDefaults()
+        }
+    })
 
 /*
     live schema editing
@@ -122,10 +193,16 @@
             editedSchemaText.value = JSON.stringify(liveSchema.value, null, 2)
             schemaError.value = ''
             formKey.value = 0
+            state.errors = []
+            // keep chosen validation mode across example changes
             // reset UI schema editor state on example change
             liveUiSchema.value = props.example.uiSchema ? JSON.parse(JSON.stringify(props.example.uiSchema)) : null
             editedUiSchemaText.value = props.example.uiSchema ? JSON.stringify(liveUiSchema.value, null, 2) : ''
             uiSchemaError.value = ''
+            // If auto defaults are enabled, apply them for the new schema
+            if (autoDefaults.value) {
+                applyDefaults()
+            }
         }
     )
 
@@ -234,12 +311,55 @@
 
             <TabPanels>
                 <TabPanel value="form">
-                    <div class="flex justify-end mb-3">
-                        <Button 
-                            label="Apply defaults" 
-                            icon="pi pi-magic" 
-                            @click="applyDefaults" 
-                        />
+                    <div class="flex flex-wrap items-center gap-3 justify-between mb-8">
+                        <div class="control-group">
+                            <div class="control-group__title">Defaults</div>
+                            <div class="flex items-center gap-2">
+                                <ToggleButton 
+                                    v-model="autoDefaults"
+                                    onIcon="pi pi-sync"
+                                    offIcon="pi pi-sync"
+                                    onLabel="Auto"
+                                    offLabel="Manual"
+                                    size="small"
+                                    aria-label="Auto-apply defaults"
+                                />
+                                <Button 
+                                    label="Apply now" 
+
+                                    size="small"
+                                    @click="applyDefaults" 
+                                />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="control-group__title">Read-only</div>
+                            <div class="flex items-center gap-2">
+                                <ToggleButton 
+                                    v-model="readonly"
+                                    onIcon="pi pi-lock"
+                                    offIcon="pi pi-unlock"
+                                    onLabel="On"
+                                    offLabel="Off"
+                                    size="small"
+                                    aria-label="Read-only mode"
+                                />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="control-group__title">Validation</div>
+                            <div class="flex items-center gap-2">
+                                <i :class="statusIconClass" :title="statusTitle" />
+                                <SelectButton 
+                                    v-model="validationMode"
+                                    :options="validationOptions"
+                                    optionLabel="label"
+                                    optionValue="value"
+                                    size="small"
+                                    aria-label="Validation mode"
+                                />
+                            </div>
+                        </div>
                     </div>
                     <JsonForms 
                         :key="formKey"
@@ -247,6 +367,9 @@
                         :renderers="state.renderers" 
                         :schema="liveSchema" 
                         :uischema="liveUiSchema || undefined" 
+                        :ajv="autoDefaults ? defaultsAjv : undefined"
+                        :config="jsonFormsConfig"
+                        :readonly="readonly"
                         @change="onChange" 
                     />
                 </TabPanel>
@@ -371,5 +494,15 @@
     border: 1px solid var(--p-surface-200);
     border-radius: 10px;
     padding: 1rem;
+}
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.control-group__title {
+    font-size: 0.75rem;
+    color: var(--p-surface-600);
+    margin-right: 0.25rem;
 }
 </style>

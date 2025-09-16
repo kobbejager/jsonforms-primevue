@@ -27,14 +27,35 @@ export const usePrimeVueControl = <
     );
 
     const isFocused = ref(false);
+    const isTouched = ref(false);
+    const markTouched = () => {
+        isTouched.value = true;
+    };
     const onChange = (target: any) => {
         input.handleChange(input.control.value.path, adaptTarget(target));
     };
 
+    const showErrors = computed(() => {
+        const config = input.control.value.config;
+        const errors = input.control.value.errors;
+        const hasErrors = Array.isArray(errors) ? errors.length > 0 : !!errors;
+        if (!hasErrors) return false;
+        // Core modes
+        if (config?.validationMode === 'NoValidation') return false;
+        if (config?.validationMode === 'ValidateAndShow') return true;
+        // Custom flags
+        const showAlways = !!appliedOptions.value?.showAllErrors;
+        const showOnTouched = !!appliedOptions.value?.showErrorsOnTouched;
+        if (showAlways) return true;
+        if (showOnTouched) return isTouched.value;
+        // Default: ValidateAndHide behavior
+        return false;
+    });
+
     const controlWrapper = computed(() => {
         const { id, description, errors, label, visible, required } =
             input.control.value;
-        return { id, description, errors, label, visible, required };
+        return { id, description, errors: showErrors.value ? errors : '', label, visible, required };
     });
 
     return {
@@ -44,6 +65,8 @@ export const usePrimeVueControl = <
         appliedOptions,
         controlWrapper,
         onChange,
+        showErrors,
+        markTouched,
     };
 };
 
@@ -97,6 +120,24 @@ export const usePrimeVueArrayControl = <I extends { control: any }>(
         )
     );
 
+    const isTouched = ref(false);
+    const markTouched = () => {
+        isTouched.value = true;
+    };
+    const showErrors = computed(() => {
+        const config = input.control.value.config;
+        const errors = input.control.value.errors;
+        const hasErrors = Array.isArray(errors) ? errors.length > 0 : !!errors;
+        if (!hasErrors) return false;
+        if (config?.validationMode === 'NoValidation') return false;
+        if (config?.validationMode === 'ValidateAndShow') return true;
+        const showAlways = !!appliedOptions.value?.showAllErrors;
+        const showOnTouched = !!appliedOptions.value?.showErrorsOnTouched;
+        if (showAlways) return true;
+        if (showOnTouched) return isTouched.value;
+        return false;
+    });
+
     const childUiSchema = computed(() =>
         findUISchema(
             input.control.value.uischemas,
@@ -123,6 +164,8 @@ export const usePrimeVueArrayControl = <I extends { control: any }>(
         ...input,
         styles: useStyles(input.control.value.uischema),
         appliedOptions,
+        showErrors,
+        markTouched,
         childUiSchema,
         childLabelForIndex,
     };

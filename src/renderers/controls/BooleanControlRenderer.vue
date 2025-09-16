@@ -46,6 +46,7 @@ export const entry: JsonFormsRendererRegistryEntry = {
         :styles="styles"
         :is-focused="isFocused"
         :applied-options="appliedOptions"
+        :show-errors="showErrors"
     >
         <Checkbox
             :id="control.id + '-input'"
@@ -56,10 +57,10 @@ export const entry: JsonFormsRendererRegistryEntry = {
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"
             :placeholder="appliedOptions.placeholder"
-            :invalid="control.errors.length > 0"
+            :invalid="showErrors"
             @update:model-value="onChange"
             @focus="isFocused = true"
-            @blur="isFocused = false"
+            @blur="() => { isFocused = false; markTouched(); }"
         />
         <label class="ml-2">{{ control.label }}</label> 
 

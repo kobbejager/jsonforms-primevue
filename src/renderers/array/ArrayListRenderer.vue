@@ -89,6 +89,7 @@ const controlRenderer = defineComponent({
         composePaths,
         createDefaultValue,
         addButtonClick() {
+            this.markTouched();
             this.addItem(
                 this.control.path,
                 createDefaultValue(this.control.schema, this.control.rootSchema)
@@ -161,7 +162,7 @@ export const entry: JsonFormsRendererRegistryEntry = {
             </div>
         </div>
         <div 
-            v-if="control.errors"
+            v-if="showErrors && control.errors"
             :class="styles.control.error"
         >
             <i class="pi pi-exclamation-triangle" style="font-size: 0.75rem"></i> {{ control.errors }}

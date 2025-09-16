@@ -50,6 +50,11 @@ export default defineComponent({
             required: true,
             type: Object as PropType<Styles>,
         },
+        showErrors: {
+            required: false as const,
+            type: Boolean,
+            default: true,
+        }
     },
     computed: {
         showDescription(): boolean {
@@ -83,7 +88,7 @@ export default defineComponent({
             <slot></slot>
         </div>
         <div 
-            v-if="errors"
+            v-if="showErrors && errors"
             :class="styles.control.error"
         >
             <i class="pi pi-exclamation-triangle" style="font-size: 0.75rem"></i> {{ errors }}

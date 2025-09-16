@@ -50,6 +50,7 @@ export const entry: JsonFormsRendererRegistryEntry = {
         :styles="styles"
         :is-focused="isFocused" 
         :applied-options="appliedOptions"
+        :show-errors="showErrors"
     >
         <Select
             :id="control.id + '-input'"
@@ -62,10 +63,10 @@ export const entry: JsonFormsRendererRegistryEntry = {
             :class="styles.control.select"
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"
-            :invalid="control.errors.length > 0"
+            :invalid="showErrors"
             @update:model-value="onChange"
             @focus="isFocused = true"
-            @blur="isFocused = false"
+            @blur="() => { isFocused = false; markTouched(); }"
         >
             <!--option key="empty" value="" :class="styles.control.option" />
             <option v-for="optionElement in control.options" :key="optionElement.value" :value="optionElement.value"

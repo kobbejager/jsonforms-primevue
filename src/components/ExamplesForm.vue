@@ -7,7 +7,7 @@
     import { reactive, ref, watch, computed } from "vue"
     import { JsonForms } from "@jsonforms/vue"
     import { primeVueRenderers } from "@/renderers"
-    import { generateDefaultUISchema } from '@jsonforms/core'
+    import { generateDefaultUISchema, createAjv } from '@jsonforms/core'
     import isEqual from 'lodash/isEqual'
 
     import Textarea from 'primevue/textarea';
@@ -42,6 +42,19 @@
 
     const onChange = (event) => {
         state.data = event.data
+    }
+
+    const defaultsAjv = createAjv({ useDefaults: true })
+
+    // This applies the defaults conditionally
+    // If always-on behavior is preferred, pass ajv={defaultsAjv} to JsonForms
+    const applyDefaults = () => {
+        try {
+            const validate = defaultsAjv.compile(liveSchema.value)
+            const newData = JSON.parse(JSON.stringify(state.data || {}))
+            validate(newData)
+            state.data = newData
+        } catch (e) {}
     }
 
 /*
@@ -221,6 +234,13 @@
 
             <TabPanels>
                 <TabPanel value="form">
+                    <div class="flex justify-end mb-3">
+                        <Button 
+                            label="Apply defaults" 
+                            icon="pi pi-magic" 
+                            @click="applyDefaults" 
+                        />
+                    </div>
                     <JsonForms 
                         :key="formKey"
                         :data="state.data" 

@@ -4,9 +4,13 @@
     imports
 */
 
-    import { reactive } from "vue"
+    import { reactive, ref, watch } from "vue"
     import { JsonForms } from "@jsonforms/vue"
     import { primeVueRenderers } from "@/renderers"
+
+    import Textarea from 'primevue/textarea';
+    import Button from 'primevue/button';
+    import { VueMonacoEditor } from '@guolao/vue-monaco-editor'
 
     import Tabs from 'primevue/tabs';
     import TabList from 'primevue/tablist';
@@ -38,6 +42,48 @@
         state.data = event.data
     }
 
+/*
+    live schema editing
+*/
+
+    const formKey = ref(0)
+    const liveSchema = ref(JSON.parse(JSON.stringify(props.example.schema || {})))
+    const editedSchemaText = ref(JSON.stringify(liveSchema.value, null, 2))
+    const schemaError = ref('')
+
+    const applySchema = () => {
+        schemaError.value = ''
+        try {
+            const parsed = JSON.parse(editedSchemaText.value)
+            if (parsed === null || typeof parsed !== 'object' || Array.isArray(parsed)) {
+                schemaError.value = 'Schema must be a JSON object'
+                return
+            }
+            liveSchema.value = parsed
+            formKey.value++
+        } catch (e) {
+            schemaError.value = `Invalid JSON: ${e.message}`
+        }
+    }
+
+    const resetSchema = () => {
+        schemaError.value = ''
+        liveSchema.value = JSON.parse(JSON.stringify(props.example.schema || {}))
+        editedSchemaText.value = JSON.stringify(liveSchema.value, null, 2)
+        formKey.value++
+    }
+
+    // When the example changes (component may be remounted already), initialize editor state
+    watch(
+        () => props.example,
+        () => {
+            liveSchema.value = JSON.parse(JSON.stringify(props.example.schema || {}))
+            editedSchemaText.value = JSON.stringify(liveSchema.value, null, 2)
+            schemaError.value = ''
+            formKey.value = 0
+        }
+    )
+
 </script>
 
 <template>
@@ -55,9 +101,10 @@
             <TabPanels>
                 <TabPanel value="form">
                     <JsonForms 
+                        :key="formKey"
                         :data="state.data" 
                         :renderers="state.renderers" 
-                        :schema="props.example.schema" 
+                        :schema="liveSchema" 
                         :uischema="props.example.uiSchema" 
                         @change="onChange" 
                     />
@@ -65,9 +112,36 @@
 
                 <TabPanel value="schema">
                     <div 
-                        class="card font-mono text-sm"
+                        class="card"
                     >
-                        <pre>{{ props.example.schema }}</pre>
+                        <div class="flex flex-col gap-3">
+                            <VueMonacoEditor
+                                v-model:value="editedSchemaText"
+                                language="json"
+                                theme="vs"
+                                :options="{ automaticLayout: true, minimap: { enabled: false }, formatOnPaste: true, formatOnType: true }"
+                                className="w-full h-[480px]"
+                            />
+                            <div class="flex gap-2">
+                                <Button 
+                                    label="Apply schema" 
+                                    icon="pi pi-check" 
+                                    @click="applySchema" 
+                                />
+                                <Button 
+                                    label="Reset to example" 
+                                    icon="pi pi-refresh" 
+                                    severity="secondary" 
+                                    @click="resetSchema" 
+                                />
+                            </div>
+                            <div 
+                                v-if="schemaError" 
+                                class="text-red-600 text-sm"
+                            >
+                                {{ schemaError }}
+                            </div>
+                        </div>
                     </div>
                 </TabPanel>
 

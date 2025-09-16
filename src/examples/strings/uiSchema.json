@@ -1,0 +1,62 @@
+{
+    "type": "VerticalLayout",
+    "elements": [
+        {
+            "type": "Control",
+            "scope": "#/properties/string_field"
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/string_field_with_default"
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/string_field_readonly",
+            "options": {
+                "readonly": true
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/string_field_placeholder",
+            "options": {
+                "placeholder": "Placeholder defined in the UI Schema"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/string_field_with_examples"
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/string_field_with_suggestions",
+            "options": {
+                "suggestions": ["Suggestion 1", "Suggestion 2", "Suggestion 3"]
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/string_field_with_examples_and_suggestions_required",
+            "options": {
+                "examples": ["Suggestion 1", "Suggestion 2", "Suggestion 3"],
+                "default": "Default suggestion value"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/textarea_field1"
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/textarea_field2",
+            "options": {
+                "multi": true,
+                "placeholder": "Placeholder defined in the UI Schema"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/textarea_field_with_default"
+        }
+    ]
+}

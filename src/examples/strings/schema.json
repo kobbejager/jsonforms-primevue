@@ -15,6 +15,17 @@
             "type": "string",
             "default": "Default value"
         },
+        "string_field_readonly": {
+            "title": "String field in readonly mode (defined in the UI Schema)",
+            "description": "An optional text field with a readonly value in readonly mode (defined in the UI Schema)",
+            "type": "string",
+            "default": "Default value, disabled"
+        },
+        "string_field_placeholder": {
+            "title": "String field with placeholder (defined in the UI Schema)",
+            "description": "An optional text field with a placeholder in readonly mode (defined in the UI Schema)",
+            "type": "string"
+        },
         "string_field_with_examples": {
             "title": "String field with examples",
             "description": "An optional text field with examples defined in the schema",
@@ -25,6 +36,13 @@
             "title": "String field with suggestions",
             "description": "An optional text field with examples defined in the schema",
             "type": "string"
+        },
+        "string_field_with_examples_and_suggestions_required": {
+            "title": "String field with examples and suggestions (required)",
+            "description": "A required text field with examples and suggestions defined in the schema",
+            "type": "string",
+            "examples": ["Example 1", "Example 2", "Example 3"],
+            "default": "Default example value"
         },
         "textarea_field1": {
             "title": "Textarea field 1",

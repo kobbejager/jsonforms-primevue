@@ -250,6 +250,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@guolao/vue-monaco-editor@npm:^1.5.5":
+  version: 1.5.5
+  resolution: "@guolao/vue-monaco-editor@npm:1.5.5"
+  dependencies:
+    "@monaco-editor/loader": "npm:^1.5.0"
+    vue-demi: "npm:latest"
+  peerDependencies:
+    "@vue/composition-api": ^1.7.1
+    monaco-editor: ">=0.43.0"
+    vue: ^2.6.14 || >=3.0.0
+  peerDependenciesMeta:
+    "@vue/composition-api":
+      optional: true
+  checksum: 10c0/90071426b104140a45c0f7def87501e354999c28954a3abc95767fb32c3fe7f18ffe7f949edc48f33bce98ec1d52d77df1804fc247efce624f6f6a8835fff130
+  languageName: node
+  linkType: hard
+
 "@isaacs/cliui@npm:^8.0.2":
   version: 8.0.2
   resolution: "@isaacs/cliui@npm:8.0.2"
@@ -338,6 +355,15 @@ __metadata:
     "@jsonforms/core": 3.6.0
     vue: ^3.2.26
   checksum: 10c0/6f54b8c14b622f5d58fb49ba53b86174ff15b48636611f68e5f66a5ce845cf2df8498a4df44eb843d41a5b693e0f8a91d426179e6dde36058c5daeffe72b68de
+  languageName: node
+  linkType: hard
+
+"@monaco-editor/loader@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "@monaco-editor/loader@npm:1.5.0"
+  dependencies:
+    state-local: "npm:^1.0.6"
+  checksum: 10c0/d8e1fd75fea113b4d91405784ed4db757df450c6e57a85e87728281e819a73a3ef9fe0cbb1dc1509456f1e895ad9c11e4748f80b68900cb6cf600170e14ce6ed
   languageName: node
   linkType: hard
 
@@ -777,6 +803,13 @@ __metadata:
   version: 7.0.15
   resolution: "@types/json-schema@npm:7.0.15"
   checksum: 10c0/a996a745e6c5d60292f36731dd41341339d4eeed8180bb09226e5c8d23759067692b1d88e5d91d72ee83dfc00d3aca8e7bd43ea120516c17922cbcb7c3e252db
+  languageName: node
+  linkType: hard
+
+"@types/trusted-types@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "@types/trusted-types@npm:1.0.6"
+  checksum: 10c0/4bc61ac65b8e42d17c77a23f29cdf94e498acd2e23f4c00cf15c8281de94263ac313d46cbcd7cd1d03c066d497f9396845e3210ff0074f5f90f212cb3e8aac28
   languageName: node
   linkType: hard
 
@@ -1413,17 +1446,20 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "jsonforms-primevue@workspace:."
   dependencies:
+    "@guolao/vue-monaco-editor": "npm:^1.5.5"
     "@jsonforms/core": "npm:^3.6.0"
     "@jsonforms/vue": "npm:^3.6.0"
     "@primeuix/themes": "npm:^1.2.3"
     "@tailwindcss/vite": "npm:^4.1.12"
     "@vitejs/plugin-vue": "npm:^6.0.1"
     lodash: "npm:^4.17.21"
+    monaco-editor: "npm:^0.53.0"
     primeicons: "npm:^7.0.0"
     primevue: "npm:^4.3.8"
     tailwindcss: "npm:^4.1.12"
     tailwindcss-primeui: "npm:^0.6.1"
     vite: "npm:^7.1.4"
+    vite-plugin-monaco-editor: "npm:^1.1.0"
     vue: "npm:^3.5.21"
   peerDependencies:
     "@jsonforms/core": ^3.6.0
@@ -1677,6 +1713,15 @@ __metadata:
   bin:
     mkdirp: dist/cjs/src/bin.js
   checksum: 10c0/9f2b975e9246351f5e3a40dcfac99fcd0baa31fbfab615fe059fb11e51f10e4803c63de1f384c54d656e4db31d000e4767e9ef076a22e12a641357602e31d57d
+  languageName: node
+  linkType: hard
+
+"monaco-editor@npm:^0.53.0":
+  version: 0.53.0
+  resolution: "monaco-editor@npm:0.53.0"
+  dependencies:
+    "@types/trusted-types": "npm:^1.0.6"
+  checksum: 10c0/016495f0b869ea3a4151b660e5b8653999e54da9834001b4e7e88edae5c749aee2f1b56020bfece51cd08fc8e7125cd9732f414e373aea554e2f2812ee8245f1
   languageName: node
   linkType: hard
 
@@ -2002,6 +2047,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"state-local@npm:^1.0.6":
+  version: 1.0.7
+  resolution: "state-local@npm:1.0.7"
+  checksum: 10c0/8dc7daeac71844452fafb514a6d6b6f40d7e2b33df398309ea1c7b3948d6110c57f112b7196500a10c54fdde40291488c52c875575670fb5c819602deca48bd9
+  languageName: node
+  linkType: hard
+
 "string-width-cjs@npm:string-width@^4.2.0, string-width@npm:^4.1.0":
   version: 4.2.3
   resolution: "string-width@npm:4.2.3"
@@ -2114,6 +2166,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"vite-plugin-monaco-editor@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "vite-plugin-monaco-editor@npm:1.1.0"
+  peerDependencies:
+    monaco-editor: ">=0.33.0"
+  checksum: 10c0/1f0d839c194d79f21f4ef192d19d82e42ed6dbbab580df684db2e4eeb01d1f2e9c572e9e5b50e9887e9028a54514c496ee6db9d68cab579d375d09456d8b91ee
+  languageName: node
+  linkType: hard
+
 "vite@npm:^7.1.4":
   version: 7.1.4
   resolution: "vite@npm:7.1.4"
@@ -2166,6 +2227,22 @@ __metadata:
   bin:
     vite: bin/vite.js
   checksum: 10c0/dbe2ba29926ffe8985c93d1b3718dcc9040080b7fa10a74c82a52aad7449136a391ba17b265288ff03b864e6f1033b9b537247521a96d5491a9d4af90ac04702
+  languageName: node
+  linkType: hard
+
+"vue-demi@npm:latest":
+  version: 0.14.10
+  resolution: "vue-demi@npm:0.14.10"
+  peerDependencies:
+    "@vue/composition-api": ^1.0.0-rc.1
+    vue: ^3.0.0-0 || ^2.6.0
+  peerDependenciesMeta:
+    "@vue/composition-api":
+      optional: true
+  bin:
+    vue-demi-fix: bin/vue-demi-fix.js
+    vue-demi-switch: bin/vue-demi-switch.js
+  checksum: 10c0/a9ed8712fa36d01bc13c39757f95f30cebf42d557b99e94bff86d8660c81f2911b41220f7affc023d1ffcc19e13999e4a83019991e264787cca2c616e83aea48
   languageName: node
   linkType: hard
 

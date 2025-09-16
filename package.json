@@ -15,7 +15,9 @@
   "files": [
     "dist"
   ],
-  "sideEffects": ["**/*.vue"],
+  "sideEffects": [
+    "**/*.vue"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -32,16 +34,19 @@
     "vue": "^3.5.21"
   },
   "devDependencies": {
+    "@guolao/vue-monaco-editor": "^1.5.5",
     "@jsonforms/core": "^3.6.0",
     "@jsonforms/vue": "^3.6.0",
     "@primeuix/themes": "^1.2.3",
     "@tailwindcss/vite": "^4.1.12",
     "@vitejs/plugin-vue": "^6.0.1",
+    "monaco-editor": "^0.53.0",
     "primeicons": "^7.0.0",
     "primevue": "^4.3.8",
     "tailwindcss": "^4.1.12",
     "tailwindcss-primeui": "^0.6.1",
     "vite": "^7.1.4",
+    "vite-plugin-monaco-editor": "^1.1.0",
     "vue": "^3.5.21"
   },
   "packageManager": "yarn@4.9.4"

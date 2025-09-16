@@ -1,0 +1,80 @@
+{
+    "type": "object",
+    "required": ["enum_array_required"],
+    "properties": {
+        "enum_array": {
+            "title": "Enum array (unique selections)",
+            "description": "Array of enum values rendered as checkboxes",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "enum": ["Option 1", "Option 2", "Option 3"]
+            }
+        },
+        "enum_array_horizontal": {
+            "title": "Enum array (horizontal)",
+            "description": "Rendered horizontally and wraps as needed",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "enum": ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5", "Option 6"]
+            }
+        },
+        "enum_array_toggle": {
+            "title": "Enum array (ToggleSwitch)",
+            "description": "Each option rendered as a toggle switch",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "enum": ["Option 1", "Option 2", "Option 3"]
+            }
+        },
+        "enum_array_selectbutton": {
+            "title": "Enum array (SelectButton)",
+            "description": "SelectButton with multiple selection",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "enum": ["Option 1", "Option 2", "Option 3", "Option 4"]
+            }
+        },
+        "enum_array_required": {
+            "title": "Enum array (required)",
+            "description": "Required enum array",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "enum": ["Option 1", "Option 2", "Option 3"]
+            }
+        },
+        "enum_array_default": {
+            "title": "Enum array (with defaults)",
+            "description": "Enum array with default values",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "enum": ["Option 1", "Option 2", "Option 3"]
+            },
+            "default": ["Option 1", "Option 3"]
+        },
+        "enum_array_readonly": {
+            "title": "Enum array (readonly)",
+            "description": "Enum array with default values in readonly mode (defined in the UI Schema)",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "enum": ["Option 1", "Option 2", "Option 3"]
+            },
+            "default": ["Option 1", "Option 3"]
+        }
+    }
+}
+
+

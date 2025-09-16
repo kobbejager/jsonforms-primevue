@@ -3,6 +3,7 @@ import { example as numbers } from './numbers';
 import { example as booleans } from './booleans';
 import { example as dates } from './dates';
 import { example as enums } from './enums';
+import { example as enumArrays } from './enum-arrays';
 import { example as arrays } from './arrays';
 
 export const examples = [
@@ -25,6 +26,10 @@ export const examples = [
     { 
         label: 'Enums',
         example: enums,
+    },
+    { 
+        label: 'Enum Arrays',
+        example: enumArrays,
     },
     { 
         label: 'Arrays',

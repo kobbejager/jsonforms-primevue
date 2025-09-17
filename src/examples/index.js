@@ -29,15 +29,15 @@ export const examples = [
         example: enums,
     },
     { 
-        label: 'Enum Arrays',
+        label: 'Arrays',
+        example: arrays,
+    },
+    { 
+        label: 'Arrays of enums',
         example: enumArrays,
     },
     { 
         label: 'Objects',
         example: objects,
-    },
-    { 
-        label: 'Arrays',
-        example: arrays,
     },
 ]

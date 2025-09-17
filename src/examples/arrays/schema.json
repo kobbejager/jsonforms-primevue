@@ -57,6 +57,24 @@
                     }
                 }
             }
+        },
+        "array_readonly": {
+            "title": "Array with readonly items",
+            "description": "An array with readonly items",
+            "type": "array",
+            "items": {
+                "type": "string",
+                "title": "String"
+            }
+        },
+        "array_sortable": {
+            "title": "Array with sortable items",
+            "description": "An array with sortable items",
+            "type": "array",
+            "items": {
+                "type": "string",
+                "title": "String"
+            }
         }
     }
 }

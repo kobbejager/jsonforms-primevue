@@ -20,6 +20,7 @@ import { usePrimeVueArrayControl } from '../util';
 import ArrayListElement from './ArrayListElement.vue';
 
 import Button from 'primevue/button';
+import ButtonGroup from 'primevue/buttongroup';
 
 
 const controlRenderer = defineComponent({
@@ -28,6 +29,7 @@ const controlRenderer = defineComponent({
         ArrayListElement,
         DispatchRenderer,
         Button,
+        ButtonGroup,
     },
     props: {
         ...rendererProps<ControlElement>(),
@@ -121,21 +123,24 @@ export const entry: JsonFormsRendererRegistryEntry = {
                     {{ control.description }}
                 </div>
             </div>
-            <Button 
-                :class="styles.arrayList.addButton" 
-                icon="pi pi-plus" 
-                severity="secondary" 
-                outlined
-                :disabled="!control.enabled || (appliedOptions.restrict && maxItemsReached)" 
-                @click="addButtonClick" 
-            />
+            <ButtonGroup>
+                <Button 
+                    :label="String(control.data?.length ?? 0)"
+                    severity="secondary"
+                    outlined
+                    disabled
+                />
+                <Button 
+                    :class="styles.arrayList.addButton" 
+                    icon="pi pi-plus" 
+                    severity="secondary" 
+                    outlined
+                    :disabled="!control.enabled || (appliedOptions.restrict && maxItemsReached)" 
+                    @click="addButtonClick" 
+                />
+            </ButtonGroup>
         </div>
-        <div 
-            v-if="noData || control.data.length === 0"
-            :class="styles.arrayList.noData"
-        >
-            No data
-        </div>
+        
         <div 
             v-for="(element, index) in control.data" 
             :key="`${control.path}-${index}`"
@@ -149,6 +154,7 @@ export const entry: JsonFormsRendererRegistryEntry = {
                 :delete-enabled="control.enabled && !minItemsReached" 
                 :delete="removeItems(control.path, [index])"
                 :label="childLabelForIndex(index)" 
+                :sortable="appliedOptions?.sortable ?? false"
                 :styles="styles"
             >
                 <dispatch-renderer 

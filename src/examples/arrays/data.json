@@ -1,0 +1,17 @@
+{
+    "array_of_strings": [
+        "a",
+        "b",
+        "c"
+    ],
+    "array_readonly": [
+        "a",
+        "b",
+        "c"
+    ],
+    "array_sortable": [
+        "a",
+        "b",
+        "c"
+    ]
+}

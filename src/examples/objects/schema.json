@@ -3,6 +3,17 @@
     "description": "Objects example demonstrating required objects, objects with defaults, and read-only objects.",
     "required": ["person"],
     "properties": {
+        "simpleObject": {
+            "title": "Simple Object",
+            "type": "object",
+            "description": "Just a simple object without requirements and defaults  ",
+            "properties": {
+                "name": {
+                    "title": "Name",
+                    "type": "string"
+                }
+            }
+        },
         "person": {
             "title": "Person",
             "type": "object",

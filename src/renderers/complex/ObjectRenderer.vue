@@ -59,8 +59,18 @@ const controlRenderer = defineComponent({
         );
         if (isEmpty(this.control.path)) {
           uiSchema.type = 'VerticalLayout';
+          // Ensure root-level layout can resolve schema description
+          (uiSchema as GroupLayout).options = {
+            ...(uiSchema as GroupLayout).options,
+            scope: this.control.uischema.scope,
+          };
         } else {
           (uiSchema as GroupLayout).label = this.control.label;
+          // Ensure group can resolve schema description by scope
+          (uiSchema as GroupLayout).options = {
+            ...(uiSchema as GroupLayout).options,
+            scope: this.control.uischema.scope,
+          };
         }
         return uiSchema;
       };

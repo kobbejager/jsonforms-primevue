@@ -5,7 +5,8 @@ import {
     rankWith,
     uiTypeIs,
 } from '@jsonforms/core';
-import { defineComponent } from 'vue';
+import { Resolve } from '@jsonforms/core';
+import { defineComponent, computed } from 'vue';
 import {
     rendererProps,
     RendererProps,
@@ -19,7 +20,24 @@ const labelRenderer = defineComponent({
         ...rendererProps<LabelElement>(),
     },
     setup(props: RendererProps<LabelElement>) {
-        return usePrimeVueLabel(useJsonFormsLabel(props));
+        const base = useJsonFormsLabel(props);
+        const model = usePrimeVueLabel(base);
+        const description = computed(() => {
+            const uiDesc = model.appliedOptions.value?.description;
+            if (uiDesc) return uiDesc;
+            const scope = model.appliedOptions.value?.scope || (base as any).label.value?.uischema?.scope;
+            if (scope) {
+                const baseSchema = (props as any).rootSchema ?? (props as any).schema;
+                const resolved = Resolve.schema(
+                    baseSchema,
+                    scope,
+                    baseSchema
+                );
+                return resolved?.description;
+            }
+            return undefined;
+        });
+        return { ...model, description };
     },
 });
 
@@ -33,7 +51,12 @@ export const entry: JsonFormsRendererRegistryEntry = {
 
 
 <template>
-    <label v-if="label.visible" :class="styles.label.root">
-        {{ label.text }}
-    </label>
+    <div v-if="label.visible">
+        <label :class="styles.control.label">
+            {{ label.text }}
+        </label>
+        <div v-if="description" :class="styles.control.description">
+            {{ description }}
+        </div>
+    </div>
 </template>

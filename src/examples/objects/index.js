@@ -1,9 +1,8 @@
 import schema from './schema.json';
-import uiSchema from './uiSchema.json';
 
 export const example = {
     schema: schema,
-    uiSchema: uiSchema,
+    uiSchema: undefined,
     i18nSchema: undefined,
     data: undefined
 }

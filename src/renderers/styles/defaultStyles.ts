@@ -23,8 +23,7 @@ export const defaultStyles: Styles = {
         item: "horizontal-layout-item",
     },
     group: {
-        root: "group",
-        label: "group-label",
+        root: "group mb-8",
         item: "group-item",
     },
     arrayList: {
@@ -42,9 +41,6 @@ export const defaultStyles: Styles = {
         itemMoveUp: "",
         itemMoveDown: "",
         itemDelete: "",
-    },
-    label: {
-        root: "label-element",
     },
     dialog: {
         root: "dialog-root",

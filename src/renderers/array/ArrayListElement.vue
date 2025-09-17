@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { classes, Styles } from '../styles';
+import { Styles } from '../styles';
 
 import Button from 'primevue/button';
 import ButtonGroup from 'primevue/buttongroup';
@@ -59,21 +59,8 @@ const listItem = defineComponent({
             type: Object as PropType<Styles>,
         },
     },
-    data() {
-        return {
-            expanded: this.initiallyExpanded,
-        };
-    },
-    computed: {
-        contentClasses(): string {
-            return classes`${this.styles.arrayList.itemContent} ${this.expanded && this.styles.arrayList.itemExpanded
-                }`;
-        },
-    },
+    computed: {},
     methods: {
-        expandClicked(): void {
-            this.expanded = !this.expanded;
-        },
         moveUpClicked(event: Event): void {
             event.stopPropagation();
             this.moveUp?.();
@@ -95,22 +82,18 @@ export default listItem;
 <template>
     <Fieldset 
         :class="styles.arrayList.item"
+        :legend="label"
+        toggleable
+        :collapsed="!initiallyExpanded"
     >
-        <template #legend>
-            <div :class="styles.arrayList.itemLabel" @click="expandClicked">
-                {{ label }}&nbsp;&nbsp;
-                <span v-if="expanded" class="pi pi-eye"></span>
-                <span v-else class="pi pi-eye-slash"></span>
-            </div>
-        </template>
-        <div v-if="expanded" :class="this.styles.arrayList.itemContent">
+        <div :class="this.styles.arrayList.itemContent">
             <slot></slot>
         </div>
-        <div :class="styles.arrayList.itemToolbar + (expanded ? ' ' + styles.arrayList.itemToolbarExpanded : '')">
+        <div :class="styles.arrayList.itemToolbar">
             <div class="grow"></div>
             <ButtonGroup>
                 <Button 
-                    :disabled="!moveUpEnabled" 
+                    :disabled="!moveUpEnabled"
                     :class="styles.arrayList.itemMoveUp" 
                     type="button"
                     icon="pi pi-sort-up-fill"
@@ -119,7 +102,7 @@ export default listItem;
                     @click="moveUpClicked"
                 />
                 <Button 
-                    :disabled="!moveDownEnabled" 
+                    :disabled="!moveDownEnabled"
                     :class="styles.arrayList.itemMoveDown" 
                     type="button"
                     icon="pi pi-sort-down-fill"

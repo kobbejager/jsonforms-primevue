@@ -1,0 +1,74 @@
+{
+    "type": "object",
+    "description": "Objects example demonstrating required objects, objects with defaults, and read-only objects.",
+    "required": ["person"],
+    "properties": {
+        "person": {
+            "title": "Person",
+            "type": "object",
+            "description": "Required object. Demonstrates required properties within an object (firstName, lastName).",
+            "required": ["firstName", "lastName"],
+            "properties": {
+                "firstName": {
+                    "title": "First name",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "lastName": {
+                    "title": "Last name",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "age": {
+                    "title": "Age",
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "contact": {
+                    "title": "Contact",
+                    "type": "object",
+                    "description": "Read-only nested object to illustrate read-only mode at object level.",
+                    "readOnly": true,
+                    "properties": {
+                        "email": {
+                            "title": "Email",
+                            "type": "string",
+                            "format": "email"
+                        },
+                        "phone": {
+                            "title": "Phone",
+                            "type": "string"
+                        }
+                    }
+                },
+                "address": {
+                    "title": "Address",
+                    "type": "object",
+                    "description": "Optional nested object with a default value at object level.",
+                    "default": { "city": "Brussels" },
+                    "properties": {
+                        "street": { "title": "Street", "type": "string" },
+                        "city": { "title": "City", "type": "string" },
+                        "zipCode": { "title": "ZIP code", "type": "string" }
+                    }
+                }
+            }
+        },
+        "employment": {
+            "title": "Employment",
+            "type": "object",
+            "description": "Optional object with defaults at object level (e.g., default status).",
+            "default": { "status": "unemployed" },
+            "properties": {
+                "status": {
+                    "title": "Status",
+                    "type": "string",
+                    "enum": ["employed", "unemployed", "student", "retired"]
+                },
+                "company": { "title": "Company", "type": "string" },
+                "startDate": { "title": "Start date", "type": "string", "format": "date" }
+            }
+        }
+    }
+}
+

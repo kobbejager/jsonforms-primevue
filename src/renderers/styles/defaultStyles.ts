@@ -29,9 +29,9 @@ export const defaultStyles: Styles = {
     },
     arrayList: {
         root: "mb-8",
-        legend: "flex items-center w-full mt-2",
+        legend: "flex items-center w-full mt-4",
         addButton: "flex-none",
-        label: "grow font-bold mb-2",
+        label: "font-bold",
         itemWrapper: 'grid grid-cols-1 gap-4"',
         noData: "grow text-surface-500 dark:text-surface-400",
         item: "",

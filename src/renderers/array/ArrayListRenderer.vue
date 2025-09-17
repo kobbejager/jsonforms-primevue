@@ -107,16 +107,34 @@ export const entry: JsonFormsRendererRegistryEntry = {
 </script>
 
 <template>
-    <fieldset 
+    <div 
         v-if="control.visible" 
         :class="styles.arrayList.root"
     >
-        <label :class="styles.arrayList.label">
-            {{ control.label }}
-            <span v-if="showAsterisk" :class="styles.control.asterisk">*</span>
-        </label>
-        <div :class="styles.control.description">
-            {{control.description }}
+        <div :class="styles.arrayList.legend">
+            <div class="grow">
+                <label :class="styles.arrayList.label">
+                    {{ control.label }}
+                    <span v-if="showAsterisk" :class="styles.control.asterisk">*</span>
+                </label>
+                <div :class="styles.control.description">
+                    {{ control.description }}
+                </div>
+            </div>
+            <Button 
+                :class="styles.arrayList.addButton" 
+                icon="pi pi-plus" 
+                severity="secondary" 
+                outlined
+                :disabled="!control.enabled || (appliedOptions.restrict && maxItemsReached)" 
+                @click="addButtonClick" 
+            />
+        </div>
+        <div 
+            v-if="noData || control.data.length === 0"
+            :class="styles.arrayList.noData"
+        >
+            No data
         </div>
         <div 
             v-for="(element, index) in control.data" 
@@ -143,29 +161,12 @@ export const entry: JsonFormsRendererRegistryEntry = {
                 />
             </array-list-element>
         </div>
-        <div>
-            <div :class="styles.arrayList.legend">
-                <div :class="styles.arrayList.noData">
-                    <span v-if="noData || control.data.length === 0">
-                        No data
-                        <!-- {{ control.translations.noDataMessage }} -->
-                    </span>
-                </div>
-                <Button 
-                    :class="styles.arrayList.addButton" 
-                    icon="pi pi-plus" 
-                    severity="secondary" 
-                    outlined
-                    :disabled="!control.enabled || (appliedOptions.restrict && maxItemsReached)" 
-                    @click="addButtonClick" 
-                />
-            </div>
-        </div>
+        
         <div 
             v-if="showErrors && control.errors"
             :class="styles.control.error"
         >
             <i class="pi pi-exclamation-triangle" style="font-size: 0.75rem"></i> {{ control.errors }}
         </div>
-    </fieldset>
+    </div>
 </template>

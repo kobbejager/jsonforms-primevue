@@ -1,0 +1,8 @@
+{
+  "simple_nonunique": ["alpha", "alpha"],
+  "simple_unique_schema": ["one", "two"],
+  "simple_unique_ui": ["a", "b"],
+  "simple_required": ["one", "two"],
+  "readonly": ["fixed", "values"]
+}
+

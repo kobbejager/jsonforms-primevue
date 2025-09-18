@@ -234,3 +234,5 @@ export const entry: JsonFormsRendererRegistryEntry = {
     ),
 }
 </script>
+// ... existing code ...
+

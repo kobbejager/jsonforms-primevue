@@ -1,0 +1,49 @@
+{
+    "type": "object",
+    "required": ["simple_required"],
+    "properties": {
+        "simple_nonunique": {
+            "title": "Simple (non-unique)",
+            "description": "Array of strings without uniqueItems in schema. UI can still enforce uniqueness via options.uniqueItems.",
+            "type": "array",
+            "items": { "type": "string" }
+        },
+        "simple_unique_schema": {
+            "title": "Simple (unique via schema)",
+            "description": "Array of strings with uniqueItems enforced by the JSON Schema.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string" }
+        },
+        "simple_unique_ui": {
+            "title": "Simple (unique via UI option)",
+            "description": "Array of strings without schema uniqueItems; UI sets options.uniqueItems to enforce uniqueness.",
+            "type": "array",
+            "items": { "type": "string" }
+        },
+        "simple_placeholder": {
+            "title": "Simple string array with placeholder",
+            "description": "A simple array of strings with a placeholder.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string" }
+        },
+        "simple_required": {
+            "title": "Required with min/max items",
+            "description": "Required array with min/max items and unique items.",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 2,
+            "maxItems": 5,
+            "items": { "type": "string" }
+        },
+        "readonly": {
+            "title": "Readonly array",
+            "description": "Readonly array of strings; UI schema sets 'readonly': true.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string" }
+        }
+    }
+}
+

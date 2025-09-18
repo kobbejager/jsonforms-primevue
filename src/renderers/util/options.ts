@@ -20,6 +20,12 @@ export interface ArrayListOptions extends BaseOptions {
     childLabelProp?: string;
 }
 
+export interface StringArrayOptions extends BaseOptions {
+    chips?: boolean;
+    compactStringArray?: boolean;
+    uniqueItems?: boolean;
+}
+
 export interface EnumControlOptions extends BaseOptions {
     selectButton?: boolean;
     radio?: boolean;

@@ -5,6 +5,7 @@ import { example as dates } from './dates';
 import { example as enums } from './enums';
 import { example as enumArrays } from './enum-arrays';
 import { example as arrays } from './arrays';
+import { example as stringArrays } from './string-arrays';
 import { example as objects } from './objects';
 
 export const examples = [
@@ -31,6 +32,10 @@ export const examples = [
     { 
         label: 'Arrays',
         example: arrays,
+    },
+    { 
+        label: 'Arrays of strings',
+        example: stringArrays,
     },
     { 
         label: 'Arrays of enums',

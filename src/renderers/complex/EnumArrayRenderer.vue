@@ -11,7 +11,7 @@
         :styles="styles"
         :show-errors="showErrors"
     >
-        <div v-if="appliedOptions.selectButton" :class="containerClass">
+        <div v-if="variant === 'selectbutton'" :class="containerClass">
             <SelectButton
                 :id="control.id + '-selectbutton'"
                 :model-value="control.data"
@@ -33,6 +33,29 @@
             />
         </div>
 
+        <div v-else-if="variant === 'multiselect'" :class="containerClass">
+            <MultiSelect
+                :id="control.id + '-multiselect'"
+                :model-value="control.data"
+                :options="control.options"
+                optionLabel="label"
+                optionValue="value"
+                :disabled="!control.enabled"
+                :class="styles.control.select"
+                :invalid="showErrors"
+                filter 
+                display="chip"
+                @update:model-value="onSelectButtonUpdate"
+                @focus="isFocused = true"
+                @blur="
+                    () => {
+                        isFocused = false
+                        markTouched()
+                    }
+                "
+            />
+        </div>
+
         <div v-else :class="containerClass">
             <div
                 v-for="(checkElement, index) in control.options"
@@ -40,18 +63,18 @@
                 class="flex items-center gap-2"
             >
                 <component
-                    :is="appliedOptions.toggleSwitch ? 'ToggleSwitch' : 'Checkbox'"
+                    :is="variant === 'toggleswitch' ? 'ToggleSwitch' : 'Checkbox'"
                     :inputId="control.id + `-input-${index}`"
                     :model-value="
-                        appliedOptions.toggleSwitch
+                        variant === 'toggleswitch'
                             ? dataHasEnum(checkElement.value)
                             : control.data
                     "
-                    :value="appliedOptions.toggleSwitch ? undefined : checkElement.value"
+                    :value="variant === 'toggleswitch' ? undefined : checkElement.value"
                     :class="styles.control.input"
                     :disabled="!control.enabled"
                     :invalid="showErrors"
-                    @update:model-value="(val) => appliedOptions.toggleSwitch ? onToggleSwitch(checkElement.value, val as boolean) : onUpdateOption(checkElement.value, val)"
+                    @update:model-value="(val) => variant === 'toggleswitch' ? onToggleSwitch(checkElement.value, val as boolean) : onUpdateOption(checkElement.value, val)"
                     @focus="isFocused = true"
                     @blur="
                         () => {
@@ -90,6 +113,7 @@ import { usePrimeVueArrayControl } from '../util'
 import Checkbox from 'primevue/checkbox'
 import ToggleSwitch from 'primevue/toggleswitch'
 import SelectButton from 'primevue/selectbutton'
+import MultiSelect from 'primevue/multiselect'
 import { ControlWrapper } from '../controls'
 
 const controlRenderer = defineComponent({
@@ -98,6 +122,7 @@ const controlRenderer = defineComponent({
         Checkbox,
         ToggleSwitch,
         SelectButton,
+        MultiSelect,
         ControlWrapper,
     },
     props: {
@@ -117,6 +142,10 @@ const controlRenderer = defineComponent({
             return horizontal
                 ? 'flex flex-wrap gap-6 items-center'
                 : 'flex flex-col gap-2'
+        },
+        variant(): 'checkbox' | 'toggleswitch' | 'selectbutton' | 'multiselect' {
+            const opt = this.appliedOptions as any
+            return opt?.variant ?? 'checkbox'
         },
     },
     methods: {
@@ -140,7 +169,20 @@ const controlRenderer = defineComponent({
             }
         },
         onSelectButtonUpdate(newModel: any): void {
-            this.handleChange(this.control.path, newModel ?? [])
+            const current: any[] = Array.isArray(this.control.data)
+                ? this.control.data
+                : []
+            const next: any[] = Array.isArray(newModel) ? newModel : []
+
+            // Add newly selected values
+            next
+                .filter((value) => !current.includes(value))
+                .forEach((value) => this.addItem(this.control.path, value))
+
+            // Remove deselected values
+            current
+                .filter((value) => !next.includes(value))
+                .forEach((value) => this.removeItem?.(this.control.path, value))
         },
     },
 })

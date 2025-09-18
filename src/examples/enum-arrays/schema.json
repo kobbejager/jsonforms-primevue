@@ -4,7 +4,7 @@
     "properties": {
         "enum_array": {
             "title": "Enum array (unique selections)",
-            "description": "Array of enum values rendered as checkboxes",
+            "description": "Array of enum values rendered using the 'variant' option (default: checkbox)",
             "type": "array",
             "uniqueItems": true,
             "items": {
@@ -14,7 +14,7 @@
         },
         "enum_array_horizontal": {
             "title": "Enum array (horizontal)",
-            "description": "Rendered horizontally and wraps as needed",
+            "description": "Same as checkbox but laid out horizontally (options.horizontal = true)",
             "type": "array",
             "uniqueItems": true,
             "items": {
@@ -24,7 +24,7 @@
         },
         "enum_array_toggle": {
             "title": "Enum array (ToggleSwitch)",
-            "description": "Each option rendered as a toggle switch",
+            "description": "Use options.variant = 'toggleswitch' to render ToggleSwitches",
             "type": "array",
             "uniqueItems": true,
             "items": {
@@ -34,12 +34,22 @@
         },
         "enum_array_selectbutton": {
             "title": "Enum array (SelectButton)",
-            "description": "SelectButton with multiple selection",
+            "description": "Use options.variant = 'selectbutton' to render a PrimeVue SelectButton (multiple)",
             "type": "array",
             "uniqueItems": true,
             "items": {
                 "type": "string",
                 "enum": ["Option 1", "Option 2", "Option 3", "Option 4"]
+            }
+        },
+        "enum_array_multiselect": {
+            "title": "Enum array (MultiSelect)",
+            "description": "Use options.variant = 'multiselect' to render a PrimeVue MultiSelect with chips. Particularly useful for long lists of short options.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "enum": ["Albania", "Andorra", "Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Moldova", "Monaco", "Montenegro", "Netherlands", "Norway", "Poland", "Portugal", "Romania", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Ukraine", "United Kingdom"]
             }
         },
         "enum_array_required": {

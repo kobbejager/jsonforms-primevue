@@ -17,6 +17,7 @@ import {
     RendererProps,
 } from '@jsonforms/vue';
 import { usePrimeVueArrayControl } from '../util';
+import type { ArrayListOptions } from '../util';
 import ArrayListElement from './ArrayListElement.vue';
 
 import Button from 'primevue/button';
@@ -35,7 +36,7 @@ const controlRenderer = defineComponent({
         ...rendererProps<ControlElement>(),
     },
     setup(props: RendererProps<ControlElement>) {
-        return usePrimeVueArrayControl(useJsonFormsArrayControl(props));
+        return usePrimeVueArrayControl<ReturnType<typeof useJsonFormsArrayControl>, ArrayListOptions>(useJsonFormsArrayControl(props));
     },
     computed: {
         noData(): boolean {

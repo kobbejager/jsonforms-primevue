@@ -8,6 +8,12 @@
             "type": "string",
             "enum": ["Option 1", "Option 2", "Option 3"]
         },
+        "enum_field_override": {
+            "title": "Enum field with overridden options",
+            "description": "An enum field with overridden options. Note that the enum values are still validated against the original enum values. This implies that the overridden options must be a subset of the original options.",
+            "type": "string",
+            "enum": ["Option 1", "Option 2", "Option 3", "Option 4"]
+        },
         "enum_field_with_default": {
             "title": "Enum field with default value",
             "description": "An enum field with a default value",

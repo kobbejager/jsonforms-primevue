@@ -15,7 +15,7 @@
             <SelectButton
                 :id="control.id + '-selectbutton'"
                 :model-value="control.data"
-                :options="control.options"
+                :options="filteredOptions"
                 optionLabel="label"
                 optionValue="value"
                 multiple
@@ -37,12 +37,13 @@
             <MultiSelect
                 :id="control.id + '-multiselect'"
                 :model-value="control.data"
-                :options="control.options"
+                :options="filteredOptions"
                 optionLabel="label"
                 optionValue="value"
                 :disabled="!control.enabled"
                 :class="styles.control.select"
                 :invalid="showErrors"
+                dropdownIcon="pi pi-tags"
                 filter 
                 display="chip"
                 @update:model-value="onSelectButtonUpdate"
@@ -58,7 +59,7 @@
 
         <div v-else :class="containerClass">
             <div
-                v-for="(checkElement, index) in control.options"
+                v-for="(checkElement, index) in filteredOptions"
                 :key="index"
                 class="flex items-center gap-2"
             >
@@ -110,6 +111,7 @@ import {
     JsonSchema,
 } from '@jsonforms/core'
 import { usePrimeVueArrayControl } from '../util'
+import type { EnumArrayOptions } from '../util'
 import Checkbox from 'primevue/checkbox'
 import ToggleSwitch from 'primevue/toggleswitch'
 import SelectButton from 'primevue/selectbutton'
@@ -132,7 +134,7 @@ const controlRenderer = defineComponent({
         const control = useJsonFormsMultiEnumControl(props)
 
         return {
-            ...usePrimeVueArrayControl(control),
+            ...usePrimeVueArrayControl<typeof control, EnumArrayOptions>(control),
             isFocused: ref(false),
         }
     },
@@ -146,6 +148,12 @@ const controlRenderer = defineComponent({
         variant(): 'checkbox' | 'toggleswitch' | 'selectbutton' | 'multiselect' {
             const opt = this.appliedOptions as any
             return opt?.variant ?? 'checkbox'
+        },
+        filteredOptions(): Array<{ label: string; value: any }> {
+            const enumValues = (this.appliedOptions as any)?.enumValues as any[] | undefined
+            const opts = this.control.options as Array<{ label: string; value: any }>
+            if (!enumValues || enumValues.length === 0) return opts
+            return opts.filter(o => enumValues.includes(o.value))
         },
     },
     methods: {

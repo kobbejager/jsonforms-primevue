@@ -2,7 +2,7 @@
 import { isDescriptionHidden } from "@jsonforms/core";
 import { defineComponent, PropType } from "vue";
 import { Styles } from "../styles";
-import { Options } from "../util";
+import type { BaseOptions } from "../util";
 
 export default defineComponent({
     name: "ControlWrapper",
@@ -28,7 +28,7 @@ export default defineComponent({
         },
         appliedOptions: {
             required: false as const,
-            type: Object as PropType<Options>,
+            type: Object as PropType<BaseOptions>,
             default: undefined,
         },
         visible: {

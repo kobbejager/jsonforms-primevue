@@ -9,6 +9,7 @@ import { defineComponent } from "vue";
 import { rendererProps, useJsonFormsEnumControl, RendererProps } from "@jsonforms/vue";
 import { default as ControlWrapper } from "./ControlWrapper.vue";
 import { usePrimeVueControl } from "../util";
+import type { EnumControlOptions } from "../util";
 
 import Select from "primevue/select";
 import RadioButton from "primevue/radiobutton";
@@ -29,10 +30,18 @@ const controlRenderer = defineComponent({
         const adaptTarget = (value: any) =>
             value === undefined ? undefined : value;
 
-        return usePrimeVueControl(
+        return usePrimeVueControl<ReturnType<typeof useJsonFormsEnumControl>, EnumControlOptions>(
             useJsonFormsEnumControl(props),
             adaptTarget
         );
+    },
+    computed: {
+        filteredOptions(): Array<{ label: string; value: any }> {
+            const enumValues = (this.appliedOptions as any)?.enumValues as any[] | undefined;
+            const opts = this.control.options as Array<{ label: string; value: any }>;
+            if (!enumValues || enumValues.length === 0) return opts;
+            return opts.filter(o => enumValues.includes(o.value));
+        },
     },
 });
 
@@ -57,7 +66,7 @@ export const entry: JsonFormsRendererRegistryEntry = {
             <SelectButton
                 :id="control.id + '-selectbutton'"
                 :model-value="control.data"
-                :options="control.options"
+                :options="filteredOptions"
                 optionLabel="label"
                 optionValue="value"
                 :disabled="!control.enabled"
@@ -69,7 +78,7 @@ export const entry: JsonFormsRendererRegistryEntry = {
             />
         </div>
         <div v-else-if="appliedOptions.radio" :class="appliedOptions.horizontal ? 'flex flex-wrap gap-6 items-center' : 'flex flex-col gap-2'">
-            <div v-for="(opt, idx) in control.options" :key="idx" class="flex items-center gap-2">
+            <div v-for="(opt, idx) in filteredOptions" :key="idx" class="flex items-center gap-2">
                 <RadioButton
                     :inputId="control.id + `-radio-${idx}`"
                     :model-value="control.data"
@@ -87,7 +96,7 @@ export const entry: JsonFormsRendererRegistryEntry = {
             v-else
             :id="control.id + '-select'"
             :model-value="control.data"
-            :options="control.options"
+            :options="filteredOptions"
             optionLabel="label"
             optionValue="value"
             showClear

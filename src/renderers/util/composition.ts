@@ -1,4 +1,5 @@
 import { useStyles } from '../styles';
+import type { BaseOptions } from './options';
 import { computed, ref } from 'vue';
 import merge from 'lodash/merge';
 import cloneDeep from 'lodash/cloneDeep';
@@ -13,7 +14,8 @@ import {
  * Adds styles, isFocused, appliedOptions and onChange
  */
 export const usePrimeVueControl = <
-    I extends { control: any; handleChange: any }
+    I extends { control: any; handleChange: any },
+    TOptions extends BaseOptions = BaseOptions
 >(
     input: I,
     adaptTarget
@@ -23,7 +25,7 @@ export const usePrimeVueControl = <
             {},
             cloneDeep(input.control.value.config),
             cloneDeep(input.control.value.uischema.options)
-        )
+        ) as TOptions
     );
 
     const isFocused = ref(false);
@@ -73,13 +75,13 @@ export const usePrimeVueControl = <
 /**
  * Adds styles and appliedOptions
  */
-export const usePrimeVueLayout = <I extends { layout: any }>(input: I) => {
+export const usePrimeVueLayout = <I extends { layout: any }, TOptions extends BaseOptions = BaseOptions>(input: I) => {
     const appliedOptions = computed(() =>
         merge(
             {},
             cloneDeep(input.layout.value.config),
             cloneDeep(input.layout.value.uischema.options)
-        )
+        ) as TOptions
     );
     return {
         ...input,
@@ -91,13 +93,13 @@ export const usePrimeVueLayout = <I extends { layout: any }>(input: I) => {
 /**
  * Adds styles and appliedOptions
  */
-export const usePrimeVueLabel = <I extends { label: any }>(input: I) => {
+export const usePrimeVueLabel = <I extends { label: any }, TOptions extends BaseOptions = BaseOptions>(input: I) => {
     const appliedOptions = computed(() =>
         merge(
             {},
             cloneDeep(input.label.value.config),
             cloneDeep(input.label.value.uischema.options)
-        )
+        ) as TOptions
     );
     return {
         ...input,
@@ -109,7 +111,7 @@ export const usePrimeVueLabel = <I extends { label: any }>(input: I) => {
 /**
  * Adds styles, appliedOptions and childUiSchema
  */
-export const usePrimeVueArrayControl = <I extends { control: any }>(
+export const usePrimeVueArrayControl = <I extends { control: any }, TOptions extends BaseOptions = BaseOptions>(
     input: I
 ) => {
     const appliedOptions = computed(() =>
@@ -117,7 +119,7 @@ export const usePrimeVueArrayControl = <I extends { control: any }>(
             {},
             cloneDeep(input.control.value.config),
             cloneDeep(input.control.value.uischema.options)
-        )
+        ) as TOptions
     );
 
     const isTouched = ref(false);

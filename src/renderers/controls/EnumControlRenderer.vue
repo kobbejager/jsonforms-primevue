@@ -38,9 +38,15 @@ const controlRenderer = defineComponent({
     computed: {
         filteredOptions(): Array<{ label: string; value: any }> {
             const enumValues = (this.appliedOptions as any)?.enumValues as any[] | undefined;
-            const opts = this.control.options as Array<{ label: string; value: any }>;
-            if (!enumValues || enumValues.length === 0) return opts;
-            return opts.filter(o => enumValues.includes(o.value));
+            const enumLabels = (this.appliedOptions as any)?.enumLabels as string[] | undefined;
+            let opts = this.control.options as Array<{ label: string; value: any }>;
+            if (Array.isArray(enumValues) && enumValues.length > 0) {
+                opts = opts.filter(o => enumValues.includes(o.value));
+            }
+            if (Array.isArray(enumLabels) && enumLabels.length === opts.length) {
+                return opts.map((o, idx) => ({ label: enumLabels[idx] ?? String(o.value), value: o.value }));
+            }
+            return opts;
         },
     },
 });

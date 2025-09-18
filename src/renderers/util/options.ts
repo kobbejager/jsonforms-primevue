@@ -11,6 +11,7 @@ export interface EnumArrayOptions extends BaseOptions {
     variant?: 'checkbox' | 'toggleswitch' | 'selectbutton' | 'multiselect';
     horizontal?: boolean;
     enumValues?: any[];
+    enumLabels?: string[];
 }
 
 export interface ArrayListOptions extends BaseOptions {
@@ -24,9 +25,21 @@ export interface EnumControlOptions extends BaseOptions {
     radio?: boolean;
     horizontal?: boolean;
     enumValues?: any[];
+    enumLabels?: string[];
 }
 
 export interface LabelOptions extends BaseOptions {
     description?: string;
     scope?: string;
+}
+
+export interface StringControlOptions extends BaseOptions {
+    password?: boolean;
+    toggleMask?: boolean;
+    inputMask?: string;
+}
+
+export interface StringSelectControlOptions extends BaseOptions {
+    enumValues?: any[];
+    enumLabels?: string[];
 }

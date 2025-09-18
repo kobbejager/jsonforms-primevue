@@ -1,6 +1,7 @@
 export { default as ControlWrapper } from './ControlWrapper.vue';
 export { default as StringControlRenderer } from './StringControlRenderer';
 export { default as StringExamplesControlRenderer } from './StringExamplesControlRenderer';
+export { default as StringSelectControlRenderer } from './StringSelectControlRenderer';
 export { default as MultiStringControlRenderer } from './MultiStringControlRenderer';
 export { default as NumberControlRenderer } from './NumberControlRenderer';
 export { default as IntegerControlRenderer } from './IntegerControlRenderer';
@@ -13,6 +14,7 @@ export { default as BooleanControlRenderer } from './BooleanControlRenderer';
 
 import { entry as stringControlRendererEntry } from './StringControlRenderer';
 import { entry as stringExamplesControlRendererEntry } from './StringExamplesControlRenderer';
+import { entry as stringSelectControlRendererEntry } from './StringSelectControlRenderer';
 import { entry as multiStringControlRendererEntry } from './MultiStringControlRenderer';
 import { entry as numberControlRendererEntry } from './NumberControlRenderer';
 import { entry as integerControlRendererEntry } from './IntegerControlRenderer';
@@ -26,6 +28,7 @@ import { entry as booleanControlRendererEntry } from './BooleanControlRenderer';
 export const controlRenderers = [
     stringControlRendererEntry,
     stringExamplesControlRendererEntry,
+    stringSelectControlRendererEntry,
     multiStringControlRendererEntry,
     numberControlRendererEntry,
     integerControlRendererEntry,

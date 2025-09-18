@@ -26,8 +26,7 @@
     props
 */
 
-    const props = defineProps(['example', 'key'])
-    // note: key is used to force remount the component (and jsonforms/ajv)
+    const props = defineProps(['example'])
 
 /*
     jsonforms parts

@@ -109,6 +109,12 @@
     })
 
     const defaultsAjv = createAjv({ useDefaults: true })
+    // Suppress Ajv unknown format warning by registering a no-op validator for "textarea"
+    defaultsAjv.addFormat('textarea', true)
+
+    // Base AJV (without auto defaults) but with the same custom formats to suppress warnings
+    const baseAjv = createAjv()
+    baseAjv.addFormat('textarea', true)
 
     // This applies the defaults conditionally
     // If always-on behavior is preferred, pass ajv={defaultsAjv} to JsonForms
@@ -366,7 +372,7 @@
                         :renderers="state.renderers" 
                         :schema="liveSchema" 
                         :uischema="liveUiSchema || undefined" 
-                        :ajv="autoDefaults ? defaultsAjv : undefined"
+                        :ajv="autoDefaults ? defaultsAjv : baseAjv"
                         :config="jsonFormsConfig"
                         :readonly="readonly"
                         @change="onChange" 

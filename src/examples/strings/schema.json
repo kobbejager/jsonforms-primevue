@@ -46,7 +46,7 @@
         },
         "textarea_field1": {
             "title": "Textarea field 1",
-            "description": "An optional text field defined as textarea in the schema",
+            "description": "An optional text field defined as textarea in the schema. Note that \"textarea\" is not a valid format according to the JSON Schema specifications, but it is used in another frequently used JSON Schema form library, and as such used frequently in JSON Schemas. The validation library AJV will print a warning when it encounters it, but it will still validate the field. This demo applies a workaround to suppress the warning.",
             "type": "string",
             "format": "textarea"
         },

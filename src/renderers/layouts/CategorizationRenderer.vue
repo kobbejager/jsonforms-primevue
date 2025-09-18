@@ -1,33 +1,32 @@
 <template>
-  <div :class="styles.categorization.root">
-    <div :class="styles.categorization.category">
-      <template
-        v-for="(category, index) in categories"
-        :key="`category-${index}`"
-      >
-        <div v-if="category.value.visible" @click="selected = index">
-          <button
-            :class="[selected === index ? styles.categorization.selected : '']"
-            :disabled="!category.value.enabled"
-          >
-            <label>{{ category.value.label }}</label>
-          </button>
+    <div :class="styles.categorization.root">
+        <div :class="styles.categorization.category">
+            <template v-for="(category, index) in categories" :key="`category-${index}`">
+                <div v-if="category.value.visible" @click="selected = index">
+                    <button
+                        :class="[
+                            selected === index ? styles.categorization.selected : '',
+                        ]"
+                        :disabled="!category.value.enabled"
+                    >
+                        <label>{{ category.value.label }}</label>
+                    </button>
+                </div>
+            </template>
         </div>
-      </template>
-    </div>
 
-    <div :class="styles.categorization.panel">
-      <DispatchRenderer
-        v-if="categories[selected]"
-        :schema="layout.schema"
-        :uischema="categories[selected].value.uischema"
-        :path="layout.path"
-        :enabled="layout.enabled"
-        :renderers="layout.renderers"
-        :cells="layout.cells"
-      />
+        <div :class="styles.categorization.panel">
+            <DispatchRenderer
+                v-if="categories[selected]"
+                :schema="layout.schema"
+                :uischema="categories[selected].value.uischema"
+                :path="layout.path"
+                :enabled="layout.enabled"
+                :renderers="layout.renderers"
+                :cells="layout.cells"
+            />
+        </div>
     </div>
-  </div>
 </template>
 
 <script lang="ts">

@@ -24,15 +24,15 @@ import { entry as timeControlRendererEntry } from './TimeControlRenderer';
 import { entry as booleanControlRendererEntry } from './BooleanControlRenderer';
 
 export const controlRenderers = [
-  stringControlRendererEntry,
-  stringExamplesControlRendererEntry,
-  multiStringControlRendererEntry,
-  numberControlRendererEntry,
-  integerControlRendererEntry,
-  enumControlRendererEntry,
-  oneOfEnumControlRendererEntry,
-  dateControlRendererEntry,
-  dateTimeControlRendererEntry,
-  timeControlRendererEntry,
-  booleanControlRendererEntry,
+    stringControlRendererEntry,
+    stringExamplesControlRendererEntry,
+    multiStringControlRendererEntry,
+    numberControlRendererEntry,
+    integerControlRendererEntry,
+    enumControlRendererEntry,
+    oneOfEnumControlRendererEntry,
+    dateControlRendererEntry,
+    dateTimeControlRendererEntry,
+    timeControlRendererEntry,
+    booleanControlRendererEntry,
 ];

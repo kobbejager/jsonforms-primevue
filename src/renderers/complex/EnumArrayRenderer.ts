@@ -3,16 +3,16 @@ import { defineComponent, h } from 'vue';
 import SfcComponent, { entry as sfcEntry } from './EnumArrayRenderer.vue';
 
 const Wrapped = defineComponent({
-  name: 'EnumArrayRenderer',
-  render() {
-    // @ts-ignore
-    return h(SfcComponent, this.$props, this.$slots);
-  },
+    name: 'EnumArrayRenderer',
+    render() {
+        // @ts-ignore
+        return h(SfcComponent, this.$props, this.$slots);
+    },
 });
 
 export default Wrapped;
 export const entry: JsonFormsRendererRegistryEntry = {
-  ...sfcEntry,
-  renderer: Wrapped,
+    ...sfcEntry,
+    renderer: Wrapped,
 };
 

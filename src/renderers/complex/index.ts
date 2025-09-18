@@ -7,7 +7,7 @@ import { entry as oneOfRendererEntry } from './OneOfRenderer';
 import { entry as enumArrayRendererEntry } from './EnumArrayRenderer';
 
 export const complexRenderers = [
-  objectRendererEntry,
-  oneOfRendererEntry,
-  enumArrayRendererEntry,
+    objectRendererEntry,
+    oneOfRendererEntry,
+    enumArrayRendererEntry,
 ];

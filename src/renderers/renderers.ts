@@ -5,9 +5,9 @@ import { labelRenderers } from './label';
 import { layoutRenderers } from './layouts';
 
 export const primeVueRenderers = [
-  ...controlRenderers,
-  ...layoutRenderers,
-  ...complexRenderers,
-  ...arrayRenderers,
-  ...labelRenderers,
+    ...controlRenderers,
+    ...layoutRenderers,
+    ...complexRenderers,
+    ...arrayRenderers,
+    ...labelRenderers,
 ];

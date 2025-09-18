@@ -9,8 +9,8 @@ import { entry as categorizationEntry } from '../layouts/CategorizationRenderer'
 import { entry as categorizationStepperEntry } from '../layouts/CategorizationStepperRenderer';
 
 export const layoutRenderers = [
-  layoutRendererEntry,
-  groupRendererEntry,
-  categorizationEntry,
-  categorizationStepperEntry,
+    layoutRendererEntry,
+    groupRendererEntry,
+    categorizationEntry,
+    categorizationStepperEntry,
 ];

@@ -3,8 +3,8 @@ import Component, { entry as sfcEntry } from './StringExamplesControlRenderer.vu
 
 export default Component;
 export const entry: JsonFormsRendererRegistryEntry = {
-  ...sfcEntry,
-  renderer: Component,
+    ...sfcEntry,
+    renderer: Component,
 };
 
 

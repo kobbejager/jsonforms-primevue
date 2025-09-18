@@ -102,6 +102,6 @@ export const entry: JsonFormsRendererRegistryEntry = {
 <style scoped>
 /* Remove Fieldset legend gap when we render label above the Fieldset */
 :deep(.no-legend-gap > .p-fieldset-legend) {
-  display: none;
+    display: none;
 }
 </style>

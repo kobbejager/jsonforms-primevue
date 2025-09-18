@@ -1,10 +1,38 @@
 {
     "type": "object",
-    "required": [],
+    "required": ["array_required", "array_required_min1"],
     "properties": {
         "array_of_strings": {
             "title": "Array of strings",
-            "description": "An array of primitive strings",
+            "description": "An array of primitive strings. If all items are removed, the array itself should be removed too",
+            "type": "array",
+            "items": {
+                "type": "string",
+                "title": "String"
+            }
+        },
+        "array_required": {
+            "title": "Array required",
+            "description": "An array that is required, without minimal number of items. If all items are removed, an empty array should be kept",
+            "type": "array",
+            "items": {
+                "type": "string",
+                "title": "String"
+            }
+        },
+        "array_required_min1": {
+            "title": "Array required with minimum 1 item",
+            "description": "An array that is required, with a minimum of 1 item. You can still remove all items, but an empty array should be kept",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "type": "string",
+                "title": "String"
+            }
+        },
+        "array_with_allowEmptyArrays": {
+            "title": "Array required with allowEmptyArrays",
+            "description": "An array that is not required. Using the option.allowEmptyArrays, an empty array should be kept if all items are removed",
             "type": "array",
             "items": {
                 "type": "string",

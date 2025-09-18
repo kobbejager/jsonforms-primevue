@@ -9,6 +9,7 @@ import {
     hasType,
     optionIs,
     Resolve,
+    update,
 } from "@jsonforms/core";
 import { defineComponent, ref } from "vue";
 import { rendererProps, useJsonFormsArrayControl, RendererProps } from "@jsonforms/vue";
@@ -87,6 +88,16 @@ const controlRenderer = defineComponent({
                 this.removeItems?.(this.control.path, [i])();
             }
             next.forEach((val) => this.addItem(this.control.path, val)());
+
+            // If result is empty and not allowed and not required, unset property
+            if (next.length === 0 && !(this.appliedOptions as any)?.allowEmptyArrays && !this.control.required) {
+                const dispatch = (this as any)?.$?.appContext?.provides?.dispatch;
+                if (typeof this.handleChange === 'function') {
+                    this.handleChange(this.control.path, undefined);
+                } else if (typeof dispatch === 'function') {
+                    dispatch(update(this.control.path, () => undefined));
+                }
+            }
         },
     },
 });

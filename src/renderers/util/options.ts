@@ -5,6 +5,12 @@ export interface BaseOptions {
     placeholder?: string;
     showAllErrors?: boolean;
     showErrorsOnTouched?: boolean;
+    /**
+     * If true, arrays are allowed to exist as empty arrays. If false (default),
+     * when an array becomes empty via user actions, the array property is unset
+     * (removed) from its parent object, provided the property is not required.
+     */
+    allowEmptyArrays?: boolean;
 }
 
 export interface EnumArrayOptions extends BaseOptions {

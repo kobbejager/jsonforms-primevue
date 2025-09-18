@@ -8,6 +8,12 @@
             "type": "array",
             "items": { "type": "string" }
         },
+        "simple_nonunique_with_allowEmptyArrays": {
+            "title": "Simple (non-unique) with allowEmptyArrays",
+            "description": "Array of strings. Using the option.allowEmptyArrays, one can override the default behavior of removing the array when all items are removed",
+            "type": "array",
+            "items": { "type": "string" }
+        },
         "simple_unique_schema": {
             "title": "Simple (unique via schema)",
             "description": "Array of strings with uniqueItems enforced by the JSON Schema.",

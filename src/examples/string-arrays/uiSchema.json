@@ -8,6 +8,11 @@
     },
     {
       "type": "Control",
+      "scope": "#/properties/simple_nonunique_with_allowEmptyArrays",
+      "options": { "compactStringArray": true, "allowEmptyArrays": true }
+    },
+    {
+      "type": "Control",
       "scope": "#/properties/simple_unique_schema",
       "options": { "compactStringArray": true }
     },

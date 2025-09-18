@@ -1,6 +1,6 @@
 import { useStyles } from '../styles';
 import type { BaseOptions } from './options';
-import { computed, ref } from 'vue';
+import { computed, ref, watch, inject } from 'vue';
 import merge from 'lodash/merge';
 import cloneDeep from 'lodash/cloneDeep';
 import {
@@ -8,6 +8,7 @@ import {
     findUISchema,
     getFirstPrimitiveProp,
     Resolve,
+    update,
 } from '@jsonforms/core';
 
 /**
@@ -111,7 +112,7 @@ export const usePrimeVueLabel = <I extends { label: any }, TOptions extends Base
 /**
  * Adds styles, appliedOptions and childUiSchema
  */
-export const usePrimeVueArrayControl = <I extends { control: any }, TOptions extends BaseOptions = BaseOptions>(
+export const usePrimeVueArrayControl = <I extends { control: any; handleChange: any }, TOptions extends BaseOptions = BaseOptions>(
     input: I
 ) => {
     const appliedOptions = computed(() =>
@@ -162,6 +163,35 @@ export const usePrimeVueArrayControl = <I extends { control: any }, TOptions ext
         }
         return "Item";
     };
+
+    // Access JSON Forms dispatch for direct updates when handleChange is not present
+    const dispatch = inject<any>('dispatch');
+    const writeChange = (path: string, value: any) => {
+        if (typeof (input as any).handleChange === 'function') {
+            (input as any).handleChange(path, value);
+        } else if (dispatch) {
+            dispatch(update(path, () => value));
+        }
+    };
+
+    // Auto-unset empty arrays unless explicitly allowed
+    watch(
+        () => (Array.isArray(input.control.value?.data) ? input.control.value.data.length : null),
+        (newLen) => {
+            try {
+                const isEmpty = newLen === 0;
+                const allowEmpty = !!(appliedOptions.value as any)?.allowEmptyArrays;
+                const isRequired = !!input.control.value?.required;
+                const path: string = input.control.value?.path ?? '';
+                const isRoot = path === '' || path === undefined || path === null;
+                if (isEmpty && !allowEmpty && !isRequired && !isRoot) {
+                    writeChange(path, undefined);
+                }
+            } catch (e) {
+                // no-op: best-effort cleanup
+            }
+        }
+    );
     return {
         ...input,
         styles: useStyles(input.control.value.uischema),

@@ -12,6 +12,16 @@
                 "enum": ["Option 1", "Option 2", "Option 3"]
             }
         },
+        "enum_array_with_allowEmptyArrays": {
+            "title": "Enum array (with allowEmptyArrays)",
+            "description": "Array of enum values. Using the option.allowEmptyArrays, one can override the default behavior of removing the array when all items are removed",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "enum": ["Option 1", "Option 2", "Option 3"]
+            }
+        },
         "enum_array_horizontal": {
             "title": "Enum array (horizontal)",
             "description": "Same as checkbox but laid out horizontally (options.horizontal = true)",

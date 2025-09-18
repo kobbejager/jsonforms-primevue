@@ -7,6 +7,21 @@
         },
         {
             "type": "Control",
+            "scope": "#/properties/array_required"
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/array_required_min1"
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/array_with_allowEmptyArrays",
+            "options": {
+                "allowEmptyArrays": true
+            }
+        },
+        {
+            "type": "Control",
             "scope": "#/properties/array_with_minimum_items"
         },
         {

@@ -1,7 +1,8 @@
 {
     "type": "VerticalLayout",
     "elements": [
-        { "type": "Control", "scope": "#/properties/enum_array", "options": { "variant": "checkbox" } },
+        { "type": "Control", "scope": "#/properties/enum_array" },
+        { "type": "Control", "scope": "#/properties/enum_array_with_allowEmptyArrays", "options": { "allowEmptyArrays": true } },
         { "type": "Control", "scope": "#/properties/enum_array_horizontal", "options": { "variant": "checkbox", "horizontal": true } },
         { "type": "Control", "scope": "#/properties/enum_array_toggle", "options": { "variant": "toggleswitch", "horizontal": true } },
         { "type": "Control", "scope": "#/properties/enum_array_selectbutton", "options": { "variant": "selectbutton" } },

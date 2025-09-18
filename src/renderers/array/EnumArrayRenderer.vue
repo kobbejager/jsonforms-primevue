@@ -109,6 +109,7 @@ import {
     hasType,
     schemaSubPathMatches,
     JsonSchema,
+    update,
 } from '@jsonforms/core'
 import { usePrimeVueArrayControl } from '../util'
 import type { EnumArrayOptions } from '../util'
@@ -174,12 +175,31 @@ const controlRenderer = defineComponent({
             } else if (!nowSelected && previouslySelected) {
                 this.removeItem?.(this.control.path, optionValue)
             }
+            // After toggle via checkbox, if empty now and not allowed and not required, unset
+            const nextLen = Array.isArray(this.control.data) ? this.control.data.length : 0
+            if (nextLen === 0 && !(this.appliedOptions as any)?.allowEmptyArrays && !this.control.required) {
+                const dispatch = (this as any)?.$?.appContext?.provides?.dispatch
+                if (typeof this.handleChange === 'function') {
+                    this.handleChange(this.control.path, undefined)
+                } else if (typeof dispatch === 'function') {
+                    dispatch(update(this.control.path, () => undefined))
+                }
+            }
         },
         onToggleSwitch(optionValue: any, checked: boolean): void {
             if (checked && !this.dataHasEnum(optionValue)) {
                 this.addItem(this.control.path, optionValue)
             } else if (!checked && this.dataHasEnum(optionValue)) {
                 this.removeItem?.(this.control.path, optionValue)
+            }
+            const nextLen = Array.isArray(this.control.data) ? this.control.data.length : 0
+            if (nextLen === 0 && !(this.appliedOptions as any)?.allowEmptyArrays && !this.control.required) {
+                const dispatch = (this as any)?.$?.appContext?.provides?.dispatch
+                if (typeof this.handleChange === 'function') {
+                    this.handleChange(this.control.path, undefined)
+                } else if (typeof dispatch === 'function') {
+                    dispatch(update(this.control.path, () => undefined))
+                }
             }
         },
         onSelectButtonUpdate(newModel: any): void {
@@ -197,6 +217,15 @@ const controlRenderer = defineComponent({
             current
                 .filter((value) => !next.includes(value))
                 .forEach((value) => this.removeItem?.(this.control.path, value))
+
+            if (next.length === 0 && !(this.appliedOptions as any)?.allowEmptyArrays && !this.control.required) {
+                const dispatch = (this as any)?.$?.appContext?.provides?.dispatch
+                if (typeof this.handleChange === 'function') {
+                    this.handleChange(this.control.path, undefined)
+                } else if (typeof dispatch === 'function') {
+                    dispatch(update(this.control.path, () => undefined))
+                }
+            }
         },
     },
 })

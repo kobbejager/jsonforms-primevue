@@ -57,13 +57,9 @@ const controlRenderer = defineComponent({
                 this.control.data.length >= this.arraySchema.maxItems
             );
         },
+        // Do not enforce minItems at the UI level for delete behavior
         minItemsReached(): boolean | undefined {
-            return (
-                this.arraySchema !== undefined &&
-                this.arraySchema.minItems !== undefined &&
-                this.control.data !== undefined &&
-                this.control.data.length <= this.arraySchema.minItems
-            );
+            return false;
         },
         showAsterisk(): boolean {
             return this.control.required && !this.appliedOptions?.hideRequiredAsterisk;
@@ -97,6 +93,26 @@ const controlRenderer = defineComponent({
                 this.control.path,
                 createDefaultValue(this.control.schema, this.control.rootSchema)
             )();
+        },
+        deleteAtIndex(index: number) {
+            const willBeEmpty = Array.isArray(this.control.data) && this.control.data.length === 1;
+            // Perform removal
+            this.removeItems(this.control.path, [index])();
+            // If it becomes empty and not allowed and not required, unset property
+            if (
+                willBeEmpty &&
+                !this.appliedOptions?.allowEmptyArrays &&
+                !this.control.required
+            ) {
+                // Fallback to dispatch via injected action if handleChange is not available
+                if (typeof this.handleChange === 'function') {
+                    this.handleChange(this.control.path, undefined);
+                } else if (typeof (this as any).$?.appContext?.provides?.dispatch === 'function') {
+                    const dispatch = (this as any).$?.appContext?.provides?.dispatch;
+                    const { update } = require('@jsonforms/core');
+                    dispatch(update(this.control.path, () => undefined));
+                }
+            }
         },
     },
 });
@@ -152,8 +168,8 @@ export const entry: JsonFormsRendererRegistryEntry = {
                 :move-up-enabled="control.enabled && index > 0"
                 :move-down="moveDown(control.path, index)"
                 :move-down-enabled="control.enabled && index < control.data.length - 1"
-                :delete-enabled="control.enabled && !minItemsReached" 
-                :delete="removeItems(control.path, [index])"
+                :delete-enabled="control.enabled" 
+                :delete="() => deleteAtIndex(index)"
                 :label="childLabelForIndex(index)" 
                 :sortable="appliedOptions?.sortable ?? false"
                 :styles="styles"

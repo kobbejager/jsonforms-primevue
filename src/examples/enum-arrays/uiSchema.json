@@ -7,6 +7,7 @@
         { "type": "Control", "scope": "#/properties/enum_array_selectbutton", "options": { "variant": "selectbutton" } },
         { "type": "Control", "scope": "#/properties/enum_array_multiselect", "options": { "variant": "multiselect" } },
         { "type": "Control", "scope": "#/properties/enum_array_override", "options": { "variant": "multiselect", "enumValues": ["Belgium", "France", "Germany", "Netherlands"] } },
+        { "type": "Control", "scope": "#/properties/enum_array_with_labels", "options": { "variant": "multiselect", "enumLabels": ["Belgium", "France", "Germany", "Netherlands"] } },
         { "type": "Control", "scope": "#/properties/enum_array_required" },
         { "type": "Control", "scope": "#/properties/enum_array_default" },
         { "type": "Control", "scope": "#/properties/enum_array_readonly", "options": { "readonly": true } }

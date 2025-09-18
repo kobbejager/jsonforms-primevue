@@ -25,6 +25,52 @@
         },
         {
             "type": "Control",
+            "scope": "#/properties/password_field",
+            "options": {
+                "password": true,
+                "description": "This control uses the PrimeVue Password component."
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/password_field_no_toggle",
+            "options": {
+                "password": true,
+                "toggleMask": false
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/phone_mask",
+            "options": {
+                "inputMask": "(999) 999-9999"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/date_mask_with_placeholder",
+            "options": {
+                "inputMask": "99/99/9999",
+                "placeholder": "MM/DD/YYYY"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/string_restricted",
+            "options": {
+                "enumValues": ["Option 1", "Option 2", "Option 3"]
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/string_restricted_with_labels",
+            "options": {
+                "enumValues": ["BE", "NL", "DE"],
+                "enumLabels": ["Belgium", "Netherlands", "Germany"]
+            }
+        },
+        {
+            "type": "Control",
             "scope": "#/properties/string_field_with_examples"
         },
         {

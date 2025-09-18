@@ -62,6 +62,16 @@
                 "enum": ["Albania", "Andorra", "Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Moldova", "Monaco", "Montenegro", "Netherlands", "Norway", "Poland", "Portugal", "Romania", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Ukraine", "United Kingdom"]
             }
         },
+        "enum_array_with_labels": {
+            "title": "Enum array (with labels)",
+            "description": "Use options.enumLabels to override the labels displayed in the MultiSelect. The values are still those defined in the JSON Schema enum or the options.enumValues.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "enum": ["BE", "FR", "DE", "NL"]
+            }
+        },
         "enum_array_required": {
             "title": "Enum array (required)",
             "description": "Required enum array",

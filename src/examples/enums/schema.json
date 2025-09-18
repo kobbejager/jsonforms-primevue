@@ -14,6 +14,12 @@
             "type": "string",
             "enum": ["Option 1", "Option 2", "Option 3", "Option 4"]
         },
+        "enum_field_with_labels": {
+            "title": "Enum field with labels",
+            "description": "An enum field with labels defined in the UI Schema using 'options.enumLabels'.",
+            "type": "string",
+            "enum": ["BE", "NL", "DE"]
+        },
         "enum_field_with_default": {
             "title": "Enum field with default value",
             "description": "An enum field with a default value",

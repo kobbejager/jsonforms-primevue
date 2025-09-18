@@ -3,6 +3,7 @@
   "elements": [
     { "type": "Control", "scope": "#/properties/enum_field" },
     { "type": "Control", "scope": "#/properties/enum_field_override", "options": { "enumValues": ["Option 1", "Option 3"] } },
+    { "type": "Control", "scope": "#/properties/enum_field_with_labels", "options": { "enumLabels": ["Belgium", "Netherlands", "Germany"] } },
     { "type": "Control", "scope": "#/properties/enum_field_with_default" },
     { "type": "Control", "scope": "#/properties/enum_field_readonly", "options": { "readonly": true } },
     { "type": "Control", "scope": "#/properties/oneof_enum" },

@@ -26,6 +26,36 @@
             "description": "An optional text field with a placeholder in readonly mode (defined in the UI Schema)",
             "type": "string"
         },
+        "password_field": {
+            "title": "Password field (PrimeVue Password)",
+            "description": "Render as PrimeVue Password by setting 'options.password': true in the UI schema. Optionally set 'options.toggleMask' (default true) to show the toggle mask icon.",
+            "type": "string"
+        },
+        "password_field_no_toggle": {
+            "title": "Password field without toggle mask",
+            "description": "Same as above but with 'options.toggleMask': false to hide the toggle icon.",
+            "type": "string"
+        },
+        "phone_mask": {
+            "title": "String field with input mask",
+            "description": "Render as PrimeVue InputMask by setting 'options.inputMask' in the UI schema (e.g. '(999) 999-9999').",
+            "type": "string"
+        },
+        "date_mask_with_placeholder": {
+            "title": "String field with input mask and custom placeholder",
+            "description": "Uses 'options.inputMask' (e.g. '99/99/9999') and overrides the placeholder via 'options.placeholder' (e.g. 'MM/DD/YYYY'). Could be further restricted to realistic dates using 'pattern' in the JSON Schema, but this is not done here for simplicity.",
+            "type": "string"
+        },
+        "string_restricted": {
+            "title": "String field restricted with enumValues in the UI Schema",
+            "description": "Render as PrimeVue Select by setting 'options.enumValues' in the UI schema.",
+            "type": "string"
+        },
+        "string_restricted_with_labels": {
+            "title": "String field restricted with enumValues and enumLabels in the UI Schema",
+            "description": "Render as PrimeVue Select by setting 'options.enumValues' in the UI schema. Here, the optional labels are provided in the UI schema using 'options.enumLabels'.",
+            "type": "string"
+        },
         "string_field_with_examples": {
             "title": "String field with examples",
             "description": "An optional text field with examples defined in the schema",

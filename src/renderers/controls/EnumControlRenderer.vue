@@ -48,6 +48,44 @@ const controlRenderer = defineComponent({
             }
             return opts;
         },
+        includeNotApplicable(): boolean {
+            const opts: any = this.appliedOptions as any;
+            const isAlt = !!opts?.radio || !!opts?.selectButton;
+            if (this.control.required) return false;
+            if (isAlt) {
+                if (opts?.allowNotApplicable === false) return false;
+                return true;
+            }
+            return !!opts?.allowNotApplicable;
+        },
+        notApplicableLabel(): string {
+            const opts: any = this.appliedOptions as any;
+            return opts?.NotApplicableLabel || opts?.notApplicableLabel || 'Not applicable';
+        },
+        selectOptions(): Array<{ label: string; value: any }> {
+            const base = this.filteredOptions;
+            if (this.includeNotApplicable) {
+                return [{ label: this.notApplicableLabel, value: '__NOT_APPLICABLE__' }, ...base];
+            }
+            return base;
+        },
+    },
+    methods: {
+        updateAlt(val: any): void {
+            if (val === '__NOT_APPLICABLE__') {
+                // Unset the property entirely
+                this.handleChange?.(this.control.path, undefined);
+            } else {
+                this.onChange(val);
+            }
+        },
+        handleSelectUpdate(val: any): void {
+            if (val === undefined || val === null || val === '__NOT_APPLICABLE__') {
+                this.handleChange?.(this.control.path, undefined);
+            } else {
+                this.onChange(val);
+            }
+        },
     },
 });
 
@@ -71,27 +109,27 @@ export const entry: JsonFormsRendererRegistryEntry = {
         <div v-if="appliedOptions.selectButton">
             <SelectButton
                 :id="control.id + '-selectbutton'"
-                :model-value="control.data"
-                :options="filteredOptions"
+                :model-value="control.data ?? (includeNotApplicable ? '__NOT_APPLICABLE__' : control.data)"
+                :options="selectOptions"
                 optionLabel="label"
                 optionValue="value"
                 :disabled="!control.enabled"
                 :class="styles.control.select"
                 :invalid="showErrors"
-                @update:model-value="onChange"
+                @update:model-value="updateAlt"
                 @focus="isFocused = true"
                 @blur="() => { isFocused = false; markTouched(); }"
             />
         </div>
         <div v-else-if="appliedOptions.radio" :class="appliedOptions.horizontal ? 'flex flex-wrap gap-6 items-center' : 'flex flex-col gap-2'">
-            <div v-for="(opt, idx) in filteredOptions" :key="idx" class="flex items-center gap-2">
+            <div v-for="(opt, idx) in selectOptions" :key="idx" class="flex items-center gap-2">
                 <RadioButton
                     :inputId="control.id + `-radio-${idx}`"
-                    :model-value="control.data"
+                    :model-value="control.data ?? (includeNotApplicable ? '__NOT_APPLICABLE__' : control.data)"
                     :value="opt.value"
                     :disabled="!control.enabled"
                     :invalid="showErrors"
-                    @update:model-value="onChange"
+                    @update:model-value="updateAlt"
                     @focus="isFocused = true"
                     @blur="() => { isFocused = false; markTouched(); }"
                 />
@@ -102,16 +140,16 @@ export const entry: JsonFormsRendererRegistryEntry = {
             v-else
             :id="control.id + '-select'"
             :model-value="control.data"
-            :options="filteredOptions"
+            :options="selectOptions"
             optionLabel="label"
             optionValue="value"
-            showClear
+            :showClear="!control.required"
             fluid
             :class="styles.control.select"
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"
             :invalid="showErrors"
-            @update:model-value="onChange"
+            @update:model-value="handleSelectUpdate"
             @focus="isFocused = true"
             @blur="() => { isFocused = false; markTouched(); }"
         >

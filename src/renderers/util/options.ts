@@ -47,6 +47,10 @@ export interface EnumControlOptions extends BaseOptions {
     horizontal?: boolean;
     enumValues?: any[];
     enumLabels?: string[];
+    /** Optional-only: show an explicit Not applicable choice in Select */
+    allowNotApplicable?: boolean;
+    /** Custom label for Not applicable */
+    notApplicableLabel?: string;
 }
 
 export interface LabelOptions extends BaseOptions {

@@ -1,10 +1,22 @@
 {
     "type": "object",
-    "required": [],
+    "required": ["enum_field_required", "enum_selectbutton_required"],
     "properties": {
         "enum_field": {
             "title": "Enum field",
             "description": "An enum field",
+            "type": "string",
+            "enum": ["Option 1", "Option 2", "Option 3"]
+        },
+        "enum_field_required": {
+            "title": "Enum field (required)",
+            "description": "An enum field (required)",
+            "type": "string",
+            "enum": ["Option 1", "Option 2", "Option 3"]
+        },
+        "enum_field_with_not_applicable": {
+            "title": "Enum field with not applicable option",
+            "description": "An enum field with the allowNotApplicable and (the optional) notApplicableLabel option set in the UI Schema",
             "type": "string",
             "enum": ["Option 1", "Option 2", "Option 3"]
         },
@@ -82,13 +94,19 @@
         },
         "enum_radio_horizontal": {
             "title": "Enum as radios (horizontal)",
-            "description": "Radio buttons laid out horizontally",
+            "description": "Radio buttons laid out horizontally, also using a custom notApplicableLabel",
             "type": "string",
             "enum": ["One", "Two", "Three", "Four"]
         },
         "enum_selectbutton": {
             "title": "Enum as selectbutton",
             "description": "Render as SelectButton",
+            "type": "string",
+            "enum": ["Red", "Green", "Blue"]
+        },
+        "enum_selectbutton_required": {
+            "title": "Enum as selectbutton (required)",
+            "description": "Render as required SelectButton. Note that when the property is required, there is no not applicable option.",
             "type": "string",
             "enum": ["Red", "Green", "Blue"]
         }

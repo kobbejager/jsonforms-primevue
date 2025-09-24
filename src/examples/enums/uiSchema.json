@@ -2,6 +2,8 @@
   "type": "VerticalLayout",
   "elements": [
     { "type": "Control", "scope": "#/properties/enum_field" },
+    { "type": "Control", "scope": "#/properties/enum_field_required"},
+    { "type": "Control", "scope": "#/properties/enum_field_with_not_applicable", "options": { "allowNotApplicable": true, "notApplicableLabel": "None" } },
     { "type": "Control", "scope": "#/properties/enum_field_override", "options": { "enumValues": ["Option 1", "Option 3"] } },
     { "type": "Control", "scope": "#/properties/enum_field_with_labels", "options": { "enumLabels": ["Belgium", "Netherlands", "Germany"] } },
     { "type": "Control", "scope": "#/properties/enum_field_with_default" },
@@ -11,8 +13,9 @@
     { "type": "Control", "scope": "#/properties/enum_booleans" },
     { "type": "Control", "scope": "#/properties/enum_mixed_string_numbers" },
     { "type": "Control", "scope": "#/properties/enum_radio", "options": { "radio": true } },
-    { "type": "Control", "scope": "#/properties/enum_radio_horizontal", "options": { "radio": true, "horizontal": true } },
-    { "type": "Control", "scope": "#/properties/enum_selectbutton", "options": { "selectButton": true } }
+    { "type": "Control", "scope": "#/properties/enum_radio_horizontal", "options": { "radio": true, "horizontal": true, "notApplicableLabel": "None" } },
+    { "type": "Control", "scope": "#/properties/enum_selectbutton", "options": { "selectButton": true } },
+    { "type": "Control", "scope": "#/properties/enum_selectbutton_required", "options": { "selectButton": true } }
   ]
 }
 

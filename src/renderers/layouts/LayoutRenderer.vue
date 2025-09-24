@@ -32,6 +32,7 @@ import {
     RendererProps,
 } from '@jsonforms/vue'
 import { usePrimeVueLayout } from '../util'
+import type { LayoutOptions } from '../util'
 
 const layoutRenderer = defineComponent({
     name: 'LayoutRenderer',
@@ -42,7 +43,7 @@ const layoutRenderer = defineComponent({
         ...rendererProps<Layout>(),
     },
     setup(props: RendererProps<Layout>) {
-        return usePrimeVueLayout(useJsonFormsLayout(props))
+        return usePrimeVueLayout<ReturnType<typeof useJsonFormsLayout>, LayoutOptions>(useJsonFormsLayout(props))
     },
     computed: {
         layoutClassObject(): any {

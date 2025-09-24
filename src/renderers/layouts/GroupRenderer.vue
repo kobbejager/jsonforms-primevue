@@ -44,6 +44,7 @@ import {
     RendererProps,
 } from '@jsonforms/vue'
 import { usePrimeVueLayout } from '../util'
+import type { GroupOptions } from '../util'
 import { Resolve } from '@jsonforms/core'
 import Fieldset from 'primevue/fieldset'
 
@@ -58,7 +59,7 @@ const layoutRenderer = defineComponent({
     },
     setup(props: RendererProps<Layout>) {
         const base = useJsonFormsLayout(props)
-        const model = usePrimeVueLayout(base)
+        const model = usePrimeVueLayout<typeof base, GroupOptions>(base)
         const groupDescription = computed(() => {
             const uiDesc = (model as any).appliedOptions?.value?.description
             if (uiDesc) return uiDesc

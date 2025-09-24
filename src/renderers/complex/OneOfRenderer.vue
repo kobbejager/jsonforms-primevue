@@ -97,6 +97,7 @@ import {
 } from '@jsonforms/vue'
 import { defineComponent, ref } from 'vue'
 import { usePrimeVueControl } from '../util'
+import type { OneOfOptions } from '../util'
 import { ControlWrapper } from '../controls'
 import CombinatorProperties from './components/CombinatorProperties.vue'
 import Select from 'primevue/select'
@@ -132,7 +133,7 @@ const controlRenderer = defineComponent({
         const newSelectedIndex = ref(0)
 
         return {
-            ...usePrimeVueControl(input),
+            ...usePrimeVueControl<typeof input, OneOfOptions>(input),
             selectedIndex,
             selectIndex,
             newSelectedIndex,

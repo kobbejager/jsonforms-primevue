@@ -54,6 +54,17 @@ export interface LabelOptions extends BaseOptions {
     scope?: string;
 }
 
+export interface GroupOptions extends BaseOptions {
+    description?: string;
+    scope?: string;
+}
+
+export interface LayoutOptions extends BaseOptions {}
+
+export interface CategorizationOptions extends BaseOptions {
+    showNavButtons?: boolean;
+}
+
 export interface StringControlOptions extends BaseOptions {
     password?: boolean;
     toggleMask?: boolean;
@@ -63,4 +74,9 @@ export interface StringControlOptions extends BaseOptions {
 export interface StringSelectControlOptions extends BaseOptions {
     enumValues?: any[];
     enumLabels?: string[];
+}
+
+export interface StringExamplesOptions extends BaseOptions {
+    examples?: any[];
+    suggestions?: any[];
 }

@@ -10,6 +10,7 @@ import { defineComponent, computed } from "vue";
 import { rendererProps, useJsonFormsControl, RendererProps } from "@jsonforms/vue";
 import { default as ControlWrapper } from "./ControlWrapper.vue";
 import { usePrimeVueControl } from "../util";
+import type { StringExamplesOptions } from "../util";
 
 import Select from "primevue/select";
 
@@ -26,7 +27,7 @@ const controlRenderer = defineComponent({
         const adaptTarget = (value: any) =>
             value === "" ? undefined : value?.toString?.() ?? value;
 
-        const base = usePrimeVueControl(
+        const base = usePrimeVueControl<ReturnType<typeof useJsonFormsControl>, StringExamplesOptions>(
             useJsonFormsControl(props),
             adaptTarget
         );

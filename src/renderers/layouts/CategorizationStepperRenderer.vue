@@ -83,6 +83,7 @@ import {
   type RendererProps,
 } from '@jsonforms/vue';
 import { usePrimeVueLayout } from '../util';
+import type { CategorizationOptions } from '../util';
 
 const layoutRenderer = defineComponent({
   name: 'CategorizationStepperRenderer',
@@ -93,7 +94,7 @@ const layoutRenderer = defineComponent({
     ...rendererProps<Layout>(),
   },
   setup(props: RendererProps<Layout>) {
-    return usePrimeVueLayout(useJsonFormsCategorization(props));
+    return usePrimeVueLayout<ReturnType<typeof useJsonFormsCategorization>, CategorizationOptions>(useJsonFormsCategorization(props));
   },
   data() {
     return {

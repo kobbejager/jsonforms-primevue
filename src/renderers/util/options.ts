@@ -22,6 +22,11 @@ export interface OneOfOptions extends BaseOptions {
     horizontal?: boolean;
 }
 
+export interface AnyOfOptions extends BaseOptions {
+    /** If true, allow the parent object to remain empty ({}). Defaults to false. */
+    allowEmpty?: boolean;
+}
+
 export interface EnumArrayOptions extends BaseOptions {
     variant?: 'checkbox' | 'toggleswitch' | 'selectbutton' | 'multiselect';
     horizontal?: boolean;

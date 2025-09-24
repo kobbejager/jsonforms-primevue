@@ -1,0 +1,121 @@
+{
+    "type": "object",
+    "required": ["allOf_required"],
+    "properties": {
+        "allOf": {
+            "title": "AllOf",
+            "description": "An example of an optional allOf construction",
+            "allOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
+        },
+        "allOf_required": {
+            "title": "AllOf (required)",
+            "description": "An example of a required allOf construction",
+            "allOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
+        },
+        "allOf_with_data": {
+            "title": "AllOf with prefilled data",
+            "description": "An example of a allOf construction with prefilled data",
+            "allOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
+        },
+        "allOf_readonly": {
+            "title": "AllOf readonly",
+            "description": "An example of a readonly allOf construction with readonly option set in the UI schema",
+            "allOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
+        },
+        "allOf_with_not_applicable": {
+            "title": "AllOf with not applicable option",
+            "description": "An example of an optional allOf construction with the allowNotApplicable option and an optional NotApplicableLabel. These options only apply if the parent property of the allOf construction is optional.",
+            "allOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
+        },
+        "allOf_with_radio": {
+            "title": "AllOf with radio",
+            "description": "An example of a allOf construction with radio and horizontal options set in the UI schema",
+            "allOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
+        },
+        "allOf_with_selectbutton": {
+            "title": "AllOf with selectbutton",
+            "description": "An example of a allOf construction with selectbutton and notApplicableLabel options set in the UI schema",
+            "allOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
+        }   
+    },
+    "$defs": {
+        "address": {
+            "type": "object",
+            "title": "Address",
+            "properties": {
+                "street_address": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                }
+            },
+            "required": ["street_address", "city", "state"]
+        },
+        "user": {
+            "type": "object",
+            "title": "User",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "mail": {
+                    "type": "string"
+                }
+            },
+            "required": ["name", "mail"]
+        }
+    }
+}

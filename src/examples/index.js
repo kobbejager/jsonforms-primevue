@@ -8,6 +8,9 @@ import { example as arrays } from './arrays';
 import { example as stringArrays } from './string-arrays';
 import { example as objects } from './objects';
 import { example as oneOf } from './one-of';
+import { example as anyOf } from './any-of';
+import { example as allOf } from './all-of';
+
 
 export const examples = [
     { 
@@ -60,4 +63,14 @@ export const examples = [
         example: oneOf,
         category: 'Combinators',
     },
+    { 
+        label: 'AnyOf',
+        example: anyOf,
+        category: 'Combinators',
+    },
+    { 
+        label: 'AllOf',
+        example: allOf,
+        category: 'Combinators',
+    }
 ]

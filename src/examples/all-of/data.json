@@ -1,0 +1,10 @@
+{
+    "allOf_with_data": {
+        "name": "John Doe",
+        "mail": "john.doe@example.com"
+    },
+    "allOf_readonly": {
+        "name": "John Doe",
+        "mail": "john.doe@example.com"
+    }
+}

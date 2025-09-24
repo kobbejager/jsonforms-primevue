@@ -1,0 +1,24 @@
+{
+    "type": "VerticalLayout",
+    "elements": [
+        {
+            "type": "Control",
+            "scope": "#/properties/anyOf"
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/anyOf_required"
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/anyOf_with_data"
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/anyOf_readonly",
+            "options": {
+                "readonly": true
+            }
+        }
+    ]
+}

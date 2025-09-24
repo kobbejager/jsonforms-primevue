@@ -1,0 +1,85 @@
+{
+    "type": "object",
+    "required": ["anyOf_required"],
+    "properties": {
+        "anyOf": {
+            "title": "AnyOf",
+            "description": "An example of an optional anyOf construction",
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
+        },
+        "anyOf_required": {
+            "title": "AnyOf (required)",
+            "description": "An example of a required anyOf construction",
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
+        },
+        "anyOf_with_data": {
+            "title": "AnyOf with prefilled data",
+            "description": "An example of a anyOf construction with prefilled data",
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
+        },
+        "anyOf_readonly": {
+            "title": "AnyOf readonly",
+            "description": "An example of a readonly anyOf construction with readonly option set in the UI schema",
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
+        }
+    },
+    "$defs": {
+        "address": {
+            "type": "object",
+            "title": "Address",
+            "properties": {
+                "street_address": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                }
+            },
+            "required": ["street_address", "city", "state"]
+        },
+        "user": {
+            "type": "object",
+            "title": "User",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "mail": {
+                    "type": "string"
+                }
+            },
+            "required": ["name", "mail"]
+        }
+    }
+}

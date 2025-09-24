@@ -13,9 +13,9 @@ At the moment, jsonforms-primevue renderers and the example app are in one and t
 1) Add the dependency using a tag (recommended)
 
 ```bash
-yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#v0.1.0
+yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#v0.2.0
 # or with semver selector to auto-allow compatible updates
-yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#semver:^0.1.0
+yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#semver:^0.2.0
 ```
 
 2) Ensure peer dependencies are installed in your app

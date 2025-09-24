@@ -1,0 +1,48 @@
+{
+    "definitions": {
+        "address": {
+            "type": "object",
+            "title": "Address",
+            "properties": {
+                "street_address": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                }
+            },
+            "required": ["street_address", "city", "state"]
+        },
+        "user": {
+            "type": "object",
+            "title": "User",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "mail": {
+                    "type": "string"
+                }
+            },
+            "required": ["name", "mail"]
+        }
+    },
+    "type": "object",
+    "properties": {
+        "oneOf_example": {
+            "title": "OneOf example",
+            "description": "An example of oneOf construction",
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/address"
+                },
+                {
+                    "$ref": "#/definitions/user"
+                }
+            ]
+        }
+    }
+}

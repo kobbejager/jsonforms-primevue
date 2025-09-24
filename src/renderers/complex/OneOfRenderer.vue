@@ -13,24 +13,22 @@
             :is-focused="isFocused"
             :applied-options="appliedOptions"
         >
-            <select
-                :id="control.id + '-input'"
-                :class="styles.control.select"
-                :value="selectIndex"
-                :disabled="!control.enabled"
-                :autofocus="appliedOptions.focus"
-                @change="handleSelectChange"
-                @focus="isFocused = true"
-                @blur="isFocused = false"
-            >
-                <option
-                    v-for="optionElement in indexedOneOfRenderInfos"
-                    :key="optionElement.index"
-                    :value="optionElement.index"
-                    :label="optionElement.label"
-                    :class="styles.control.option"
-                ></option>
-            </select>
+            <div ref="selectAnchor">
+                <Select
+                    ref="selectRef"
+                    :inputId="control.id + '-input'"
+                    :class="styles.control.select"
+                    :options="indexedOneOfRenderInfos"
+                    optionLabel="label"
+                    optionValue="index"
+                    :modelValue="selectIndex"
+                    :disabled="!control.enabled"
+                    @change="handlePrimeSelectChange"
+                    @focus="isFocused = true"
+                    @blur="isFocused = false"
+                />
+                <ConfirmPopup />
+            </div>
         </control-wrapper>
 
         <dispatch-renderer
@@ -42,29 +40,6 @@
             :cells="control.cells"
             :enabled="control.enabled"
         />
-
-        <dialog ref="dialog" :class="styles.dialog.root">
-            <h1 :class="styles.dialog.title">
-                {{ control.translations.clearDialogTitle }}
-            </h1>
-
-            <p :class="styles.dialog.body">
-                {{ control.translations.clearDialogMessage }}
-            </p>
-
-            <div :class="styles.dialog.actions">
-                <button :onclick="onCancel" :class="styles.dialog.buttonSecondary">
-                    {{ control.translations.clearDialogDecline }}
-                </button>
-                <button
-                    ref="confirm"
-                    :onclick="onConfirm"
-                    :class="styles.dialog.buttonPrimary"
-                >
-                    {{ control.translations.clearDialogAccept }}
-                </button>
-            </div>
-        </dialog>
     </div>
 </template>
 
@@ -89,6 +64,9 @@ import { defineComponent, nextTick, ref } from 'vue'
 import { usePrimeVueControl } from '../util'
 import { ControlWrapper } from '../controls'
 import CombinatorProperties from './components/CombinatorProperties.vue'
+import ConfirmPopup from 'primevue/confirmpopup'
+import Select from 'primevue/select'
+import { useConfirm } from 'primevue/useconfirm'
 
 const controlRenderer = defineComponent({
     name: 'OneOfRenderer',
@@ -96,6 +74,8 @@ const controlRenderer = defineComponent({
         ControlWrapper,
         DispatchRenderer,
         CombinatorProperties,
+        ConfirmPopup,
+        Select,
     },
     props: {
         ...rendererProps<ControlElement>(),
@@ -108,16 +88,18 @@ const controlRenderer = defineComponent({
         const selectIndex = ref(selectedIndex.value)
         const newSelectedIndex = ref(0)
 
-        const dialog = ref<HTMLDialogElement>()
-        const confirm = ref<HTMLElement>()
+        const confirm = useConfirm()
+        const selectAnchor = ref<HTMLElement>()
+        const selectRef = ref<any>()
 
         return {
             ...usePrimeVueControl(input),
             selectedIndex,
             selectIndex,
             newSelectedIndex,
-            dialog,
             confirm,
+            selectAnchor,
+            selectRef,
         }
     },
     computed: {
@@ -140,37 +122,34 @@ const controlRenderer = defineComponent({
         },
     },
     methods: {
-        handleSelectChange(event: Event): void {
-            const target = event.target as any
-            this.selectIndex = target.value
-
+        handlePrimeSelectChange(e: any): void {
+            this.selectIndex = e.value
             if (this.control.enabled && !isEmpty(this.control.data)) {
-                this.showDialog()
-                nextTick(() => {
-                    this.newSelectedIndex = this.selectIndex
-                    // revert the selection while the dialog is open
-                    this.selectIndex = this.selectedIndex
-                    this.confirm?.focus()
+                const nextIndex = this.selectIndex
+                this.newSelectedIndex = nextIndex
+                // revert the selection while the popup is open
+                this.selectIndex = this.selectedIndex
+                this.confirm.require({
+                    target: (this.selectRef as any)?.$el as HTMLElement || (this.selectAnchor as unknown as HTMLElement),
+                    header: 'Switch selection?',
+                    message: 'Changing the selection will clear the current data. Continue?',
+                    icon: 'pi pi-exclamation-triangle',
+                    acceptLabel: 'Confirm',
+                    rejectLabel: 'Cancel',
+                    accept: () => {
+                        this.newSelectedIndex = nextIndex
+                        this.newSelection()
+                    },
+                    reject: () => {
+                        this.newSelectedIndex = this.selectedIndex
+                        this.selectIndex = this.selectedIndex
+                    },
                 })
             } else {
                 nextTick(() => {
                     this.selectedIndex = this.selectIndex
                 })
             }
-        },
-        showDialog(): void {
-            this.dialog?.showModal()
-        },
-        closeDialog(): void {
-            this.dialog?.close()
-        },
-        onConfirm(): void {
-            this.newSelection()
-            this.closeDialog()
-        },
-        onCancel(): void {
-            this.newSelectedIndex = this.selectedIndex
-            this.closeDialog()
         },
         newSelection(): void {
             this.handleChange(

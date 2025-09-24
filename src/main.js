@@ -15,6 +15,7 @@ import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker'
 import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker'
 
 import App from './App.vue';
+import ConfirmationService from 'primevue/confirmationservice';
 
 
 const app = createApp(App);
@@ -86,6 +87,8 @@ app.use(PrimeVue, {
         }
     }
 });
+
+app.use(ConfirmationService);
 
 // Configure Monaco workers for Vite
 self.MonacoEnvironment = {

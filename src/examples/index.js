@@ -10,6 +10,7 @@ import { example as objects } from './objects';
 import { example as oneOf } from './one-of';
 import { example as anyOf } from './any-of';
 import { example as allOf } from './all-of';
+import { example as creators } from './creators';
 
 
 export const examples = [
@@ -72,5 +73,10 @@ export const examples = [
         label: 'AllOf',
         example: allOf,
         category: 'Combinators',
+    },
+    { 
+        label: 'Creators',
+        example: creators,
+        category: 'Complex',
     }
 ]

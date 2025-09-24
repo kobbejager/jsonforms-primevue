@@ -1,0 +1,29 @@
+{
+    "type": "VerticalLayout",
+    "elements": [
+        {
+            "type": "Control",
+            "scope": "#/properties/creators",
+            "options": {
+                "detail": {
+                    "type": "Control",
+                    "scope": "#",
+                    "options": {
+                        "radio": true,
+                        "horizontal": true,
+                        "detail": {
+                            "type": "VerticalLayout",
+                            "elements": [
+                                { "type": "Control", "scope": "#/properties/fullName", "options": { "readonly": true } },
+                                { "type": "Control", "scope": "#/properties/actor" },
+                                { "type": "Control", "scope": "#/properties/givenName" },
+                                { "type": "Control", "scope": "#/properties/familyName" },
+                                { "type": "Control", "scope": "#/properties/roles" }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

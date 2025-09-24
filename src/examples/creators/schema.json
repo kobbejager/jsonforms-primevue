@@ -1,0 +1,56 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "ResearchActivity",
+    "type": "object",
+    "properties": {
+        "creators": {
+            "title": "Research team",
+            "type": "array",
+            "items": {
+                "title": "Team member",
+                "type": "object",
+                "oneOf": [
+                    {
+                        "title": "Registered person",
+                        "properties": {
+                            "fullName": { "$ref": "#/$defs/fullName" },
+                            "actor": { "title": "Registered person", "type": "string" },
+                            "roles": { "$ref": "#/$defs/roles" }
+                        },
+                        "required": ["actor"],
+                        "additionalProperties": false
+                    },
+                    {
+                        "title": "Unregistered person",
+                        "properties": {
+                            "fullName": { "$ref": "#/$defs/fullName" },
+                            "givenName": { "title": "First name", "type": "string" },
+                            "familyName": { "title": "Last name", "type": "string" },
+                            "roles": { "$ref": "#/$defs/roles" }
+                        },
+                        "required": ["givenName", "familyName"],
+                        "additionalProperties": false
+                    }
+                ]
+            }
+        }
+    },
+    "$defs": {
+        "fullName": {
+            "title": "Team member name",
+            "type": "string",
+            "minLength": 1,
+            "options": {
+                "hidden": true
+            }
+        },
+        "roles": {
+            "title": "Roles",
+            "type": "array",
+            "items": {
+                "title": "Role",
+                "type": "string"
+            }
+        }
+    }
+}

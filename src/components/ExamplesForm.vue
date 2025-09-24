@@ -8,6 +8,7 @@
     import { JsonForms } from "@jsonforms/vue"
     import { primeVueRenderers } from "@/renderers"
     import { generateDefaultUISchema, createAjv } from '@jsonforms/core'
+    import { generateDeepUISchema } from '@/utils/generateDeepUISchema'
     import isEqual from 'lodash/isEqual'
 
     import Textarea from 'primevue/textarea';
@@ -21,6 +22,7 @@
     import TabPanel from 'primevue/tabpanel';
     import SelectButton from 'primevue/selectbutton';
     import ToggleButton from 'primevue/togglebutton';
+    import SplitButton from 'primevue/splitbutton';
 
 /* 
     props
@@ -231,6 +233,23 @@
         }
     }
 
+    const generateDeepUiSchema = () => {
+        uiSchemaError.value = ''
+        try {
+            const ui = generateDeepUISchema(liveSchema.value)
+            liveUiSchema.value = ui
+            editedUiSchemaText.value = JSON.stringify(ui, null, 2)
+            formKey.value++
+        } catch (e) {
+            uiSchemaError.value = `Failed to generate UI schema: ${e.message}`
+        }
+    }
+
+    const generateUiMenu = [
+        { label: 'Simple', command: () => generateUiSchema() },
+        { label: 'Deep', command: () => generateDeepUiSchema() },
+    ]
+
     const applyUiSchema = () => {
         uiSchemaError.value = ''
         try {
@@ -427,11 +446,12 @@
                                 className="w-full h-[360px]"
                             />
                             <div class="flex flex-wrap items-center gap-2">
-                                <Button 
+                                <SplitButton 
                                     v-if="isGenerateUiVisible"
                                     label="Generate from JSON Schema" 
                                     icon="pi pi-sparkles" 
                                     severity="secondary" 
+                                    :model="generateUiMenu"
                                     @click="generateUiSchema" 
                                 />
                                 <Button 

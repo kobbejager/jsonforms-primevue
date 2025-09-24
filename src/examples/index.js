@@ -13,41 +13,51 @@ export const examples = [
     { 
         label: 'Strings',
         example: strings,
+        category: 'Primitives',
     },
     { 
         label: 'Numbers',
         example: numbers,
+        category: 'Primitives',
     },
     { 
         label: 'Booleans',
         example: booleans,
+        category: 'Primitives',
     },
     { 
         label: 'Dates',
         example: dates,
+        category: 'Primitives',
     },
     { 
         label: 'Enums',
         example: enums,
+        category: 'Primitives',
     },
     { 
         label: 'Arrays',
         example: arrays,
+        category: 'Arrays & Objects',
     },
     { 
         label: 'Arrays of strings',
         example: stringArrays,
+        category: 'Arrays & Objects',
     },
     { 
         label: 'Arrays of enums',
         example: enumArrays,
+        category: 'Arrays & Objects',
     },
     { 
         label: 'Objects',
         example: objects,
+        category: 'Arrays & Objects',
     },
     { 
         label: 'OneOf',
         example: oneOf,
+        category: 'Combinators',
     },
 ]

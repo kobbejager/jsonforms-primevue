@@ -87,3 +87,12 @@ export interface StringExamplesOptions extends BaseOptions {
     examples?: any[];
     suggestions?: any[];
 }
+
+export interface AllOfOptions extends BaseOptions {
+    /** If true, render as Tabs instead of flat list. */
+    tabs?: boolean;
+    /** If true, render as Accordion instead of flat list. */
+    accordion?: boolean;
+    /** If true, allow the parent object to remain empty ({}). Defaults to false. */
+    allowEmpty?: boolean;
+}

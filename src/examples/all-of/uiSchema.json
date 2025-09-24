@@ -22,26 +22,23 @@
         },
         {
             "type": "Control",
-            "scope": "#/properties/allOf_with_not_applicable",
+            "scope": "#/properties/allOf_allow_empty",
             "options": {
-                "allowNotApplicable": true,
-                "NotApplicableLabel": "n.a."
+                "allowEmpty": true
             }
         },
         {
             "type": "Control",
-            "scope": "#/properties/allOf_with_radio",
+            "scope": "#/properties/allOf_tabs",
             "options": {
-                "radio": true,
-                "horizontal": true
+                "tabs": true
             }
         },
         {
             "type": "Control",
-            "scope": "#/properties/allOf_with_selectbutton",
+            "scope": "#/properties/allOf_accordion",
             "options": {
-                "selectButton": true,
-                "notApplicableLabel": "None"
+                "accordion": true
             }
         }
     ]

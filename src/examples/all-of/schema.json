@@ -50,9 +50,9 @@
                 }
             ]
         },
-        "allOf_with_not_applicable": {
-            "title": "AllOf with not applicable option",
-            "description": "An example of an optional allOf construction with the allowNotApplicable option and an optional NotApplicableLabel. These options only apply if the parent property of the allOf construction is optional.",
+        "allOf_allow_empty": {
+            "title": "AllOf allow empty",
+            "description": "An example of a allOf construction with allowEmpty option set in the UI schema. If allowEmpty is true, the parent object is not unset when all items are removed.",
             "allOf": [
                 {
                     "$ref": "#/$defs/address"
@@ -62,9 +62,9 @@
                 }
             ]
         },
-        "allOf_with_radio": {
-            "title": "AllOf with radio",
-            "description": "An example of a allOf construction with radio and horizontal options set in the UI schema",
+        "allOf_tabs": {
+            "title": "AllOf tabs",
+            "description": "An example of a allOf construction with tabs option set in the UI schema",
             "allOf": [
                 {
                     "$ref": "#/$defs/address"
@@ -74,9 +74,9 @@
                 }
             ]
         },
-        "allOf_with_selectbutton": {
-            "title": "AllOf with selectbutton",
-            "description": "An example of a allOf construction with selectbutton and notApplicableLabel options set in the UI schema",
+        "allOf_accordion": {
+            "title": "AllOf accordion",
+            "description": "An example of a allOf construction with accordion option set in the UI schema",
             "allOf": [
                 {
                     "$ref": "#/$defs/address"

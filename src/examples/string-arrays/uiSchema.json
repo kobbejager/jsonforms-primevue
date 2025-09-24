@@ -1,41 +1,58 @@
 {
-  "type": "VerticalLayout",
-  "elements": [
-    {
-      "type": "Control",
-      "scope": "#/properties/simple_nonunique",
-      "options": { "compactStringArray": true }
-    },
-    {
-      "type": "Control",
-      "scope": "#/properties/simple_nonunique_with_allowEmptyArrays",
-      "options": { "compactStringArray": true, "allowEmptyArrays": true }
-    },
-    {
-      "type": "Control",
-      "scope": "#/properties/simple_unique_schema",
-      "options": { "compactStringArray": true }
-    },
-    {
-      "type": "Control",
-      "scope": "#/properties/simple_unique_ui",
-      "options": { "compactStringArray": true, "uniqueItems": true }
-    },
-    {
-      "type": "Control",
-      "scope": "#/properties/simple_placeholder",
-      "options": { "compactStringArray": true, "placeholder": "Add values…" }
-    },
-    {
-      "type": "Control",
-      "scope": "#/properties/simple_required",
-      "options": { "compactStringArray": true }
-    },
-    {
-      "type": "Control",
-      "scope": "#/properties/readonly",
-      "options": { "compactStringArray": true, "readonly": true }
-    }
-  ]
+    "type": "VerticalLayout",
+    "elements": [
+        {
+            "type": "Control",
+            "scope": "#/properties/simple_nonunique",
+            "options": {
+                "compactStringArray": true
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/simple_nonunique_with_allowEmptyArrays",
+            "options": {
+                "compactStringArray": true,
+                "allowEmptyArrays": true
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/simple_unique_schema",
+            "options": {
+                "compactStringArray": true
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/simple_unique_ui",
+            "options": {
+                "compactStringArray": true,
+                "uniqueItems": true
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/simple_placeholder",
+            "options": {
+                "compactStringArray": true,
+                "placeholder": "Add values…"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/simple_required",
+            "options": {
+                "compactStringArray": true
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/readonly",
+            "options": {
+                "compactStringArray": true,
+                "readonly": true
+            }
+        }
+    ]
 }
-

@@ -49,6 +49,30 @@
                     "$ref": "#/$defs/user"
                 }
             ]
+        },
+        "anyOf_allow_empty": {
+            "title": "AnyOf allow empty",
+            "description": "An example of a anyOf construction with allowEmpty option set in the UI schema. If allowEmpty is true, the parent object is not unset when all items are removed.",
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
+        },
+        "anyOf_accordion": {
+            "title": "AnyOf accordion",
+            "description": "An example of a anyOf construction with accordion option set in the UI schema",
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
         }
     },
     "$defs": {

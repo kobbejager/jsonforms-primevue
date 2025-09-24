@@ -23,8 +23,8 @@ export interface OneOfOptions extends BaseOptions {
 }
 
 export interface AnyOfOptions extends BaseOptions {
-    /** If true, allow the parent object to remain empty ({}). Defaults to false. */
     allowEmpty?: boolean;
+    accordion?: boolean;
 }
 
 export interface EnumArrayOptions extends BaseOptions {
@@ -52,9 +52,7 @@ export interface EnumControlOptions extends BaseOptions {
     horizontal?: boolean;
     enumValues?: any[];
     enumLabels?: string[];
-    /** Optional-only: show an explicit Not applicable choice in Select */
     allowNotApplicable?: boolean;
-    /** Custom label for Not applicable */
     notApplicableLabel?: string;
 }
 

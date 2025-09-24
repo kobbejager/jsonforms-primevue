@@ -13,34 +13,62 @@
             :applied-options="appliedOptions"
         >
             <Fieldset class="no-legend-gap">
-                <Tabs v-if="anyOfRenderInfos.length > 0" v-model:value="selectedIndex" class="-mb-4">
-                    <TabList>
-                        <Tab
+                <div v-if="appliedOptions.accordion">
+                    <Accordion :multiple="true">
+                        <AccordionPanel
                             v-for="(info, idx) in anyOfRenderInfos"
-                            :key="`${control.path}-${anyOfRenderInfos.length}-${idx}`"
+                            :key="`${control.path}-acc-${anyOfRenderInfos.length}-${idx}`"
                             :value="idx"
                         >
-                            {{ info.label }}
-                        </Tab>
-                    </TabList>
-                    <TabPanels>
-                        <TabPanel
-                            v-for="(info, idx) in anyOfRenderInfos"
-                            :key="`${control.path}-panel-${anyOfRenderInfos.length}-${idx}`"
-                            :value="idx"
-                            class="-mb-4"
-                        >
-                            <dispatch-renderer
-                                :schema="info.schema"
-                                :uischema="info.uischema"
-                                :path="control.path"
-                                :renderers="control.renderers"
-                                :cells="control.cells"
-                                :enabled="control.enabled"
-                            />
-                        </TabPanel>
-                    </TabPanels>
-                </Tabs>
+                            <AccordionHeader>
+                                {{ info.label }}
+                            </AccordionHeader>
+                            <AccordionContent>
+                                <div class="-mb-4">
+                                    <dispatch-renderer
+                                        :schema="info.schema"
+                                        :uischema="info.uischema"
+                                        :path="control.path"
+                                        :renderers="control.renderers"
+                                        :cells="control.cells"
+                                        :enabled="control.enabled"
+                                    />
+                                </div>
+                            </AccordionContent>
+                        </AccordionPanel>
+                    </Accordion>
+                </div>
+
+                <div v-else>
+                    <Tabs v-if="anyOfRenderInfos.length > 0" v-model:value="selectedIndex" class="-mb-4">
+                        <TabList>
+                            <Tab
+                                v-for="(info, idx) in anyOfRenderInfos"
+                                :key="`${control.path}-${anyOfRenderInfos.length}-${idx}`"
+                                :value="idx"
+                            >
+                                {{ info.label }}
+                            </Tab>
+                        </TabList>
+                        <TabPanels>
+                            <TabPanel
+                                v-for="(info, idx) in anyOfRenderInfos"
+                                :key="`${control.path}-panel-${anyOfRenderInfos.length}-${idx}`"
+                                :value="idx"
+                                class="-mb-4"
+                            >
+                                <dispatch-renderer
+                                    :schema="info.schema"
+                                    :uischema="info.uischema"
+                                    :path="control.path"
+                                    :renderers="control.renderers"
+                                    :cells="control.cells"
+                                    :enabled="control.enabled"
+                                />
+                            </TabPanel>
+                        </TabPanels>
+                    </Tabs>
+                </div>
             </Fieldset>
         </control-wrapper>
     </div>
@@ -73,6 +101,10 @@ import Tab from 'primevue/tab'
 import TabPanels from 'primevue/tabpanels'
 import TabPanel from 'primevue/tabpanel'
 import Fieldset from 'primevue/fieldset'
+import Accordion from 'primevue/accordion'
+import AccordionPanel from 'primevue/accordionpanel'
+import AccordionHeader from 'primevue/accordionheader'
+import AccordionContent from 'primevue/accordioncontent'
 
 const controlRenderer = defineComponent({
     name: 'AnyOfRenderer',
@@ -86,6 +118,10 @@ const controlRenderer = defineComponent({
         TabPanels,
         TabPanel,
         Fieldset,
+        Accordion,
+        AccordionPanel,
+        AccordionHeader,
+        AccordionContent,
     },
     props: {
         ...rendererProps<ControlElement>(),

@@ -19,6 +19,20 @@
             "options": {
                 "readonly": true
             }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/anyOf_allow_empty",
+            "options": {
+                "allowEmpty": true
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/anyOf_accordion",
+            "options": {
+                "accordion": true
+            }
         }
     ]
 }

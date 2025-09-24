@@ -99,6 +99,8 @@ export const entry: JsonFormsRendererRegistryEntry = {
     tester: rankWith(2, and(isLayout, uiTypeIs('Group'))),
 }
 </script>
+
+
 <style scoped>
 /* Remove Fieldset legend gap when we render label above the Fieldset */
 :deep(.no-legend-gap > .p-fieldset-legend) {

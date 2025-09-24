@@ -1,0 +1,121 @@
+{
+    "type": "object",
+    "required": ["oneOf_required"],
+    "properties": {
+        "oneOf": {
+            "title": "OneOf",
+            "description": "An example of an optional oneOf construction",
+            "oneOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
+        },
+        "oneOf_required": {
+            "title": "OneOf (required)",
+            "description": "An example of a required oneOf construction",
+            "oneOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
+        },
+        "oneOf_with_data": {
+            "title": "OneOf with prefilled data",
+            "description": "An example of a oneOf construction with prefilled data",
+            "oneOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
+        },
+        "oneOf_readonly": {
+            "title": "OneOf readonly",
+            "description": "An example of a readonly oneOf construction with readonly option set in the UI schema",
+            "oneOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
+        },
+        "oneOf_with_not_applicable": {
+            "title": "OneOf with not applicable option",
+            "description": "An example of an optional oneOf construction with the allowNotApplicable option and an optional NotApplicableLabel. These options only apply if the parent property of the oneOf construction is optional.",
+            "oneOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
+        },
+        "oneOf_with_radio": {
+            "title": "OneOf with radio",
+            "description": "An example of a oneOf construction with radio and horizontal options set in the UI schema",
+            "oneOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
+        },
+        "oneOf_with_selectbutton": {
+            "title": "OneOf with selectbutton",
+            "description": "An example of a oneOf construction with selectbutton and notApplicableLabel options set in the UI schema",
+            "oneOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
+        }   
+    },
+    "$defs": {
+        "address": {
+            "type": "object",
+            "title": "Address",
+            "properties": {
+                "street_address": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                }
+            },
+            "required": ["street_address", "city", "state"]
+        },
+        "user": {
+            "type": "object",
+            "title": "User",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "mail": {
+                    "type": "string"
+                }
+            },
+            "required": ["name", "mail"]
+        }
+    }
+}

@@ -13,6 +13,15 @@ export interface BaseOptions {
     allowEmptyArrays?: boolean;
 }
 
+
+export interface OneOfOptions extends BaseOptions {
+    allowNotApplicable?: boolean;
+    notApplicableLabel?: string;
+    radio?: boolean;
+    selectButton?: boolean;
+    horizontal?: boolean;
+}
+
 export interface EnumArrayOptions extends BaseOptions {
     variant?: 'checkbox' | 'toggleswitch' | 'selectbutton' | 'multiselect';
     horizontal?: boolean;

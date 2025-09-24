@@ -7,7 +7,7 @@ import { example as enumArrays } from './enum-arrays';
 import { example as arrays } from './arrays';
 import { example as stringArrays } from './string-arrays';
 import { example as objects } from './objects';
-import { example as combinators } from './combinators';
+import { example as oneOf } from './one-of';
 
 export const examples = [
     { 
@@ -47,7 +47,7 @@ export const examples = [
         example: objects,
     },
     { 
-        label: 'Combinators',
-        example: combinators,
+        label: 'OneOf',
+        example: oneOf,
     },
 ]

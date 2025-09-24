@@ -1,0 +1,48 @@
+{
+    "type": "VerticalLayout",
+    "elements": [
+        {
+            "type": "Control",
+            "scope": "#/properties/oneOf"
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/oneOf_required"
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/oneOf_with_data"
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/oneOf_readonly",
+            "options": {
+                "readonly": true
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/oneOf_with_not_applicable",
+            "options": {
+                "allowNotApplicable": true,
+                "NotApplicableLabel": "n.a."
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/oneOf_with_radio",
+            "options": {
+                "radio": true,
+                "horizontal": true
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/oneOf_with_selectbutton",
+            "options": {
+                "selectButton": true,
+                "notApplicableLabel": "None"
+            }
+        }
+    ]
+}

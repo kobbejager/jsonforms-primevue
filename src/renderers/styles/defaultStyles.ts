@@ -2,7 +2,7 @@ import { Styles } from "./styles"
 
 export const defaultStyles: Styles = {
     control: {
-        root: "mb-8",
+        root: "",
         wrapper: "",
         label: "font-bold mb-2",
         description: "italic text-sm mb-2",
@@ -15,7 +15,7 @@ export const defaultStyles: Styles = {
         required: "",
     },
     verticalLayout: {
-        root: "flex flex-col gap-4",
+        root: "flex flex-col gap-8",
         item: "",
     },
     horizontalLayout: {
@@ -23,12 +23,14 @@ export const defaultStyles: Styles = {
         item: "flex-1 min-w-[12rem]",
     },
     group: {
-        root: "group mb-8",
+        root: "group",
+        content: "px-5 pb-5 flex flex-col gap-8",
+        contentTop: "pt-4",
         item: "group-item",
     },
     arrayList: {
-        root: "mb-8",
-        legend: "flex items-center w-full mt-4",
+        root: "",
+        legend: "flex items-center w-full",
         addButton: "flex-none",
         label: "font-bold",
         itemWrapper: "w-full",
@@ -37,7 +39,7 @@ export const defaultStyles: Styles = {
         itemToolbar: "flex items-start gap-1",
         itemToolbarExpanded: "",
         itemLabel: "font-bold italic",
-        itemContent: "-mb-4",
+        itemContent: "px-5 pb-5",
         itemMoveUp: "",
         itemMoveDown: "",
         itemDelete: "",
@@ -52,6 +54,23 @@ export const defaultStyles: Styles = {
     },
     oneOf: {
         root: "one-of",
+        content: "px-5 pb-5",
+        top: "pt-2",
+        selector: "mt-4",
+        radioHorizontal: "flex flex-wrap gap-6 items-center",
+        radioVertical: "flex flex-col gap-2",
+    },
+    anyOf: {
+        root: "any-of",
+        top: "",
+        panel: "px-5 pb-5",
+    },
+    allOf: {
+        root: "all-of",
+        content: "px-5 pb-5",
+        top: "pt-4",
+        panel: "px-5 pb-5",
+        list: "flex flex-col gap-8",
     },
     categorization: {
         root: "categorization",

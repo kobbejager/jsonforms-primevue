@@ -11,6 +11,8 @@ const createEmptyStyles = (): Styles => ({
     arrayList: {},
     dialog: {},
     oneOf: {},
+    anyOf: {},
+    allOf: {},
     categorization: {},
 })
 
@@ -46,6 +48,8 @@ export interface Styles {
     }
     group: {
         root?: string
+        content?: string
+        contentTop?: string
         item?: string
     }
     arrayList: {
@@ -66,6 +70,23 @@ export interface Styles {
     }
     oneOf: {
         root?: string
+        content?: string
+        top?: string
+        selector?: string
+        radioHorizontal?: string
+        radioVertical?: string
+    }
+    anyOf: {
+        root?: string
+        top?: string
+        panel?: string
+    }
+    allOf: {
+        root?: string
+        content?: string
+        top?: string
+        panel?: string
+        list?: string
     }
     categorization: {
         root?: string

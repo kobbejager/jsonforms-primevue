@@ -7,7 +7,7 @@
             {{ groupDescription }}
         </div>
         <Fieldset class="no-legend-gap">
-            <div class="mt-4 -mb-4">
+            <div :class="[styles.group.content, styles.group.contentTop]">
                 <div
                     v-for="(element, index) in layout.uischema.elements"
                     :key="`${layout.path}-${index}`"

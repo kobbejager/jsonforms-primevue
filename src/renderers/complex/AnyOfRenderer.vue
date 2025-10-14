@@ -13,7 +13,7 @@
             :applied-options="appliedOptions"
         >
             <Fieldset class="no-legend-gap">
-                <div v-if="appliedOptions.accordion">
+                <div v-if="appliedOptions.accordion" :class="styles.anyOf.top">
                     <Accordion :multiple="true">
                         <AccordionPanel
                             v-for="(info, idx) in anyOfRenderInfos"
@@ -24,7 +24,7 @@
                                 {{ info.label }}
                             </AccordionHeader>
                             <AccordionContent>
-                                <div class="-mb-4">
+                                <div :class="styles.anyOf.panel">
                                     <dispatch-renderer
                                         :schema="info.schema"
                                         :uischema="info.uischema"
@@ -39,8 +39,8 @@
                     </Accordion>
                 </div>
 
-                <div v-else>
-                    <Tabs v-if="anyOfRenderInfos.length > 0" v-model:value="selectedIndex" class="-mb-4">
+                <div v-else :class="styles.anyOf.top">
+                    <Tabs v-if="anyOfRenderInfos.length > 0" v-model:value="selectedIndex">
                         <TabList>
                             <Tab
                                 v-for="(info, idx) in anyOfRenderInfos"
@@ -55,7 +55,6 @@
                                 v-for="(info, idx) in anyOfRenderInfos"
                                 :key="`${control.path}-panel-${anyOfRenderInfos.length}-${idx}`"
                                 :value="idx"
-                                class="-mb-4"
                             >
                                 <dispatch-renderer
                                     :schema="info.schema"

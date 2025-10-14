@@ -13,7 +13,7 @@
             :applied-options="appliedOptions"
         >
             <Fieldset class="no-legend-gap">
-                <div v-if="appliedOptions.selectButton" class="mt-4">
+                <div v-if="appliedOptions.selectButton" :class="styles.oneOf.selector">
                     <SelectButton
                         :id="control.id + '-selectbutton'"
                         :model-value="selectIndex"
@@ -27,7 +27,7 @@
                         @blur="() => { isFocused = false; markTouched(); }"
                     />
                 </div>
-                <div v-else-if="appliedOptions.radio" :class="appliedOptions.horizontal ? 'flex flex-wrap gap-6 items-center mt-4' : 'flex flex-col gap-2 mt-4'">
+                <div v-else-if="appliedOptions.radio" :class="[styles.oneOf.selector, appliedOptions.horizontal ? styles.oneOf.radioHorizontal : styles.oneOf.radioVertical]">
                     <div v-for="(opt, idx) in selectOptions" :key="idx" class="flex items-center gap-2">
                         <RadioButton
                             :inputId="control.id + `-radio-${idx}`"
@@ -41,7 +41,7 @@
                         <label :for="control.id + `-radio-${idx}`">{{ opt.label }}</label>
                     </div>
                 </div>
-                <InputGroup v-else class="mt-4">
+                <InputGroup v-else :class="styles.oneOf.selector">
                     <Select
                         :inputId="control.id + '-input'"
                         :class="styles.control.select"
@@ -59,20 +59,20 @@
                 </InputGroup>
 
                 <div 
-                v-if="selectedIndex !== undefined && selectedIndex !== null && selectedIndex >= 0"
-                class="-mb-4"
+                    v-if="selectedIndex !== undefined && selectedIndex !== null && selectedIndex >= 0"
                 >
                     <Divider />
-                    <dispatch-renderer
-                        :schema="indexedOneOfRenderInfos[selectedIndex].schema"
-                        :uischema="indexedOneOfRenderInfos[selectedIndex].uischema"
-                        :path="control.path"
-                        :renderers="control.renderers"
-                        :cells="control.cells"
-                        :enabled="control.enabled"
-                    />
+                    <div :class="styles.oneOf.content">
+                        <dispatch-renderer
+                            :schema="indexedOneOfRenderInfos[selectedIndex].schema"
+                            :uischema="indexedOneOfRenderInfos[selectedIndex].uischema"
+                            :path="control.path"
+                            :renderers="control.renderers"
+                            :cells="control.cells"
+                            :enabled="control.enabled"
+                        />
+                    </div>
                 </div>
-                
             </Fieldset>
         </control-wrapper>
 

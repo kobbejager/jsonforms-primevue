@@ -24,6 +24,7 @@
                 :applied-options="appliedOptions"
             >
                 <Fieldset class="no-legend-gap">
+                    
                     <div v-if="appliedOptions.accordion">
                         <Accordion :multiple="true">
                             <AccordionPanel
@@ -35,7 +36,7 @@
                                     {{ info.label }}
                                 </AccordionHeader>
                                 <AccordionContent>
-                                    <div class="-mb-4">
+                                    <div>
                                         <dispatch-renderer
                                             :schema="info.schema"
                                             :uischema="info.uischema"
@@ -51,7 +52,7 @@
                     </div>
 
                     <div v-else-if="appliedOptions.tabs">
-                        <Tabs v-if="allOfRenderInfos.length > 0" v-model:value="selectedIndex" class="-mb-4">
+                        <Tabs v-if="allOfRenderInfos.length > 0" v-model:value="selectedIndex">
                             <TabList>
                                 <Tab
                                     v-for="(info, idx) in allOfRenderInfos"
@@ -65,8 +66,7 @@
                                 <TabPanel
                                     v-for="(info, idx) in allOfRenderInfos"
                                     :key="`${control.path}-panel-${allOfRenderInfos.length}-${idx}`"
-                                    :value="idx"
-                                    class="-mb-4"
+                                :value="idx"
                                 >
                                     <dispatch-renderer
                                         :schema="info.schema"
@@ -81,22 +81,25 @@
                         </Tabs>
                     </div>
 
-                    <div v-else class="mt-4 -mb-4">
-                        <div
-                            v-for="(info, idx) in allOfRenderInfos"
-                            :key="`${control.path}-flat-${allOfRenderInfos.length}-${idx}`"
-                            :class="styles.group.item"
-                        >
-                            <dispatch-renderer
-                                :schema="info.schema"
-                                :uischema="info.uischema"
-                                :path="control.path"
-                                :enabled="control.enabled"
-                                :renderers="control.renderers"
-                                :cells="control.cells"
-                            />
+                    <div v-else :class="styles.allOf.list">
+                        <div :class="[styles.allOf.content, styles.allOf.top]">
+                            <div
+                                v-for="(info, idx) in allOfRenderInfos"
+                                :key="`${control.path}-flat-${allOfRenderInfos.length}-${idx}`"
+                                :class="styles.group.item"
+                            >
+                                <dispatch-renderer
+                                    :schema="info.schema"
+                                    :uischema="info.uischema"
+                                    :path="control.path"
+                                    :enabled="control.enabled"
+                                    :renderers="control.renderers"
+                                    :cells="control.cells"
+                                />
+                            </div>
                         </div>
                     </div>
+                    
                 </Fieldset>
             </control-wrapper>
         </template>

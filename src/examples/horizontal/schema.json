@@ -1,9 +1,21 @@
 {
     "type": "object",
     "properties": {
-        "firstName": { "type": "string", "title": "First name" },
-        "lastName": { "type": "string", "title": "Last name" },
-        "age": { "type": "integer", "title": "Age" }
+        "firstName": { 
+            "title": "First name",
+            "description": "The first name of the person",
+            "type": "string"
+        },
+        "lastName": { 
+            "title": "Last name", 
+            "description": "The last name of the person",
+            "type": "string"
+        },
+        "age": { 
+            "title": "Age", 
+            "description": "The age of the person",
+            "type": "integer"
+        }
     },
     "required": ["firstName", "lastName"]
 }

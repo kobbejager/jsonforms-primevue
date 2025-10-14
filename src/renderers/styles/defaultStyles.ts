@@ -15,12 +15,12 @@ export const defaultStyles: Styles = {
         required: "",
     },
     verticalLayout: {
-        root: "vertical-layout",
-        item: "vertical-layout-item",
+        root: "flex flex-col gap-4",
+        item: "",
     },
     horizontalLayout: {
-        root: "horizontal-layout",
-        item: "horizontal-layout-item",
+        root: "flex flex-row flex-wrap items-start gap-4",
+        item: "flex-1 min-w-[12rem]",
     },
     group: {
         root: "group mb-8",

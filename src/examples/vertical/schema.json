@@ -1,9 +1,21 @@
 {
     "type": "object",
     "properties": {
-        "street": { "type": "string", "title": "Street" },
-        "zip": { "type": "string", "title": "ZIP" },
-        "city": { "type": "string", "title": "City" }
+        "street": { 
+            "type": "string", 
+            "title": "Street", 
+            "description": "The street of the person" 
+        },
+        "zip": { 
+            "type": "string", 
+            "title": "ZIP", 
+            "description": "The ZIP of the person" 
+        },
+        "city": { 
+            "type": "string", 
+            "title": "City", 
+            "description": "The city of the person" 
+        }
     },
     "required": ["street"]
 }

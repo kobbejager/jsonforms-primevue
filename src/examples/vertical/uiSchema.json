@@ -1,0 +1,9 @@
+{
+    "type": "VerticalLayout",
+    "elements": [
+        { "type": "Control", "scope": "#/properties/street" },
+        { "type": "Control", "scope": "#/properties/zip" },
+        { "type": "Control", "scope": "#/properties/city" }
+    ]
+}
+

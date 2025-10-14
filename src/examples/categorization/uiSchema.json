@@ -1,0 +1,32 @@
+{
+    "type": "Categorization",
+    "elements": [
+        {
+            "type": "Category",
+            "label": "Person",
+            "elements": [
+                {
+                    "type": "VerticalLayout",
+                    "elements": [
+                        { "type": "Control", "scope": "#/properties/firstName" },
+                        { "type": "Control", "scope": "#/properties/lastName" }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Address",
+            "elements": [
+                {
+                    "type": "VerticalLayout",
+                    "elements": [
+                        { "type": "Control", "scope": "#/properties/street" },
+                        { "type": "Control", "scope": "#/properties/city" }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+

@@ -11,6 +11,12 @@ import { example as oneOf } from './one-of';
 import { example as anyOf } from './any-of';
 import { example as allOf } from './all-of';
 
+// Layouts
+import { example as horizontal } from './horizontal';
+import { example as vertical } from './vertical';
+import { example as group } from './group';
+import { example as categorization } from './categorization';
+
 
 export const examples = [
     { 
@@ -72,5 +78,25 @@ export const examples = [
         label: 'AllOf',
         example: allOf,
         category: 'Combinators',
+    },
+    { 
+        label: 'Horizontal',
+        example: horizontal,
+        category: 'Layouts',
+    },
+    { 
+        label: 'Vertical',
+        example: vertical,
+        category: 'Layouts',
+    },
+    { 
+        label: 'Group',
+        example: group,
+        category: 'Layouts',
+    },
+    { 
+        label: 'Categorization',
+        example: categorization,
+        category: 'Layouts',
     }
 ]

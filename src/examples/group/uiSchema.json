@@ -1,0 +1,10 @@
+{
+    "type": "Group",
+    "label": "Contact details",
+    "elements": [
+        { "type": "Control", "scope": "#/properties/email" },
+        { "type": "Control", "scope": "#/properties/phone" },
+        { "type": "Control", "scope": "#/properties/notes", "options": { "format": "textarea" } }
+    ]
+}
+

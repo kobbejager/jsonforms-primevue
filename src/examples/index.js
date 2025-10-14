@@ -10,10 +10,8 @@ import { example as objects } from './objects';
 import { example as oneOf } from './one-of';
 import { example as anyOf } from './any-of';
 import { example as allOf } from './all-of';
-
-// Layouts
-import { example as horizontal } from './horizontal';
 import { example as vertical } from './vertical';
+import { example as horizontal } from './horizontal';
 import { example as group } from './group';
 import { example as categorization } from './categorization';
 
@@ -80,13 +78,13 @@ export const examples = [
         category: 'Combinators',
     },
     { 
-        label: 'Horizontal',
-        example: horizontal,
+        label: 'Vertical (default)',
+        example: vertical,
         category: 'Layouts',
     },
     { 
-        label: 'Vertical',
-        example: vertical,
+        label: 'Horizontal',
+        example: horizontal,
         category: 'Layouts',
     },
     { 

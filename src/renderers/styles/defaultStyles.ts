@@ -24,8 +24,8 @@ export const defaultStyles: Styles = {
     },
     group: {
         root: "group",
-        content: "px-5 pb-5 flex flex-col gap-8",
-        contentTop: "pt-4",
+        content: "px-5 pt-4 pb-5 flex flex-col gap-8",
+        contentNoSpacing: "",
         item: "group-item",
     },
     arrayList: {
@@ -74,14 +74,11 @@ export const defaultStyles: Styles = {
     },
     categorization: {
         root: "categorization",
-        category: "categorization-category",
-        selected: "categorization-selected",
-        panel: "categorization-panel",
-        stepper: "categorization-stepper",
-        stepperBadge: "categorization-stepper-badge",
-        stepperLine: "categorization-stepper-line",
-        stepperFooter: "categorization-stepper-footer",
-        stepperButtonBack: "categorization-stepper-button-back",
-        stepperButtonNext: "categorization-stepper-button-next",
+        category: "",
+        panel: "",
+        contentStepper: "px-3 pt-3",
+        stepperFooter: "",
+        stepperButtonBack: "",
+        stepperButtonNext: "",
     },
 }

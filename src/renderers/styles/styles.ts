@@ -49,7 +49,7 @@ export interface Styles {
     group: {
         root?: string
         content?: string
-        contentTop?: string
+        contentNoSpacing?: string
         item?: string
     }
     arrayList: {
@@ -91,11 +91,8 @@ export interface Styles {
     categorization: {
         root?: string
         category?: string
-        selected?: string
         panel?: string
-        stepper?: string
-        stepperBadge?: string
-        stepperLine?: string
+        contentStepper?: string
         stepperFooter?: string
         stepperButtonBack?: string
         stepperButtonNext?: string

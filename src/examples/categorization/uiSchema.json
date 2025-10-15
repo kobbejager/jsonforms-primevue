@@ -9,7 +9,173 @@
                     "type": "VerticalLayout",
                     "elements": [
                         { "type": "Control", "scope": "#/properties/firstName" },
-                        { "type": "Control", "scope": "#/properties/lastName" }
+                        { "type": "Control", "scope": "#/properties/lastName" },
+                        {
+                            "type": "Category",
+                            "label": "This will not render! Categorization has no label",
+                            "elements": [
+                                {
+                                    "type": "Categorization",
+                                    "elements": [
+                                        {
+                                            "type": "Category",
+                                            "label": "Contact",
+                                            "elements": [
+                                                {
+                                                    "type": "VerticalLayout",
+                                                    "elements": [
+                                                        { "type": "Control", "scope": "#/properties/contact/properties/email" },
+                                                        { "type": "Control", "scope": "#/properties/contact/properties/phone" }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Category",
+                                            "label": "Preferences",
+                                            "elements": [
+                                                {
+                                                    "type": "VerticalLayout",
+                                                    "elements": [
+                                                        { "type": "Control", "scope": "#/properties/preferences/properties/newsletter" },
+                                                        { "type": "Control", "scope": "#/properties/preferences/properties/contactTime" }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        { 
+                            "type": "Group",
+                            "label": "Categorization in a Group",
+                            "options": {
+                                "description": "As can seen in the example above, a Categorization can be nested, but the rendered output may become difficult to understand. A Group can be used to group the Categorization and provide a description for the group. When doing so, both the Group and the Categorization will add spacing within the group. Use the `noSpacing` option to remove the additional spacing between the elements.",
+                                "noSpacing": true
+                            },
+                            "elements": [
+                                {
+                                    "type": "Categorization",
+                                    "elements": [
+                                        {
+                                            "type": "Category",
+                                            "label": "Contact",
+                                            "elements": [
+                                                {
+                                                    "type": "VerticalLayout",
+                                                    "elements": [
+                                                        { "type": "Control", "scope": "#/properties/contact/properties/email" },
+                                                        { "type": "Control", "scope": "#/properties/contact/properties/phone" }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Category",
+                                            "label": "Preferences",
+                                            "elements": [
+                                                {
+                                                    "type": "VerticalLayout",
+                                                    "elements": [
+                                                        { "type": "Control", "scope": "#/properties/preferences/properties/newsletter" },
+                                                        { "type": "Control", "scope": "#/properties/preferences/properties/contactTime" }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        { 
+                            "type": "Group",
+                            "label": "Categorization with stepper variant",
+                            "options": {
+                                "description": "A Categorization can be rendered with the `stepper` variant. Use the `variant` option.",
+                                "noSpacing": true
+                            },
+                            "elements": [
+                                {
+                                    "type": "Categorization",
+                                    "options": {
+                                        "variant": "stepper"
+                                    },
+                                    "elements": [
+                                        {
+                                            "type": "Category",
+                                            "label": "Contact",
+                                            "elements": [
+                                                {
+                                                    "type": "VerticalLayout",
+                                                    "elements": [
+                                                        { "type": "Control", "scope": "#/properties/contact/properties/email" },
+                                                        { "type": "Control", "scope": "#/properties/contact/properties/phone" }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Category",
+                                            "label": "Preferences",
+                                            "elements": [
+                                                {
+                                                    "type": "VerticalLayout",
+                                                    "elements": [
+                                                        { "type": "Control", "scope": "#/properties/preferences/properties/newsletter" },
+                                                        { "type": "Control", "scope": "#/properties/preferences/properties/contactTime" }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        { 
+                            "type": "Group",
+                            "label": "Categorization with accordion variant",
+                            "options": {
+                                "description": "A Categorization can be rendered with the `accordion` variant. Use the `variant` option.",
+                                "noSpacing": true
+                            },
+                            "elements": [
+                                {
+                                    "type": "Categorization",
+                                    "options": {
+                                        "variant": "accordion"
+                                    },
+                                    "elements": [
+                                        {
+                                            "type": "Category",
+                                            "label": "Contact",
+                                            "elements": [
+                                                {
+                                                    "type": "VerticalLayout",
+                                                    "elements": [
+                                                        { "type": "Control", "scope": "#/properties/contact/properties/email" },
+                                                        { "type": "Control", "scope": "#/properties/contact/properties/phone" }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Category",
+                                            "label": "Preferences",
+                                            "elements": [
+                                                {
+                                                    "type": "VerticalLayout",
+                                                    "elements": [
+                                                        { "type": "Control", "scope": "#/properties/preferences/properties/newsletter" },
+                                                        { "type": "Control", "scope": "#/properties/preferences/properties/contactTime" }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
                     ]
                 }
             ]

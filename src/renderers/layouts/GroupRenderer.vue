@@ -7,7 +7,7 @@
             {{ groupDescription }}
         </div>
         <Fieldset class="no-legend-gap">
-            <div :class="[styles.group.content, styles.group.contentTop]">
+            <div :class="appliedOptions.noSpacing ? styles.group.contentNoSpacing : styles.group.content">
                 <div
                     v-for="(element, index) in layout.uischema.elements"
                     :key="`${layout.path}-${index}`"

@@ -64,11 +64,13 @@ export interface LabelOptions extends BaseOptions {
 export interface GroupOptions extends BaseOptions {
     description?: string;
     scope?: string;
+    noSpacing?: boolean;
 }
 
 export interface LayoutOptions extends BaseOptions {}
 
 export interface CategorizationOptions extends BaseOptions {
+    variant?: 'tabs' | 'stepper' | 'accordion';
     showNavButtons?: boolean;
 }
 

@@ -4,7 +4,24 @@
         "firstName": { "type": "string", "title": "First name" },
         "lastName": { "type": "string", "title": "Last name" },
         "street": { "type": "string", "title": "Street" },
-        "city": { "type": "string", "title": "City" }
+        "city": { "type": "string", "title": "City" },
+        "contact": {
+            "type": "object",
+            "title": "Contact",
+            "description": "Contact details",
+            "properties": {
+                "email": { "type": "string", "format": "email", "title": "Email" },
+                "phone": { "type": "string", "title": "Phone" }
+            }
+        },
+        "preferences": {
+            "type": "object",
+            "title": "Preferences",
+            "properties": {
+                "newsletter": { "type": "boolean", "title": "Subscribe to newsletter" },
+                "contactTime": { "type": "string", "title": "Preferred contact time", "enum": ["Morning", "Afternoon", "Evening"] }
+            }
+        }
     }
 }
 

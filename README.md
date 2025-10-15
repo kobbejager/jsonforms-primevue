@@ -1,27 +1,32 @@
 # jsonforms-primevue
 
-This repository implements a [PrimeVue](https://primevue.org/) (version ^4.3) renderer set for [JSON Forms](https://jsonforms.io/) (version ^3.6).
+This repository implements a [PrimeVue](https://primevue.org/) (version ^4.4) renderer set for [JSON Forms](https://jsonforms.io/) (version ^3.6).
 
 __This is work in progress and not ready for production use!__
 
-Most primitive controls have been implemented (ported from the Vanilla Vue renderer set). Layouts and more complex controls are still missing, as well as advanced configuration options.
+__Current Status__
+All core renderers have been migrated to PrimeVue, and many configuration options are already available. However, the simple controls don’t yet fully conform to strict JSON Schema behavior. Additional variants for several renderers are planned for the near future.
 
-At the moment, jsonforms-primevue renderers and the example app are in one and the same package. This will need to be split up in the future (help wanted!), before the renderer set can be published to npm. For now, you can install the renderer set directly from GitHub using a release tag and import it in your app as shown below.
+__Package Structure__
+Right now, the jsonforms‑primevue renderers and the demo application live in the same package. To prepare for an independent npm release, we’ll need to separate them (help wanted!).
+
+__Installation (Temporary)__
+Until the split is complete, you can pull the renderer set directly from GitHub using a release tag. Import it into your project as illustrated below.
 
 ## Install from GitHub tags
 
 1) Add the dependency using a tag (recommended)
 
 ```bash
-yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#v0.2.0
+yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#v0.3.0
 # or with semver selector to auto-allow compatible updates
-yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#semver:^0.2.0
+yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#semver:^0.3.0
 ```
 
 2) Ensure peer dependencies are installed in your app
 
 ```bash
-yarn add vue@^3.5 primevue@^4.3 primeicons@^7 @jsonforms/core@^3.6 @jsonforms/vue@^3.6
+yarn add vue@^3.5 primevue@^4.4 primeicons@^7 @jsonforms/core@^3.6 @jsonforms/vue@^3.6
 ```
 
 3) Install and import a PrimeVue theme (CSS) in your app entry

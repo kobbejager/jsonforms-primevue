@@ -1,4 +1,5 @@
 import { example as strings } from './strings';
+import { example as integers } from './integers';
 import { example as numbers } from './numbers';
 import { example as booleans } from './booleans';
 import { example as dates } from './dates';
@@ -20,6 +21,11 @@ export const examples = [
     { 
         label: 'Strings',
         example: strings,
+        category: 'Primitives',
+    },
+    { 
+        label: 'Integers',
+        example: integers,
         category: 'Primitives',
     },
     { 

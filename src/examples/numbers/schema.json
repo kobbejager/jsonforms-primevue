@@ -1,6 +1,5 @@
 {
     "type": "object",
-    "required": [],
     "properties": {
         "number_field": {
             "title": "Number field",
@@ -8,19 +7,6 @@
             "type": "number",
             "minimum": 0,
             "maximum": 1
-        },
-        "integer_field": {
-            "title": "Integer field",
-            "description": "An integer field restricted to values between 0 and 100",
-            "type": "integer",
-            "minimum": 0,
-            "maximum": 100
-        },
-        "integer_field_with_default": {
-            "title": "Integer field with default value",
-            "description": "An integer field with a default value",
-            "type": "integer",
-            "default": 10
         }
     }
 }

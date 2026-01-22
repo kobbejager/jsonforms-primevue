@@ -98,3 +98,27 @@ export interface AllOfOptions extends BaseOptions {
     /** If true, allow the parent object to remain empty ({}). Defaults to false. */
     allowEmpty?: boolean;
 }
+
+export interface IntegerControlOptions extends BaseOptions {
+    /** Variant to use: 'inputnumber' (default) or 'slider'. */
+    variant?: 'inputnumber' | 'slider';
+    /** If true, shows increment/decrement buttons. Defaults to true. */
+    showButtons?: boolean;
+    /** Step value for increment/decrement. Must be an integer >= 1. Defaults to 1. */
+    step?: number;
+    /** Minimum value allowed. Required when variant is 'slider'. */
+    min?: number;
+    /** Maximum value allowed. Required when variant is 'slider'. */
+    max?: number;
+    /** Prefix string to display before the number. */
+    prefix?: string;
+    /** Suffix string to display after the number. */
+    suffix?: string;
+    /** If true, shows a clear button. Automatically disabled if the field is required. Defaults to false. */
+    showClear?: boolean;
+}
+
+export interface NumberControlOptions extends BaseOptions {
+    /** Step value for increment/decrement. Defaults to 0.1. */
+    step?: number;
+}

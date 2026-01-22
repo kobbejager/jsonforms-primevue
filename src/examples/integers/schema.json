@@ -1,0 +1,103 @@
+{
+    "type": "object",
+    "required": ["integer_field_required_no_clear"],
+    "properties": {
+        "integer_field": {
+            "title": "Integer field",
+            "description": "An integer field restricted to values between 0 and 100",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+        },
+        "integer_field_with_default": {
+            "title": "Integer field with default value",
+            "description": "An integer field with a default value",
+            "type": "integer",
+            "default": 10
+        },
+        "integer_field_no_buttons": {
+            "title": "Integer field without buttons",
+            "description": "An integer field with showButtons set to false",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+        },
+        "integer_field_custom_step": {
+            "title": "Integer field with custom step",
+            "description": "An integer field with step set to 5",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+        },
+        "integer_field_with_prefix": {
+            "title": "Integer field with prefix",
+            "description": "An integer field with a dollar sign prefix",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000
+        },
+        "integer_field_with_suffix": {
+            "title": "Integer field with suffix",
+            "description": "An integer field with 'items' suffix",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000
+        },
+        "integer_field_with_prefix_and_suffix": {
+            "title": "Integer field with prefix and suffix",
+            "description": "An integer field with both prefix (€) and suffix (units)",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000
+        },
+        "integer_field_with_clear": {
+            "title": "Integer field with clear button",
+            "description": "An optional integer field with showClear set to true",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+        },
+        "integer_field_required_no_clear": {
+            "title": "Integer field required (no clear button)",
+            "description": "A required integer field - showClear is automatically disabled even if set to true",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+        },
+        "integer_field_combined_options": {
+            "title": "Integer field with combined options",
+            "description": "An integer field showcasing multiple options: step=10, prefix='$', suffix='items', showClear=true",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000
+        },
+        "integer_field_slider": {
+            "title": "Integer field with slider variant",
+            "description": "An integer field rendered as a slider with InputNumber display",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+        },
+        "integer_field_slider_custom_step": {
+            "title": "Integer field slider with custom step",
+            "description": "A slider variant with step set to 5",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+        },
+        "integer_field_slider_with_prefix_suffix": {
+            "title": "Integer field slider with prefix and suffix",
+            "description": "A slider variant with prefix ($) and suffix (items)",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000
+        },
+        "integer_field_slider_combined": {
+            "title": "Integer field slider with all options",
+            "description": "A slider variant showcasing all options: step=10, prefix='€', suffix='units', showClear=true",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 500
+        }
+    }
+}

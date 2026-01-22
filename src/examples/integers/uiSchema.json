@@ -1,0 +1,116 @@
+{
+    "type": "VerticalLayout",
+    "elements": [
+        {
+            "type": "Control",
+            "scope": "#/properties/integer_field"
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/integer_field_with_default"
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/integer_field_no_buttons",
+            "options": {
+                "showButtons": false
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/integer_field_custom_step",
+            "options": {
+                "step": 5
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/integer_field_with_prefix",
+            "options": {
+                "prefix": "$"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/integer_field_with_suffix",
+            "options": {
+                "suffix": " items"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/integer_field_with_prefix_and_suffix",
+            "options": {
+                "prefix": "€",
+                "suffix": " units"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/integer_field_with_clear",
+            "options": {
+                "showClear": true
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/integer_field_required_no_clear",
+            "options": {
+                "showClear": true
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/integer_field_combined_options",
+            "options": {
+                "step": 10,
+                "prefix": "$",
+                "suffix": " items",
+                "showClear": true
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/integer_field_slider",
+            "options": {
+                "variant": "slider",
+                "min": 0,
+                "max": 100
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/integer_field_slider_custom_step",
+            "options": {
+                "variant": "slider",
+                "min": 0,
+                "max": 100,
+                "step": 5
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/integer_field_slider_with_prefix_suffix",
+            "options": {
+                "variant": "slider",
+                "min": 0,
+                "max": 1000,
+                "prefix": "$",
+                "suffix": " items"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/integer_field_slider_combined",
+            "options": {
+                "variant": "slider",
+                "min": 0,
+                "max": 500,
+                "step": 10,
+                "prefix": "€",
+                "suffix": " units",
+                "showClear": true
+            }
+        }
+    ]
+}

@@ -119,6 +119,28 @@ export interface IntegerControlOptions extends BaseOptions {
 }
 
 export interface NumberControlOptions extends BaseOptions {
-    /** Step value for increment/decrement. Defaults to 0.1. */
+    /** Variant to use: 'inputnumber' (default) or 'slider'. */
+    variant?: 'inputnumber' | 'slider';
+    /** If true, shows increment/decrement buttons. Defaults to true. */
+    showButtons?: boolean;
+    /** Step value for increment/decrement. Must be > 0. Defaults to 0.1. */
     step?: number;
+    /** Minimum value allowed. Required when variant is 'slider'. */
+    min?: number;
+    /** Maximum value allowed. Required when variant is 'slider'. */
+    max?: number;
+    /** Prefix string to display before the number. */
+    prefix?: string;
+    /** Suffix string to display after the number. */
+    suffix?: string;
+    /** If true, shows a clear button. Automatically disabled if the field is required. Defaults to false. */
+    showClear?: boolean;
+    /** Locale string for number formatting (e.g., 'en-US', 'de-DE'). */
+    locale?: string;
+    /** Currency code (e.g., 'USD', 'EUR'). When set, automatically enables currency mode. */
+    currency?: string;
+    /** Minimum number of fraction digits to display. */
+    minFractionDigits?: number;
+    /** Maximum number of fraction digits to display. */
+    maxFractionDigits?: number;
 }

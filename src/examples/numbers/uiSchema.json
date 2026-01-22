@@ -4,6 +4,162 @@
         {
             "type": "Control",
             "scope": "#/properties/number_field"
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/number_field_no_buttons",
+            "options": {
+                "showButtons": false
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/number_field_custom_step",
+            "options": {
+                "step": 0.5
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/number_field_with_prefix",
+            "options": {
+                "prefix": "$"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/number_field_with_suffix",
+            "options": {
+                "suffix": " kg"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/number_field_with_prefix_and_suffix",
+            "options": {
+                "prefix": "$",
+                "suffix": " units"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/number_field_with_clear",
+            "options": {
+                "showClear": true
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/number_field_required_no_clear",
+            "options": {
+                "showClear": true
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/number_field_with_locale",
+            "options": {
+                "locale": "de-DE"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/number_field_currency_usd",
+            "options": {
+                "currency": "USD"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/number_field_currency_eur",
+            "options": {
+                "currency": "EUR",
+                "locale": "de-DE"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/number_field_fraction_digits",
+            "options": {
+                "minFractionDigits": 2,
+                "maxFractionDigits": 4
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/number_field_combined_options",
+            "options": {
+                "step": 0.25,
+                "prefix": "$",
+                "suffix": " items",
+                "showClear": true,
+                "minFractionDigits": 2
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/number_field_slider",
+            "options": {
+                "variant": "slider",
+                "min": 0,
+                "max": 100
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/number_field_slider_custom_step",
+            "options": {
+                "variant": "slider",
+                "min": 0,
+                "max": 100,
+                "step": 0.5
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/number_field_slider_with_prefix_suffix",
+            "options": {
+                "variant": "slider",
+                "min": 0,
+                "max": 1000,
+                "prefix": "$",
+                "suffix": " kg"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/number_field_slider_fraction_digits",
+            "options": {
+                "variant": "slider",
+                "min": 0,
+                "max": 100,
+                "minFractionDigits": 2,
+                "maxFractionDigits": 3
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/number_field_slider_currency",
+            "options": {
+                "variant": "slider",
+                "min": 0,
+                "max": 10000,
+                "currency": "USD"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/number_field_slider_combined",
+            "options": {
+                "variant": "slider",
+                "min": 0,
+                "max": 500,
+                "step": 0.25,
+                "prefix": "€",
+                "suffix": " units",
+                "showClear": true,
+                "minFractionDigits": 2
+            }
         }
     ]
 }

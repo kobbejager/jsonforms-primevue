@@ -47,17 +47,11 @@
         },
         {
             "type": "Control",
-            "scope": "#/properties/integer_field_with_clear",
-            "options": {
-                "showClear": true
-            }
+            "scope": "#/properties/integer_field_with_clear"
         },
         {
             "type": "Control",
-            "scope": "#/properties/integer_field_required_no_clear",
-            "options": {
-                "showClear": true
-            }
+            "scope": "#/properties/integer_field_required_no_clear"
         },
         {
             "type": "Control",
@@ -65,8 +59,7 @@
             "options": {
                 "step": 10,
                 "prefix": "$",
-                "suffix": " items",
-                "showClear": true
+                "suffix": " items"
             }
         },
         {
@@ -108,8 +101,7 @@
                 "max": 500,
                 "step": 10,
                 "prefix": "€",
-                "suffix": " units",
-                "showClear": true
+                "suffix": " units"
             }
         }
     ]

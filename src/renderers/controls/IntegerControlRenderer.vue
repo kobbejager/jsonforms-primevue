@@ -76,13 +76,6 @@ const controlRenderer = defineComponent({
             const options: any = this.appliedOptions;
             return typeof options.suffix === 'string' ? options.suffix : undefined;
         },
-        showClear(): boolean {
-            const options: any = this.appliedOptions;
-            if (this.control.required) {
-                return false;
-            }
-            return options.showClear ?? false;
-        },
     },
 });
 
@@ -129,7 +122,6 @@ export const entry: JsonFormsRendererRegistryEntry = {
                 :max="sliderMax"
                 :prefix="prefix"
                 :suffix="suffix"
-                :showClear="showClear"
                 :class="styles.control.input"
                 :disabled="!control.enabled"
                 :invalid="showErrors"
@@ -152,7 +144,6 @@ export const entry: JsonFormsRendererRegistryEntry = {
             :max="max"
             :prefix="prefix"
             :suffix="suffix"
-            :showClear="showClear"
             :class="styles.control.input"
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"

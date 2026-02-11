@@ -43,17 +43,11 @@
         },
         {
             "type": "Control",
-            "scope": "#/properties/number_field_with_clear",
-            "options": {
-                "showClear": true
-            }
+            "scope": "#/properties/number_field_with_clear"
         },
         {
             "type": "Control",
-            "scope": "#/properties/number_field_required_no_clear",
-            "options": {
-                "showClear": true
-            }
+            "scope": "#/properties/number_field_required_no_clear"
         },
         {
             "type": "Control",
@@ -92,7 +86,6 @@
                 "step": 0.25,
                 "prefix": "$",
                 "suffix": " items",
-                "showClear": true,
                 "minFractionDigits": 2
             }
         },
@@ -157,7 +150,6 @@
                 "step": 0.25,
                 "prefix": "€",
                 "suffix": " units",
-                "showClear": true,
                 "minFractionDigits": 2
             }
         }

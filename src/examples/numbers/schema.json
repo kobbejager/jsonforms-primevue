@@ -45,15 +45,15 @@
             "maximum": 10000
         },
         "number_field_with_clear": {
-            "title": "Number field with clear button",
-            "description": "An optional number field with showClear set to true",
+            "title": "Optional number field",
+            "description": "An optional number field",
             "type": "number",
             "minimum": 0,
             "maximum": 100
         },
         "number_field_required_no_clear": {
-            "title": "Number field required (no clear button)",
-            "description": "A required number field - showClear is automatically disabled even if set to true",
+            "title": "Required number field",
+            "description": "A required number field",
             "type": "number",
             "minimum": 0,
             "maximum": 100
@@ -88,7 +88,7 @@
         },
         "number_field_combined_options": {
             "title": "Number field with combined options",
-            "description": "A number field showcasing multiple options: step=0.25, prefix='$', suffix='items', showClear=true, minFractionDigits=2",
+            "description": "A number field showcasing multiple options: step=0.25, prefix='$', suffix='items', minFractionDigits=2",
             "type": "number",
             "minimum": 0,
             "maximum": 1000
@@ -130,7 +130,7 @@
         },
         "number_field_slider_combined": {
             "title": "Number field slider with all options",
-            "description": "A slider variant showcasing all options: step=0.25, prefix='€', suffix='units', showClear=true, minFractionDigits=2",
+            "description": "A slider variant showcasing all options: step=0.25, prefix='€', suffix='units', minFractionDigits=2",
             "type": "number",
             "minimum": 0,
             "maximum": 500

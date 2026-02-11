@@ -114,8 +114,6 @@ export interface IntegerControlOptions extends BaseOptions {
     prefix?: string;
     /** Suffix string to display after the number. */
     suffix?: string;
-    /** If true, shows a clear button. Automatically disabled if the field is required. Defaults to false. */
-    showClear?: boolean;
 }
 
 export interface NumberControlOptions extends BaseOptions {
@@ -133,8 +131,6 @@ export interface NumberControlOptions extends BaseOptions {
     prefix?: string;
     /** Suffix string to display after the number. */
     suffix?: string;
-    /** If true, shows a clear button. Automatically disabled if the field is required. Defaults to false. */
-    showClear?: boolean;
     /** Locale string for number formatting (e.g., 'en-US', 'de-DE'). */
     locale?: string;
     /** Currency code (e.g., 'USD', 'EUR'). When set, automatically enables currency mode. */

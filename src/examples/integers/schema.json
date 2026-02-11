@@ -51,22 +51,22 @@
             "maximum": 10000
         },
         "integer_field_with_clear": {
-            "title": "Integer field with clear button",
-            "description": "An optional integer field with showClear set to true",
+            "title": "Optional integer field",
+            "description": "An optional integer field",
             "type": "integer",
             "minimum": 0,
             "maximum": 100
         },
         "integer_field_required_no_clear": {
-            "title": "Integer field required (no clear button)",
-            "description": "A required integer field - showClear is automatically disabled even if set to true",
+            "title": "Required integer field",
+            "description": "A required integer field",
             "type": "integer",
             "minimum": 0,
             "maximum": 100
         },
         "integer_field_combined_options": {
             "title": "Integer field with combined options",
-            "description": "An integer field showcasing multiple options: step=10, prefix='$', suffix='items', showClear=true",
+            "description": "An integer field showcasing multiple options: step=10, prefix='$', suffix='items'",
             "type": "integer",
             "minimum": 0,
             "maximum": 1000
@@ -94,7 +94,7 @@
         },
         "integer_field_slider_combined": {
             "title": "Integer field slider with all options",
-            "description": "A slider variant showcasing all options: step=10, prefix='€', suffix='units', showClear=true",
+            "description": "A slider variant showcasing all options: step=10, prefix='€', suffix='units'",
             "type": "integer",
             "minimum": 0,
             "maximum": 500

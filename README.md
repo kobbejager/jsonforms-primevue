@@ -7,8 +7,6 @@ __This is work in progress and not ready for production use!__
 __Current Status__
 All core renderers have been migrated to PrimeVue, and many configuration options are already available. However, the simple controls don’t yet fully conform to strict JSON Schema behavior. Additional variants for several renderers are planned for the near future.
 
-__Package Structure__
-Right now, the jsonforms‑primevue renderers and the demo application live in the same package. To prepare for an independent npm release, we’ll need to separate them (help wanted!).
 
 __Installation (Temporary)__
 Until the split is complete, you can pull the renderer set directly from GitHub using a release tag. Import it into your project as illustrated below.
@@ -66,4 +64,10 @@ For this reason, the MIT licensed code in this repository is copyrighted partial
 - Clone this repository using git, or download and extract the zip file.
 - Install dependencies using `yarn` or `npm install`
 - Run the demo app in development mode using `yarn dev` or `npm run dev`
-- Open the browser at [http://localhost:5173](http://localhost:5173)
+- Build the demo app for production using `yarn build:demo` or `npm run build:demo` (output: `dist-demo/`)
+- Open the browser at [http://localhost:5173](http://localhost:5173) when using development mode
+
+## Library build
+
+- Build the library package (for publishing/consumption) using `yarn build` or `npm run build`
+- Library artifacts are written to `dist/`

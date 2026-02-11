@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "title": "Metadata",
+      "description": "This object requires at least one property and requires source when present.",
+      "minProperties": 1,
+      "required": ["source"],
+      "properties": {
+        "source": {
+          "type": "string",
+          "title": "Source"
+        },
+        "tag": {
+          "type": "string",
+          "title": "Tag"
+        }
+      }
+    }
+  }
+}

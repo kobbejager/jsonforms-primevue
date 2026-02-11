@@ -15,6 +15,7 @@ import { example as vertical } from './vertical';
 import { example as horizontal } from './horizontal';
 import { example as group } from './group';
 import { example as categorization } from './categorization';
+import { example as objectLevelErrors } from './object-level-errors';
 
 
 export const examples = [
@@ -66,6 +67,11 @@ export const examples = [
     { 
         label: 'Objects',
         example: objects,
+        category: 'Arrays & Objects',
+    },
+    {
+        label: 'Object-level errors',
+        example: objectLevelErrors,
         category: 'Arrays & Objects',
     },
     { 

@@ -1,0 +1,10 @@
+{
+  "type": "Group",
+  "label": "Object-level validation demo",
+  "elements": [
+    {
+      "type": "Control",
+      "scope": "#/properties/metadata"
+    }
+  ]
+}

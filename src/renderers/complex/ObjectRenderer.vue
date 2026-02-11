@@ -1,5 +1,8 @@
 <template>
-    <div v-if="control.visible">
+    <div
+        v-if="control.visible"
+        @focusout="markTouched"
+    >
         <dispatch-renderer
             :visible="control.visible"
             :enabled="control.enabled"
@@ -9,6 +12,12 @@
             :renderers="control.renderers"
             :cells="control.cells"
         />
+        <div
+            v-if="showErrors && control.errors"
+            :class="styles.control.error"
+        >
+            <i class="pi pi-exclamation-triangle" style="font-size: 0.75rem"></i> {{ control.errors }}
+        </div>
     </div>
 </template>
 

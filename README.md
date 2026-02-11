@@ -9,16 +9,16 @@ All core renderers have been migrated to PrimeVue, and many configuration option
 
 
 __Installation (Temporary)__
-Until the split is complete, you can pull the renderer set directly from GitHub using a release tag. Import it into your project as illustrated below.
+For now, you can pull the renderer set directly from GitHub using a release tag. Import it into your project as illustrated below.
 
 ## Install from GitHub tags
 
 1) Add the dependency using a tag (recommended)
 
 ```bash
-yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#v0.3.0
+yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#v0.4.0
 # or with semver selector to auto-allow compatible updates
-yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#semver:^0.3.0
+yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#semver:^0.4.0
 ```
 
 2) Ensure peer dependencies are installed in your app

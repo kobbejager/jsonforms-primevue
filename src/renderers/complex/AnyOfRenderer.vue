@@ -1,5 +1,9 @@
 <template>
-    <div v-if="control.visible" :class="styles.oneOf.root">
+    <div
+        v-if="control.visible"
+        :class="styles.oneOf.root"
+        @focusout="markTouched"
+    >
         <combinator-properties
             :schema="control.schema"
             combinator-keyword="anyOf"

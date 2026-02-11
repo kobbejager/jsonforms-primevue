@@ -1,5 +1,9 @@
 <template>
-    <div v-if="control.visible" :class="styles.oneOf.root">
+    <div
+        v-if="control.visible"
+        :class="styles.oneOf.root"
+        @focusout="markTouched"
+    >
         <template v-if="delegateUISchema">
             <dispatch-renderer
                 :schema="control.schema"

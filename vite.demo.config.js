@@ -6,6 +6,7 @@ import tailwind from "@tailwindcss/vite"
 
 // Dedicated build config for the demo app.
 export default defineConfig({
+    base: "./",
     plugins: [
         vue(),
         tailwind(),

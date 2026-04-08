@@ -55,6 +55,7 @@ export interface Styles {
     arrayList: {
         root?: string
         legend?: string
+        controlsFooter?: string
         addButton?: string
         label?: string
         itemWrapper?: string

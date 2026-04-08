@@ -31,6 +31,7 @@ export const defaultStyles: Styles = {
     arrayList: {
         root: "",
         legend: "flex items-center w-full",
+        controlsFooter: "mt-4 flex justify-end w-full",
         addButton: "flex-none",
         label: "font-bold",
         itemWrapper: "w-full",

@@ -140,7 +140,7 @@ export const entry: JsonFormsRendererRegistryEntry = {
                     {{ control.description }}
                 </div>
             </div>
-            <ButtonGroup>
+            <ButtonGroup v-if="noData">
                 <Button 
                     :label="String(control.data?.length ?? 0)"
                     severity="secondary"
@@ -183,6 +183,28 @@ export const entry: JsonFormsRendererRegistryEntry = {
                     :cells="control.cells" 
                 />
             </array-list-element>
+        </div>
+
+        <div
+            v-if="!noData"
+            :class="styles.arrayList.controlsFooter"
+        >
+            <ButtonGroup>
+                <Button
+                    :label="String(control.data?.length ?? 0)"
+                    severity="secondary"
+                    outlined
+                    disabled
+                />
+                <Button
+                    :class="styles.arrayList.addButton"
+                    icon="pi pi-plus"
+                    severity="secondary"
+                    outlined
+                    :disabled="!control.enabled || (appliedOptions.restrict && maxItemsReached)"
+                    @click="addButtonClick"
+                />
+            </ButtonGroup>
         </div>
         
         <div 

@@ -69,6 +69,18 @@ const controlRenderer = defineComponent({
             const options: any = this.appliedOptions;
             return typeof options.max === 'number' ? options.max : 100;
         },
+        sliderValue(): number {
+            return typeof this.control.data === 'number' ? this.control.data : this.sliderMin;
+        },
+        sliderPercent(): number {
+            const min = this.sliderMin;
+            const max = this.sliderMax;
+            if (max <= min) {
+                return 0;
+            }
+            const clampedValue = Math.min(max, Math.max(min, this.sliderValue));
+            return ((clampedValue - min) / (max - min)) * 100;
+        },
         prefix(): string | undefined {
             const options: any = this.appliedOptions;
             return typeof options.prefix === 'string' ? options.prefix : undefined;
@@ -97,6 +109,22 @@ const controlRenderer = defineComponent({
             const options: any = this.appliedOptions;
             return typeof options.maxFractionDigits === 'number' ? options.maxFractionDigits : undefined;
         },
+        formattedSliderValue(): string {
+            const formatOptions: Intl.NumberFormatOptions = this.mode === 'currency'
+                ? {
+                    style: 'currency',
+                    currency: this.currency,
+                }
+                : {};
+            if (typeof this.minFractionDigits === 'number') {
+                formatOptions.minimumFractionDigits = this.minFractionDigits;
+            }
+            if (typeof this.maxFractionDigits === 'number') {
+                formatOptions.maximumFractionDigits = this.maxFractionDigits;
+            }
+            const formattedNumber = this.sliderValue.toLocaleString(this.locale, formatOptions);
+            return `${this.prefix ?? ''}${formattedNumber}${this.suffix ?? ''}`;
+        },
     },
 });
 
@@ -117,43 +145,28 @@ export const entry: JsonFormsRendererRegistryEntry = {
         :show-errors="showErrors"
     >
         <!-- Slider variant -->
-        <div v-if="variant === 'slider'" class="flex items-center gap-3">
+        <div v-if="variant === 'slider'" class="w-full mt-4">
+            <div class="relative w-full pb-4">
             <Slider
                 :id="control.id + '-slider'"
-                :model-value="control.data ?? sliderMin"
+                :model-value="sliderValue"
                 :min="sliderMin"
                 :max="sliderMax"
                 :step="step"
                 :disabled="!control.enabled"
-                :class="styles.control.input"
-                :invalid="showErrors"
-                @update:model-value="onChange"
-                @focus="isFocused = true"
-                @blur="() => { isFocused = false; markTouched(); }"
-                style="flex: 1;"
-            />
-            <InputNumber
-                :id="control.id + '-input'"
-                :model-value="control.data"
-                :useGrouping="false"
-                :mode="mode"
-                :currency="currency"
-                :locale="locale"
-                :minFractionDigits="minFractionDigits ?? (mode === 'currency' ? undefined : 1)"
-                :maxFractionDigits="maxFractionDigits"
-                :showButtons="showButtons"
-                :step="step"
-                :min="sliderMin"
-                :max="sliderMax"
-                :prefix="prefix"
-                :suffix="suffix"
-                :class="styles.control.input"
-                :disabled="!control.enabled"
+                :class="[styles.control.input, 'w-full']"
                 :invalid="showErrors"
                 @update:model-value="onChange"
                 @focus="isFocused = true"
                 @blur="() => { isFocused = false; markTouched(); }"
             />
+                <span
+                    class="absolute top-full mt-0 -translate-x-1/2 text-xs whitespace-nowrap pointer-events-none opacity-70"
+                    :style="{ left: `${sliderPercent}%` }"
+                >
+                    {{ formattedSliderValue }}
+                </span>
+            </div>
         </div>
         <!-- InputNumber variant (default) -->
         <InputNumber

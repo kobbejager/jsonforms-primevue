@@ -1,0 +1,116 @@
+{
+    "type": "VerticalLayout",
+    "elements": [
+        {
+            "type": "Control",
+            "scope": "#/properties/boolean_field"
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/boolean_field_required"
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/boolean_field_with_default"
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/boolean_toggleswitch",
+            "options": {
+                "variant": "toggleswitch",
+                "trueLabel": "Enabled",
+                "falseLabel": "Disabled"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/boolean_togglebutton",
+            "options": {
+                "variant": "togglebutton",
+                "trueLabel": "Yes",
+                "falseLabel": "No"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/boolean_selectbutton",
+            "options": {
+                "variant": "selectbutton",
+                "trueLabel": "Yes",
+                "falseLabel": "No"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/boolean_selectbutton_required",
+            "options": {
+                "variant": "selectbutton",
+                "trueLabel": "Yes",
+                "falseLabel": "No"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/boolean_radio_horizontal",
+            "options": {
+                "variant": "radio",
+                "horizontal": true,
+                "trueLabel": "True",
+                "falseLabel": "False"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/boolean_checkbox_not_applicable",
+            "options": {
+                "allowNotApplicable": true,
+                "notApplicableLabel": "Not applicable"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/boolean_toggleswitch_not_applicable",
+            "options": {
+                "variant": "toggleswitch",
+                "allowNotApplicable": true,
+                "notApplicableLabel": "Not applicable",
+                "trueLabel": "On",
+                "falseLabel": "Off"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/boolean_togglebutton_not_applicable",
+            "options": {
+                "variant": "togglebutton",
+                "allowNotApplicable": true,
+                "notApplicableLabel": "Not applicable",
+                "trueLabel": "Yes",
+                "falseLabel": "No"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/boolean_selectbutton_not_applicable",
+            "options": {
+                "variant": "selectbutton",
+                "allowNotApplicable": true,
+                "notApplicableLabel": "N/A",
+                "trueLabel": "Yes",
+                "falseLabel": "No"
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/boolean_radio_not_applicable",
+            "options": {
+                "variant": "radio",
+                "allowNotApplicable": true,
+                "notApplicableLabel": "N/A",
+                "horizontal": true,
+                "trueLabel": "Yes",
+                "falseLabel": "No"
+            }
+        }
+    ]
+}

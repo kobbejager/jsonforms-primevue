@@ -56,6 +56,21 @@ export interface EnumControlOptions extends BaseOptions {
     notApplicableLabel?: string;
 }
 
+export interface BooleanControlOptions extends BaseOptions {
+    /** Variant to use: 'checkbox' (default), 'togglebutton', 'toggleswitch', 'selectbutton', or 'radio'. */
+    variant?: 'checkbox' | 'togglebutton' | 'toggleswitch' | 'selectbutton' | 'radio';
+    /** Whether to allow an explicit "not applicable" option for optional booleans. */
+    allowNotApplicable?: boolean;
+    /** Label used for the "not applicable" option when enabled. */
+    notApplicableLabel?: string;
+    /** Label used for the true option/value. */
+    trueLabel?: string;
+    /** Label used for the false option/value. */
+    falseLabel?: string;
+    /** Layout hint for option-based variants ('selectbutton' and 'radio'). */
+    horizontal?: boolean;
+}
+
 export interface LabelOptions extends BaseOptions {
     description?: string;
     scope?: string;

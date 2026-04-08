@@ -1,10 +1,15 @@
 {
     "type": "object",
-    "required": [],
+    "required": ["boolean_field_required", "boolean_selectbutton_required"],
     "properties": {
         "boolean_field": {
-            "title": "Boolean field",
-            "description": "A boolean field, rendered as a checkbox",
+            "title": "Boolean field (checkbox)",
+            "description": "Default boolean renderer (checkbox variant)",
+            "type": "boolean"
+        },
+        "boolean_field_required": {
+            "title": "Boolean field (required checkbox)",
+            "description": "Required booleans stay binary and cannot be unset",
             "type": "boolean"
         },
         "boolean_field_with_default": {
@@ -12,6 +17,56 @@
             "description": "A boolean field, rendered as a checkbox, with a default value",
             "type": "boolean",
             "default": true
+        },
+        "boolean_toggleswitch": {
+            "title": "Boolean field (ToggleSwitch)",
+            "description": "Use options.variant = 'toggleswitch' for a switch-style boolean",
+            "type": "boolean"
+        },
+        "boolean_togglebutton": {
+            "title": "Boolean field (ToggleButton)",
+            "description": "Use options.variant = 'togglebutton' with options.trueLabel and options.falseLabel",
+            "type": "boolean"
+        },
+        "boolean_selectbutton": {
+            "title": "Boolean field (SelectButton)",
+            "description": "Use options.variant = 'selectbutton' with custom true and false labels",
+            "type": "boolean"
+        },
+        "boolean_selectbutton_required": {
+            "title": "Boolean field (SelectButton required)",
+            "description": "Required SelectButton boolean remains a strict true/false control",
+            "type": "boolean"
+        },
+        "boolean_radio_horizontal": {
+            "title": "Boolean field (Radio horizontal)",
+            "description": "Use options.variant = 'radio' and options.horizontal = true",
+            "type": "boolean"
+        },
+        "boolean_checkbox_not_applicable": {
+            "title": "Boolean field (checkbox + unset)",
+            "description": "Optional checkbox with allowNotApplicable offers a third 'not applicable' state by unsetting the property",
+            "type": "boolean"
+        },
+        "boolean_toggleswitch_not_applicable": {
+            "title": "Boolean field (ToggleSwitch + unset)",
+            "description": "Optional ToggleSwitch with allowNotApplicable can return to the unset state",
+            "type": "boolean"
+        },
+        "boolean_togglebutton_not_applicable": {
+            "title": "Boolean field (ToggleButton + unset)",
+            "description": "Optional ToggleButton with allowNotApplicable can return to the unset state",
+            "type": "boolean"
+        },
+        "boolean_selectbutton_not_applicable": {
+            "title": "Boolean field (SelectButton tristate)",
+            "description": "Optional SelectButton with allowNotApplicable renders yes/no/not-applicable options",
+            "type": "boolean"
+        },
+        "boolean_radio_not_applicable": {
+            "title": "Boolean field (Radio tristate)",
+            "description": "Optional radio variant with allowNotApplicable renders yes/no/not-applicable options",
+            "type": "boolean"
         }
     }
 }

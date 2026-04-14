@@ -1185,7 +1185,7 @@ const Cr = /* @__PURE__ */ yo(hO), Bp = {
   arrayList: {
     root: "",
     legend: "flex items-center w-full",
-    controlsFooter: "flex justify-end w-full",
+    controlsFooter: "mt-4 flex justify-end w-full",
     addButton: "flex-none",
     label: "font-bold",
     itemWrapper: "w-full",

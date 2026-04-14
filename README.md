@@ -16,9 +16,9 @@ For now, you can pull the renderer set directly from GitHub using a release tag.
 1) Add the dependency using a tag (recommended)
 
 ```bash
-yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#v0.4.0
+yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#v0.5.0
 # or with semver selector to auto-allow compatible updates
-yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#semver:^0.4.0
+yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#semver:^0.5.0
 ```
 
 2) Ensure peer dependencies are installed in your app

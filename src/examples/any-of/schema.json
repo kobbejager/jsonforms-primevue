@@ -73,6 +73,18 @@
                     "$ref": "#/$defs/user"
                 }
             ]
+        },
+        "anyOf_branch_ui_schemas": {
+            "title": "AnyOf with branch UI schemas",
+            "description": "An example of a anyOf construction with per-branch UI schemas in accordion panels",
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
         }
     },
     "$defs": {

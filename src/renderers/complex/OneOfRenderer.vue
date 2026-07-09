@@ -102,6 +102,7 @@ import {
 import { defineComponent, ref } from 'vue'
 import { usePrimeVueControl } from '../util'
 import type { OneOfOptions } from '../util'
+import { applyBranchUiSchemas } from '../util'
 import { ControlWrapper } from '../controls'
 import CombinatorProperties from './components/CombinatorProperties.vue'
 import Select from 'primevue/select'
@@ -167,7 +168,7 @@ const controlRenderer = defineComponent({
                 this.control.uischemas
             )
 
-            return result
+            return applyBranchUiSchemas(result, this.appliedOptions.oneOfUiSchemas)
                 .filter((info) => info.uischema)
                 .map((info, index) => ({ ...info, index: index }))
         },

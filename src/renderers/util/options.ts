@@ -1,3 +1,5 @@
+import type { UISchemaElement } from '@jsonforms/core';
+
 export interface BaseOptions {
     showUnfocusedDescription?: boolean;
     hideRequiredAsterisk?: boolean;
@@ -20,11 +22,13 @@ export interface OneOfOptions extends BaseOptions {
     radio?: boolean;
     selectButton?: boolean;
     horizontal?: boolean;
+    oneOfUiSchemas?: UISchemaElement[];
 }
 
 export interface AnyOfOptions extends BaseOptions {
     allowEmpty?: boolean;
     accordion?: boolean;
+    anyOfUiSchemas?: UISchemaElement[];
 }
 
 export interface EnumArrayOptions extends BaseOptions {
@@ -112,6 +116,7 @@ export interface AllOfOptions extends BaseOptions {
     accordion?: boolean;
     /** If true, allow the parent object to remain empty ({}). Defaults to false. */
     allowEmpty?: boolean;
+    allOfUiSchemas?: UISchemaElement[];
 }
 
 export interface IntegerControlOptions extends BaseOptions {

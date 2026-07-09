@@ -85,6 +85,18 @@
                     "$ref": "#/$defs/user"
                 }
             ]
+        },
+        "oneOf_branch_ui_schemas": {
+            "title": "OneOf with branch UI schemas",
+            "description": "An example of a oneOf construction with per-branch UI schemas that hide different fields",
+            "oneOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
         }   
     },
     "$defs": {

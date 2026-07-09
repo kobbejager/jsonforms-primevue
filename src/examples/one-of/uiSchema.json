@@ -43,6 +43,29 @@
                 "selectButton": true,
                 "notApplicableLabel": "None"
             }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/oneOf_branch_ui_schemas",
+            "options": {
+                "radio": true,
+                "horizontal": true,
+                "oneOfUiSchemas": [
+                    {
+                        "type": "VerticalLayout",
+                        "elements": [
+                            { "type": "Control", "scope": "#/properties/street_address" },
+                            { "type": "Control", "scope": "#/properties/city" }
+                        ]
+                    },
+                    {
+                        "type": "VerticalLayout",
+                        "elements": [
+                            { "type": "Control", "scope": "#/properties/name" }
+                        ]
+                    }
+                ]
+            }
         }
     ]
 }

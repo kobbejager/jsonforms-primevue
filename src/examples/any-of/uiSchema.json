@@ -33,6 +33,29 @@
             "options": {
                 "accordion": true
             }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/anyOf_branch_ui_schemas",
+            "options": {
+                "accordion": true,
+                "anyOfUiSchemas": [
+                    {
+                        "type": "VerticalLayout",
+                        "elements": [
+                            { "type": "Control", "scope": "#/properties/street_address" },
+                            { "type": "Control", "scope": "#/properties/city" }
+                        ]
+                    },
+                    {
+                        "type": "VerticalLayout",
+                        "elements": [
+                            { "type": "Control", "scope": "#/properties/name" },
+                            { "type": "Control", "scope": "#/properties/mail" }
+                        ]
+                    }
+                ]
+            }
         }
     ]
 }

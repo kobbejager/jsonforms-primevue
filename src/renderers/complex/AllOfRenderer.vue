@@ -131,6 +131,7 @@ import {
 import { defineComponent, ref, inject, watch } from 'vue'
 import { usePrimeVueControl } from '../util'
 import type { AllOfOptions } from '../util'
+import { applyBranchUiSchemas } from '../util'
 import { ControlWrapper } from '../controls'
 import CombinatorProperties from './components/CombinatorProperties.vue'
 import Fieldset from 'primevue/fieldset'
@@ -205,7 +206,10 @@ const controlRenderer = defineComponent({
         }
     },
     computed: {
-        delegateUISchema(): UISchemaElement {
+        delegateUISchema(): UISchemaElement | undefined {
+            if (this.appliedOptions.allOfUiSchemas?.length) {
+                return undefined
+            }
             return findMatchingUISchema(this.control.uischemas)(
                 this.control.schema,
                 this.control.uischema.scope,
@@ -222,7 +226,9 @@ const controlRenderer = defineComponent({
                 this.control.path,
                 this.control.uischemas
             )
-            return result.filter((info) => info.uischema)
+            return applyBranchUiSchemas(result, this.appliedOptions.allOfUiSchemas).filter(
+                (info) => info.uischema
+            )
         },
     },
 })

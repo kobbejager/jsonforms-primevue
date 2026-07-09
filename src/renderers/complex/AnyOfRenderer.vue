@@ -96,6 +96,7 @@ import {
 import { defineComponent, ref, watch, inject } from 'vue'
 import { usePrimeVueControl } from '../util'
 import type { AnyOfOptions } from '../util'
+import { applyBranchUiSchemas } from '../util'
 import { ControlWrapper } from '../controls'
 import CombinatorProperties from './components/CombinatorProperties.vue'
 import Tabs from 'primevue/tabs'
@@ -182,7 +183,9 @@ const controlRenderer = defineComponent({
                 this.control.path,
                 this.control.uischemas
             )
-            return result.filter((info) => info.uischema)
+            return applyBranchUiSchemas(result, this.appliedOptions.anyOfUiSchemas).filter(
+                (info) => info.uischema
+            )
         },
     },
 })

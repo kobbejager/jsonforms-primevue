@@ -85,6 +85,18 @@
                     "$ref": "#/$defs/user"
                 }
             ]
+        },
+        "allOf_branch_ui_schemas": {
+            "title": "AllOf with branch UI schemas",
+            "description": "An example of a allOf construction with per-branch UI schemas in tabs",
+            "allOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                }
+            ]
         }   
     },
     "$defs": {

@@ -10,18 +10,14 @@ __This is work in progress and not ready for production use!__
 __Current Status__
 All core renderers have been migrated to PrimeVue, and many configuration options are already available. However, the simple controls don’t yet fully conform to strict JSON Schema behavior. Additional variants for several renderers are planned for the near future.
 
+## Install from npm
 
-__Installation (Temporary)__
-For now, you can pull the renderer set directly from GitHub using a release tag. Import it into your project as illustrated below.
-
-## Install from GitHub tags
-
-1) Add the dependency using a tag (recommended)
+1) Add the package
 
 ```bash
-yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#v0.7.0
-# or with semver selector to auto-allow compatible updates
-yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#semver:^0.7.0
+yarn add @kobbejager/jsonforms-primevue
+# or
+npm install @kobbejager/jsonforms-primevue
 ```
 
 2) Ensure peer dependencies are installed in your app
@@ -44,13 +40,17 @@ import 'primeicons/primeicons.css'
 4) Use the renderers
 
 ```ts
-import { primeVueRenderers } from 'jsonforms-primevue'
+import { primeVueRenderers } from '@kobbejager/jsonforms-primevue'
+import '@kobbejager/jsonforms-primevue/index.css'
 ```
 
-### Updating to a newer tag
+### Optional: install from GitHub tags
 
-- If you used a fixed tag: update `package.json` from `#v0.1.0` to the new tag (e.g. `#v0.1.1`) and run `yarn install`.
-- If you used the semver selector (`#semver:^0.1.0`): run `yarn up jsonforms-primevue` to pull the latest compatible tag.
+```bash
+yarn add @kobbejager/jsonforms-primevue@github:kobbejager/jsonforms-primevue#v0.7.0
+# or with semver selector to auto-allow compatible updates
+yarn add @kobbejager/jsonforms-primevue@github:kobbejager/jsonforms-primevue#semver:^0.7.0
+```
 
 Note: release tags must include the built `dist/` artifacts. If you build locally from Git, ensure your environment can run the package’s build step.
 

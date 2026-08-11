@@ -18,12 +18,14 @@ export default defineConfig({
         tailwind(),
     ],
     build: {
+        copyPublicDir: false,
         lib: {
             entry: fileURLToPath(new URL("./src/index.ts", import.meta.url)),
             name: "JsonformsPrimeVue",
             fileName: "index",
             formats: ["es", "cjs"],
         },
+
         rollupOptions: {
             external: [
                 // Keep Vue external

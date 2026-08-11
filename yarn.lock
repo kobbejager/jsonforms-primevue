@@ -358,6 +358,35 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@kobbejager/jsonforms-primevue@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@kobbejager/jsonforms-primevue@workspace:."
+  dependencies:
+    "@guolao/vue-monaco-editor": "npm:^1.5.5"
+    "@jsonforms/core": "npm:^3.6.0"
+    "@jsonforms/vue": "npm:^3.6.0"
+    "@primeuix/themes": "npm:^1.2.5"
+    "@tailwindcss/vite": "npm:^4.1.14"
+    "@vitejs/plugin-vue": "npm:^6.0.1"
+    lodash: "npm:^4.17.21"
+    marked: "npm:^18.0.9"
+    monaco-editor: "npm:^0.54.0"
+    primeicons: "npm:^7.0.0"
+    primevue: "npm:^4.4.1"
+    tailwindcss: "npm:^4.1.14"
+    tailwindcss-primeui: "npm:^0.6.1"
+    vite: "npm:^7.1.10"
+    vite-plugin-monaco-editor: "npm:^1.1.0"
+    vue: "npm:^3.5.22"
+  peerDependencies:
+    "@jsonforms/core": ^3.6.0
+    "@jsonforms/vue": ^3.6.0
+    primeicons: ^7.0.0
+    primevue: ^4.4.1
+    vue: ^3.5.22
+  languageName: unknown
+  linkType: soft
+
 "@monaco-editor/loader@npm:^1.5.0":
   version: 1.5.0
   resolution: "@monaco-editor/loader@npm:1.5.0"
@@ -1441,35 +1470,6 @@ __metadata:
   checksum: 10c0/71e30015d7f3d6dc1c316d6298047c8ef98a06d31ad064919976583eb61e1018a60a0067338f0f79cabc00d84af3fcc489bd48ce8a46ea165d9541ba17fb30c6
   languageName: node
   linkType: hard
-
-"jsonforms-primevue@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "jsonforms-primevue@workspace:."
-  dependencies:
-    "@guolao/vue-monaco-editor": "npm:^1.5.5"
-    "@jsonforms/core": "npm:^3.6.0"
-    "@jsonforms/vue": "npm:^3.6.0"
-    "@primeuix/themes": "npm:^1.2.5"
-    "@tailwindcss/vite": "npm:^4.1.14"
-    "@vitejs/plugin-vue": "npm:^6.0.1"
-    lodash: "npm:^4.17.21"
-    marked: "npm:^18.0.9"
-    monaco-editor: "npm:^0.54.0"
-    primeicons: "npm:^7.0.0"
-    primevue: "npm:^4.4.1"
-    tailwindcss: "npm:^4.1.14"
-    tailwindcss-primeui: "npm:^0.6.1"
-    vite: "npm:^7.1.10"
-    vite-plugin-monaco-editor: "npm:^1.1.0"
-    vue: "npm:^3.5.22"
-  peerDependencies:
-    "@jsonforms/core": ^3.6.0
-    "@jsonforms/vue": ^3.6.0
-    primeicons: ^7.0.0
-    primevue: ^4.4.1
-    vue: ^3.5.22
-  languageName: unknown
-  linkType: soft
 
 "lightningcss-darwin-arm64@npm:1.30.1":
   version: 1.30.1

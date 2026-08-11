@@ -1,6 +1,25 @@
 {
-    "name": "jsonforms-primevue",
+    "name": "@kobbejager/jsonforms-primevue",
     "version": "0.7.0",
+    "description": "PrimeVue renderer set for JSON Forms",
+    "license": "MIT",
+    "author": "Kobbejager",
+    "keywords": [
+        "jsonforms",
+        "primevue",
+        "vue",
+        "json-schema",
+        "forms",
+        "renderers"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kobbejager/jsonforms-primevue.git"
+    },
+    "bugs": {
+        "url": "https://github.com/kobbejager/jsonforms-primevue/issues"
+    },
+    "homepage": "https://github.com/kobbejager/jsonforms-primevue#readme",
     "type": "module",
     "main": "./dist/index.cjs",
     "module": "./dist/index.js",
@@ -16,13 +35,14 @@
         "dist"
     ],
     "sideEffects": [
-        "**/*.vue"
+        "**/*.css"
     ],
     "scripts": {
         "dev": "vite",
         "build": "vite build",
         "build:demo": "vite build --config vite.demo.config.js",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "prepublishOnly": "yarn build"
     },
     "dependencies": {
         "lodash": "^4.17.21"

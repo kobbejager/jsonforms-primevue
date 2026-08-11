@@ -1,5 +1,8 @@
 # jsonforms-primevue
 
+> [!WARNING]
+> On June 29, 2026, PrimeTek dropped the open-source MIT license for PrimeVue starting with version 5, moving the project to the commercial PrimeUI license model. That is a dumb decision, and I will not migrate to PrimeVue v5. For now I will keep developing jsonforms-primevue on PrimeVue v4, and may later switch to a PrimeVue fork (e.g. [BumbleVue](https://bumblevue.org/)) or to another framework entirely.
+
 This repository implements a [PrimeVue](https://primevue.org/) (version ^4.4) renderer set for [JSON Forms](https://jsonforms.io/) (version ^3.6).
 
 __This is work in progress and not ready for production use!__
@@ -16,9 +19,9 @@ For now, you can pull the renderer set directly from GitHub using a release tag.
 1) Add the dependency using a tag (recommended)
 
 ```bash
-yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#v0.6.0
+yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#v0.7.0
 # or with semver selector to auto-allow compatible updates
-yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#semver:^0.6.0
+yarn add jsonforms-primevue@github:kobbejager/jsonforms-primevue#semver:^0.7.0
 ```
 
 2) Ensure peer dependencies are installed in your app

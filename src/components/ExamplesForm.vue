@@ -323,7 +323,7 @@
 
 <template>
 
-    <div class="w-full h-screen">
+    <div class="w-full">
         <Tabs value="form">
             <TabList>
                 <Tab value="form">Form</Tab>

@@ -1453,6 +1453,7 @@ __metadata:
     "@tailwindcss/vite": "npm:^4.1.14"
     "@vitejs/plugin-vue": "npm:^6.0.1"
     lodash: "npm:^4.17.21"
+    marked: "npm:^18.0.9"
     monaco-editor: "npm:^0.54.0"
     primeicons: "npm:^7.0.0"
     primevue: "npm:^4.4.1"
@@ -1628,6 +1629,15 @@ __metadata:
   bin:
     marked: bin/marked.js
   checksum: 10c0/57a47cb110f7b1a10f398b0a7236f9183aad2dcd5345ee73f2732b6387e585d04cef472bc655d2f84c542296be9728e179aebe3ed7f2f8666b8a0a9dae592876
+  languageName: node
+  linkType: hard
+
+"marked@npm:^18.0.9":
+  version: 18.0.9
+  resolution: "marked@npm:18.0.9"
+  bin:
+    marked: bin/marked.js
+  checksum: 10c0/2fec6c41a8a18f0d9aa6750cd71d8baa7c1abd371e84b04784b735dddf1e581e04bfb37adadeffdb53a3a9e07b1905ab3231cfdf199cc0324edf7b861e3acc46
   languageName: node
   linkType: hard
 

@@ -39,7 +39,6 @@
                         v-for="(category, index) in visibleCategories"
                         :key="`category-step-${index}`"
                         :value="String(index + 1)"
-                        :disabled="!category.value.enabled"
                     >
                         {{ category.value.label }}
                     </Step>
@@ -68,7 +67,7 @@
                                         icon="pi pi-angle-left" 
                                         severity="secondary"
                                         outlined
-                                        :disabled="index === 0 || !visibleCategories[index - 1]?.value?.enabled"
+                                        :disabled="index === 0"
                                         @click="activateCallback(String(index))"
                                         aria-label="Back"
                                     />
@@ -76,7 +75,7 @@
                                         icon="pi pi-angle-right" 
                                         severity="secondary"
                                         outlined
-                                        :disabled="index + 1 >= visibleCategories.length || !visibleCategories[index + 1]?.value?.enabled"
+                                        :disabled="index + 1 >= visibleCategories.length"
                                         @click="activateCallback(String(index + 2))"
                                         aria-label="Next"
                                     />
@@ -95,7 +94,6 @@
                     v-for="(category, index) in visibleCategories"
                     :key="`category-${index}`"
                     :value="index"
-                    :disabled="!category.value.enabled"
                 >
                     {{ category.value.label }}
                 </Tab>

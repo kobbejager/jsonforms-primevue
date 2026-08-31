@@ -42,6 +42,7 @@
                 "anyOfUiSchemas": [
                     {
                         "type": "VerticalLayout",
+                        "label": "Postal address",
                         "elements": [
                             { "type": "Control", "scope": "#/properties/street_address" },
                             { "type": "Control", "scope": "#/properties/city" }
@@ -49,6 +50,7 @@
                     },
                     {
                         "type": "VerticalLayout",
+                        "label": "Person",
                         "elements": [
                             { "type": "Control", "scope": "#/properties/name" },
                             { "type": "Control", "scope": "#/properties/mail" }

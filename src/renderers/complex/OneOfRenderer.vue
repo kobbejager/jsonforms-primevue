@@ -62,14 +62,12 @@
                     />
                 </InputGroup>
 
-                <div 
-                    v-if="selectedIndex !== undefined && selectedIndex !== null && selectedIndex >= 0"
-                >
+                <div v-if="selectedRenderInfo">
                     <Divider />
                     <div :class="styles.oneOf.content">
                         <dispatch-renderer
-                            :schema="indexedOneOfRenderInfos[selectedIndex].schema"
-                            :uischema="indexedOneOfRenderInfos[selectedIndex].uischema"
+                            :schema="selectedRenderInfo.schema"
+                            :uischema="selectedRenderInfo.uischema"
                             :path="control.path"
                             :renderers="control.renderers"
                             :cells="control.cells"
@@ -100,9 +98,8 @@ import {
     useJsonFormsOneOfControl,
 } from '@jsonforms/vue'
 import { defineComponent, ref } from 'vue'
-import { usePrimeVueControl } from '../util'
-import type { OneOfOptions } from '../util'
-import { applyBranchUiSchemas } from '../util'
+import { usePrimeVueControl, visibleCombinatorRenderInfos } from '../util'
+import type { OneOfOptions, IndexedCombinatorRenderInfo } from '../util'
 import { ControlWrapper } from '../controls'
 import CombinatorProperties from './components/CombinatorProperties.vue'
 import Select from 'primevue/select'
@@ -155,9 +152,7 @@ const controlRenderer = defineComponent({
             }
             return !!opts?.allowNotApplicable
         },
-        indexedOneOfRenderInfos(): (CombinatorSubSchemaRenderInfo & {
-            index: number
-        })[] {
+        indexedOneOfRenderInfos(): IndexedCombinatorRenderInfo[] {
             const result = createCombinatorRenderInfos(
                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 this.control.schema.oneOf!,
@@ -168,9 +163,10 @@ const controlRenderer = defineComponent({
                 this.control.uischemas
             )
 
-            return applyBranchUiSchemas(result, this.appliedOptions.oneOfUiSchemas)
-                .filter((info) => info.uischema)
-                .map((info, index) => ({ ...info, index: index }))
+            return visibleCombinatorRenderInfos(result, this.appliedOptions.oneOfUiSchemas)
+        },
+        selectedRenderInfo(): IndexedCombinatorRenderInfo | undefined {
+            return this.indexedOneOfRenderInfos.find((info) => info.index === this.selectedIndex)
         },
         selectOptions(): ({ label: string; index: number } & Partial<CombinatorSubSchemaRenderInfo>)[] {
             const base = this.indexedOneOfRenderInfos as any[]
@@ -218,13 +214,15 @@ const controlRenderer = defineComponent({
                     this.handleChange(this.control.path, {})
                 }
             } else {
-                this.handleChange(
-                    this.control.path,
-                    createDefaultValue(
-                        this.indexedOneOfRenderInfos[this.newSelectedIndex].schema,
-                        this.control.rootSchema
-                    )
+                const info = this.indexedOneOfRenderInfos.find(
+                    (item) => item.index === this.newSelectedIndex
                 )
+                if (info) {
+                    this.handleChange(
+                        this.control.path,
+                        createDefaultValue(info.schema, this.control.rootSchema)
+                    )
+                }
             }
             this.selectIndex = this.newSelectedIndex
             this.selectedIndex = this.newSelectedIndex
@@ -234,8 +232,11 @@ const controlRenderer = defineComponent({
         const hasNoData = this.control.data === undefined || this.control.data === null
         if (this.control.required) {
             if (hasNoData) {
-                this.newSelectedIndex = 0
-                this.newSelection()
+                const first = this.indexedOneOfRenderInfos[0]
+                if (first) {
+                    this.newSelectedIndex = first.index
+                    this.newSelection()
+                }
             }
         } else {
             if (hasNoData) {

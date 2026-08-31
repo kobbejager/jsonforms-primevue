@@ -88,7 +88,7 @@
         },
         "oneOf_branch_ui_schemas": {
             "title": "OneOf with branch UI schemas",
-            "description": "An example of a oneOf construction with per-branch UI schemas that hide different fields",
+            "description": "An example of a oneOf construction with per-branch UI schemas that hide different fields. A string label on each branch UI schema overrides the schema title used for the radio options.",
             "oneOf": [
                 {
                     "$ref": "#/$defs/address"
@@ -97,7 +97,22 @@
                     "$ref": "#/$defs/user"
                 }
             ]
-        }   
+        },
+        "oneOf_hide_branch": {
+            "title": "OneOf with a hidden branch and custom labels",
+            "description": "An example of a oneOf construction that hides the middle schema branch (User) with false and relabels the remaining options. Prefill matches the third branch so the original combinator index is preserved.",
+            "oneOf": [
+                {
+                    "$ref": "#/$defs/address"
+                },
+                {
+                    "$ref": "#/$defs/user"
+                },
+                {
+                    "$ref": "#/$defs/organisation"
+                }
+            ]
+        }
     },
     "$defs": {
         "address": {
@@ -128,6 +143,19 @@
                 }
             },
             "required": ["name", "mail"]
+        },
+        "organisation": {
+            "type": "object",
+            "title": "Organisation",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "ror": {
+                    "type": "string"
+                }
+            },
+            "required": ["name", "ror"]
         }
     }
 }

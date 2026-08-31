@@ -53,6 +53,7 @@
                 "oneOfUiSchemas": [
                     {
                         "type": "VerticalLayout",
+                        "label": "Postal address",
                         "elements": [
                             { "type": "Control", "scope": "#/properties/street_address" },
                             { "type": "Control", "scope": "#/properties/city" }
@@ -60,8 +61,37 @@
                     },
                     {
                         "type": "VerticalLayout",
+                        "label": "Person",
                         "elements": [
                             { "type": "Control", "scope": "#/properties/name" }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/oneOf_hide_branch",
+            "options": {
+                "radio": true,
+                "horizontal": true,
+                "allowNotApplicable": false,
+                "oneOfUiSchemas": [
+                    {
+                        "type": "VerticalLayout",
+                        "label": "Postal address",
+                        "elements": [
+                            { "type": "Control", "scope": "#/properties/street_address" },
+                            { "type": "Control", "scope": "#/properties/city" }
+                        ]
+                    },
+                    false,
+                    {
+                        "type": "VerticalLayout",
+                        "label": "Registered organisation",
+                        "elements": [
+                            { "type": "Control", "scope": "#/properties/name" },
+                            { "type": "Control", "scope": "#/properties/ror" }
                         ]
                     }
                 ]

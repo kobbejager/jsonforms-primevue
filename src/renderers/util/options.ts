@@ -1,5 +1,21 @@
 import type { UISchemaElement } from '@jsonforms/core';
 
+/**
+ * Per-branch UI schema overrides, positional against the schema combinator array
+ * (`oneOf` / `anyOf` / `allOf`).
+ *
+ * - UI schema object: replaces the generated branch UI. A string `label` on the
+ *   override becomes the combinator option title (radio, Select, SelectButton,
+ *   tab, or accordion header). `VerticalLayout` does not render its own label;
+ *   `Group` with a string `label` would show that string both as the option
+ *   title and as the group heading.
+ * - `null` or omitted: keep the generated UI; the branch stays visible.
+ * - `false`: hide this branch.
+ *
+ * Do not treat `null` as hide.
+ */
+export type CombinatorBranchUiSchemas = (UISchemaElement | null | false)[];
+
 export interface BaseOptions {
     showUnfocusedDescription?: boolean;
     hideRequiredAsterisk?: boolean;
@@ -22,13 +38,13 @@ export interface OneOfOptions extends BaseOptions {
     radio?: boolean;
     selectButton?: boolean;
     horizontal?: boolean;
-    oneOfUiSchemas?: UISchemaElement[];
+    oneOfUiSchemas?: CombinatorBranchUiSchemas;
 }
 
 export interface AnyOfOptions extends BaseOptions {
     allowEmpty?: boolean;
     accordion?: boolean;
-    anyOfUiSchemas?: UISchemaElement[];
+    anyOfUiSchemas?: CombinatorBranchUiSchemas;
 }
 
 export interface EnumArrayOptions extends BaseOptions {
@@ -116,7 +132,7 @@ export interface AllOfOptions extends BaseOptions {
     accordion?: boolean;
     /** If true, allow the parent object to remain empty ({}). Defaults to false. */
     allowEmpty?: boolean;
-    allOfUiSchemas?: UISchemaElement[];
+    allOfUiSchemas?: CombinatorBranchUiSchemas;
 }
 
 export interface IntegerControlOptions extends BaseOptions {

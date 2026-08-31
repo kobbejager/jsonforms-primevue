@@ -6,5 +6,9 @@
     "oneOf_readonly": {
         "name": "John Doe",
         "mail": "john.doe@example.com"
+    },
+    "oneOf_hide_branch": {
+        "name": "Acme Corp",
+        "ror": "https://ror.org/02n415q13"
     }
 }

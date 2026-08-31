@@ -34,7 +34,7 @@
                             <AccordionPanel
                                 v-for="(info, idx) in allOfRenderInfos"
                                 :key="`${control.path}-acc-${allOfRenderInfos.length}-${idx}`"
-                                :value="idx"
+                                :value="info.index"
                             >
                                 <AccordionHeader>
                                     {{ info.label }}
@@ -56,12 +56,12 @@
                     </div>
 
                     <div v-else-if="appliedOptions.tabs">
-                        <Tabs v-if="allOfRenderInfos.length > 0" v-model:value="selectedIndex">
+                        <Tabs v-if="allOfRenderInfos.length > 0" v-model:value="activeTabIndex">
                             <TabList>
                                 <Tab
                                     v-for="(info, idx) in allOfRenderInfos"
                                     :key="`${control.path}-${allOfRenderInfos.length}-${idx}`"
-                                    :value="idx"
+                                    :value="info.index"
                                 >
                                     {{ info.label }}
                                 </Tab>
@@ -70,7 +70,7 @@
                                 <TabPanel
                                     v-for="(info, idx) in allOfRenderInfos"
                                     :key="`${control.path}-panel-${allOfRenderInfos.length}-${idx}`"
-                                :value="idx"
+                                :value="info.index"
                                 >
                                     <dispatch-renderer
                                         :schema="info.schema"
@@ -114,7 +114,6 @@
 import {
     createCombinatorRenderInfos,
     findMatchingUISchema,
-    CombinatorSubSchemaRenderInfo,
     ControlElement,
     UISchemaElement,
     isAllOfControl,
@@ -129,9 +128,8 @@ import {
     RendererProps,
 } from '@jsonforms/vue'
 import { defineComponent, ref, inject, watch } from 'vue'
-import { usePrimeVueControl } from '../util'
-import type { AllOfOptions } from '../util'
-import { applyBranchUiSchemas } from '../util'
+import { usePrimeVueControl, visibleCombinatorRenderInfos } from '../util'
+import type { AllOfOptions, IndexedCombinatorRenderInfo } from '../util'
 import { ControlWrapper } from '../controls'
 import CombinatorProperties from './components/CombinatorProperties.vue'
 import Fieldset from 'primevue/fieldset'
@@ -216,7 +214,7 @@ const controlRenderer = defineComponent({
                 this.control.path
             )
         },
-        allOfRenderInfos(): CombinatorSubSchemaRenderInfo[] {
+        allOfRenderInfos(): IndexedCombinatorRenderInfo[] {
             const result = createCombinatorRenderInfos(
                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 this.control.schema.allOf!,
@@ -226,9 +224,19 @@ const controlRenderer = defineComponent({
                 this.control.path,
                 this.control.uischemas
             )
-            return applyBranchUiSchemas(result, this.appliedOptions.allOfUiSchemas).filter(
-                (info) => info.uischema
-            )
+            return visibleCombinatorRenderInfos(result, this.appliedOptions.allOfUiSchemas)
+        },
+        activeTabIndex: {
+            get(): number {
+                const infos = this.allOfRenderInfos
+                if (infos.some((info) => info.index === this.selectedIndex)) {
+                    return this.selectedIndex
+                }
+                return infos[0]?.index ?? 0
+            },
+            set(value: number) {
+                this.selectedIndex = value
+            },
         },
     },
 })

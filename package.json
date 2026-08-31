@@ -1,6 +1,6 @@
 {
     "name": "@kobbejager/jsonforms-primevue",
-    "version": "0.8.0",
+    "version": "0.9.0",
     "description": "PrimeVue renderer set for JSON Forms",
     "license": "MIT",
     "author": "Kobbejager",

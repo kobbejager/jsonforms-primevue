@@ -47,9 +47,9 @@ import '@kobbejager/jsonforms-primevue/index.css'
 ### Optional: install from GitHub tags
 
 ```bash
-yarn add @kobbejager/jsonforms-primevue@github:kobbejager/jsonforms-primevue#v0.7.0
+yarn add @kobbejager/jsonforms-primevue@github:kobbejager/jsonforms-primevue#v0.8.0
 # or with semver selector to auto-allow compatible updates
-yarn add @kobbejager/jsonforms-primevue@github:kobbejager/jsonforms-primevue#semver:^0.7.0
+yarn add @kobbejager/jsonforms-primevue@github:kobbejager/jsonforms-primevue#semver:^0.8.0
 ```
 
 Note: release tags must include the built `dist/` artifacts. If you build locally from Git, ensure your environment can run the package’s build step.
